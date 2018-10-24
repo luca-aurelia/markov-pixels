@@ -1,0 +1,26 @@
+{
+  "name": "markov-images",
+  "version": "0.0.0",
+  "main": "index.js",
+  "author": "<thomas@noisemachines.io>",
+  "license": "MIT",
+  "dependencies": {
+    "@sindresorhus/is": "^0.11.0",
+    "cli-progress": "^2.1.0",
+    "dedupe": "^2.1.0",
+    "double-ended-queue": "^2.1.0-0",
+    "get-pixels": "^3.3.2",
+    "globby": "^8.0.1",
+    "image-downloader": "^3.4.1",
+    "images-scraper": "^2.0.11",
+    "javascript-stringify": "^1.6.0",
+    "markov-chains": "^1.0.2",
+    "ndarray": "^1.0.18",
+    "p-progress": "^0.2.0",
+    "save-pixels": "^2.3.4",
+    "sharp": "^0.20.8"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
+}

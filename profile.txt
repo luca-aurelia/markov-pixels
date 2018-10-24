@@ -1,0 +1,1463 @@
+Statistical profiling result from isolate-0x104000000-v8.log, (21600 ticks, 240 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+    365    1.7%          /usr/lib/system/libsystem_pthread.dylib
+     69    0.3%          /usr/lib/system/libsystem_platform.dylib
+      6    0.0%          /usr/lib/system/libsystem_malloc.dylib
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+    456    2.1%    2.2%  Builtin: KeyedLoadIC_Megamorphic
+    317    1.5%    1.5%  LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    199    0.9%    0.9%  LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+    184    0.9%    0.9%  LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    151    0.7%    0.7%  Builtin: ToObject
+    148    0.7%    0.7%  Builtin: KeyedStoreIC_Megamorphic
+    108    0.5%    0.5%  Builtin: KeyedLoadIC
+     75    0.3%    0.4%  Builtin: SetPrototypeHas
+     54    0.3%    0.3%  LazyCompile: *decodeDCFirst /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:166:27
+     53    0.2%    0.3%  Builtin: KeyedStoreIC
+     45    0.2%    0.2%  Builtin: MathRandom
+     42    0.2%    0.2%  Builtin: ArgumentsAdaptorTrampoline
+     36    0.2%    0.2%  Builtin: LoadIC
+     31    0.1%    0.1%  Builtin: GrowFastSmiOrObjectElements
+     28    0.1%    0.1%  Builtin: CEntry_Return1_DontSaveFPRegs_ArgvOnStack_NoBuiltinExit
+     24    0.1%    0.1%  Builtin: RecordWrite
+     21    0.1%    0.1%  LazyCompile: *filterSumPaeth /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/filter-pack.js:111:24
+     21    0.1%    0.1%  LazyCompile: *decodeMcu /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:254:23
+     21    0.1%    0.1%  Builtin: IterableToList
+     20    0.1%    0.1%  Builtin: Typeof
+     20    0.1%    0.1%  Builtin: ForInEnumerate
+     18    0.1%    0.1%  LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+     18    0.1%    0.1%  LazyCompile: *filterAvg /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/filter-pack.js:71:19
+     18    0.1%    0.1%  Builtin: CEntry_Return1_DontSaveFPRegs_ArgvOnStack_BuiltinExit
+     17    0.1%    0.1%  Builtin: StringEqual
+     16    0.1%    0.1%  Builtin: CallFunction_ReceiverIsAny
+     15    0.1%    0.1%  Builtin: KeyedLoadICTrampoline
+     15    0.1%    0.1%  Builtin: InterpreterEntryTrampoline
+     15    0.1%    0.1%  Builtin: CallFunction_ReceiverIsNullOrUndefined
+     13    0.1%    0.1%  Builtin: ObjectValues
+     12    0.1%    0.1%  LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+     12    0.1%    0.1%  Builtin: ArrayForEach
+     11    0.1%    0.1%  LazyCompile: ~quantizeAndInverse /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:349:32
+     11    0.1%    0.1%  LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     10    0.0%    0.0%  LazyCompile: *receive /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:130:21
+     10    0.0%    0.0%  LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:70:25
+     10    0.0%    0.0%  LazyCompile: *filterSumSub /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/filter-pack.js:31:22
+     10    0.0%    0.0%  LazyCompile: *Deque$unshift /Users/noisemachines/dev/markov-images/node_modules/double-ended-queue/js/deque.js:108:49
+      9    0.0%    0.0%  LazyCompile: *getPixels /Users/noisemachines/dev/markov-images/imageToPixels.js:8:26
+      9    0.0%    0.0%  LazyCompile: *assign_cwise_loop_2s0s1m1bi8 :3:38
+      9    0.0%    0.0%  Builtin: GrowFastDoubleElements
+      8    0.0%    0.0%  LazyCompile: *pixels.forEach /Users/noisemachines/dev/markov-images/savePixelsToFile.js:11:18
+      7    0.0%    0.0%  LazyCompile: *filterSumAvg /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/filter-pack.js:83:22
+      6    0.0%    0.0%  LazyCompile: ~neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      6    0.0%    0.0%  LazyCompile: ~getData /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:795:30
+      6    0.0%    0.0%  LazyCompile: *getNeighboringPoints /Users/noisemachines/dev/markov-images/growMarkovPixels.js:24:30
+      6    0.0%    0.0%  LazyCompile: *<anonymous> /Users/noisemachines/dev/markov-images/growMarkovPixels.js:10:41
+      6    0.0%    0.0%  Builtin: Call_ReceiverIsAny
+      5    0.0%    0.0%  Stub: StoreFastElementStub
+      5    0.0%    0.0%  Builtin: ObjectEntries
+      5    0.0%    0.0%  Builtin: KeyedStoreICTrampoline
+      5    0.0%    0.0%  Builtin: AdaptorWithBuiltinExitFrame
+      4    0.0%    0.0%  LazyCompile: *decodeACSuccessive /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:199:32
+      4    0.0%    0.0%  LazyCompile: *CrcCalculator.crc32 /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/crc.js:37:31
+      4    0.0%    0.0%  Builtin: StoreIC
+      4    0.0%    0.0%  Builtin: Call_ReceiverIsNullOrUndefined
+      3    0.0%    0.0%  LazyCompile: ~update /Users/noisemachines/dev/markov-images/node_modules/cli-progress/lib/Bar.js:281:11
+      3    0.0%    0.0%  LazyCompile: ~stripBOM internal/modules/cjs/helpers.js:59:18
+      3    0.0%    0.0%  LazyCompile: ~render /Users/noisemachines/dev/markov-images/node_modules/cli-progress/lib/Bar.js:92:11
+      3    0.0%    0.0%  LazyCompile: ~getPixels /Users/noisemachines/dev/markov-images/imageToPixels.js:8:26
+      3    0.0%    0.0%  LazyCompile: ~decodeScan /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:91:22
+      3    0.0%    0.0%  LazyCompile: ~decodeACSuccessive /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:199:32
+      3    0.0%    0.0%  LazyCompile: *update /Users/noisemachines/dev/markov-images/node_modules/cli-progress/lib/Bar.js:281:11
+      3    0.0%    0.0%  LazyCompile: *receiveAndExtend /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:140:30
+      3    0.0%    0.0%  LazyCompile: *getData /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:795:30
+      3    0.0%    0.0%  LazyCompile: *filterSumUp /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/filter-pack.js:56:21
+      3    0.0%    0.0%  LazyCompile: *filterSumNone /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/filter-pack.js:9:23
+      3    0.0%    0.0%  LazyCompile: *decodeHuffman /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:119:27
+      3    0.0%    0.0%  Builtin: LoadICTrampoline
+      2    0.0%    0.0%  LazyCompile: ~copyToImageData /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:918:46
+      2    0.0%    0.0%  LazyCompile: ~Module._resolveLookupPaths internal/modules/cjs/loader.js:400:38
+      2    0.0%    0.0%  LazyCompile: ~HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+      2    0.0%    0.0%  LazyCompile: *copyToImageData /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:918:46
+      2    0.0%    0.0%  Builtin: LoadIC_Noninlined
+      2    0.0%    0.0%  Builtin: JsonStringify
+      2    0.0%    0.0%  Builtin: GetProperty
+      2    0.0%    0.0%  Builtin: ArrayPrototypePush
+      1    0.0%    0.0%  LazyCompile: ~wrapConversion /Users/noisemachines/dev/markov-images/node_modules/color-convert/route.js:63:24
+      1    0.0%    0.0%  LazyCompile: ~validateUint32 internal/validators.js:100:24
+      1    0.0%    0.0%  LazyCompile: ~tryReadSync fs.js:326:21
+      1    0.0%    0.0%  LazyCompile: ~toString buffer.js:644:46
+      1    0.0%    0.0%  LazyCompile: ~stringSlice buffer.js:590:21
+      1    0.0%    0.0%  LazyCompile: ~require internal/modules/cjs/helpers.js:17:19
+      1    0.0%    0.0%  LazyCompile: ~receive /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:130:21
+      1    0.0%    0.0%  LazyCompile: ~realpathSync fs.js:1354:22
+      1    0.0%    0.0%  LazyCompile: ~readBit /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:103:21
+      1    0.0%    0.0%  LazyCompile: ~prepareComponents /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:554:33
+      1    0.0%    0.0%  LazyCompile: ~pixels.forEach /Users/noisemachines/dev/markov-images/savePixelsToFile.js:11:18
+      1    0.0%    0.0%  LazyCompile: ~module.exports /Users/noisemachines/dev/markov-images/node_modules/string-width/node_modules/ansi-regex/index.js:3:18
+      1    0.0%    0.0%  LazyCompile: ~isInsideNodeModules internal/util.js:331:29
+      1    0.0%    0.0%  LazyCompile: ~inherits util.js:1341:18
+      1    0.0%    0.0%  LazyCompile: ~getPathFromURL internal/url.js:1395:24
+      1    0.0%    0.0%  LazyCompile: ~getOptions internal/fs/utils.js:165:20
+      1    0.0%    0.0%  LazyCompile: ~formatTime /Users/noisemachines/dev/markov-images/node_modules/cli-progress/lib/Bar.js:189:22
+      1    0.0%    0.0%  LazyCompile: ~filterSumNone /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/filter-pack.js:9:23
+      1    0.0%    0.0%  LazyCompile: ~filterSumAvg /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/filter-pack.js:83:22
+      1    0.0%    0.0%  LazyCompile: ~filterSub /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/filter-pack.js:20:19
+      1    0.0%    0.0%  LazyCompile: ~dirname path.js:1269:28
+      1    0.0%    0.0%  LazyCompile: ~decodeACFirst /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:175:27
+      1    0.0%    0.0%  LazyCompile: ~calculate /Users/noisemachines/dev/markov-images/node_modules/cli-progress/lib/ETA.js:29:14
+      1    0.0%    0.0%  LazyCompile: ~assign_cwise_loop_2s0s1m1bi8 :3:38
+      1    0.0%    0.0%  LazyCompile: ~_tickCallback internal/process/next_tick.js:41:25
+      1    0.0%    0.0%  LazyCompile: ~Script vm.js:43:14
+      1    0.0%    0.0%  LazyCompile: ~NativeModule.exists internal/bootstrap/loaders.js:188:33
+      1    0.0%    0.0%  LazyCompile: ~Module._compile internal/modules/cjs/loader.js:650:37
+      1    0.0%    0.0%  LazyCompile: ~Join native array.js:112:14
+      1    0.0%    0.0%  LazyCompile: ~DoJoin native array.js:87:16
+      1    0.0%    0.0%  LazyCompile: ~Deque$unshift /Users/noisemachines/dev/markov-images/node_modules/double-ended-queue/js/deque.js:108:49
+      1    0.0%    0.0%  LazyCompile: ~<anonymous> /Users/noisemachines/dev/markov-images/node_modules/psl/index.js:14:61
+      1    0.0%    0.0%  LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      1    0.0%    0.0%  LazyCompile: *quantizeAndInverse /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:349:32
+      1    0.0%    0.0%  LazyCompile: *normalizeString path.js:57:25
+      1    0.0%    0.0%  LazyCompile: *filterUp /Users/noisemachines/dev/markov-images/node_modules/pngjs-nozlib/lib/filter-pack.js:45:18
+      1    0.0%    0.0%  LazyCompile: *buildComponentData /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:337:30
+      1    0.0%    0.0%  LazyCompile: *View3dbuffer_get :18:36
+      1    0.0%    0.0%  LazyCompile: *Deque$pop /Users/noisemachines/dev/markov-images/node_modules/double-ended-queue/js/deque.js:83:41
+      1    0.0%    0.0%  Builtin: StringPrototypeCharCodeAt
+      1    0.0%    0.0%  Builtin: RegExpReplace
+      1    0.0%    0.0%  Builtin: RegExpPrototypeTest
+      1    0.0%    0.0%  Builtin: CompileLazy
+      1    0.0%    0.0%  Builtin: ArrayPrototypeSlice
+      1    0.0%    0.0%  Builtin: ArrayMap
+      1    0.0%    0.0%  Builtin: ArrayIteratorPrototypeNext
+
+ [C++]:
+   ticks  total  nonlib   name
+   1122    5.2%    5.3%  t v8::internal::LookupIterator::State v8::internal::LookupIterator::LookupInRegularHolder<false>(v8::internal::Map*, v8::internal::JSReceiver*)
+   1096    5.1%    5.2%  T v8::internal::BaseNameDictionary<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::CollectKeysTo(v8::internal::Handle<v8::internal::NameDictionary>, v8::internal::KeyAccumulator*)
+    921    4.3%    4.4%  t void std::__1::__sort<v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&, v8::base::AtomicElement<v8::internal::Smi*>*>(v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&)
+    831    3.8%    3.9%  T v8::internal::OrderedHashSet::Add(v8::internal::Handle<v8::internal::OrderedHashSet>, v8::internal::Handle<v8::internal::Object>)
+    703    3.3%    3.3%  T v8::internal::GetOwnValuesOrEntries(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::PropertyFilter, bool, bool)
+    613    2.8%    2.9%  T v8::internal::Factory::NewFixedArrayWithFiller(v8::internal::Heap::RootListIndex, int, v8::internal::Object*, v8::internal::PretenureFlag)
+    470    2.2%    2.2%  t v8::internal::OrderedHashTable<v8::internal::OrderedHashSet, 1>::Rehash(v8::internal::Handle<v8::internal::OrderedHashSet>, int)
+    447    2.1%    2.1%  t v8::internal::Heap::AllocateRaw(int, v8::internal::AllocationSpace, v8::internal::AllocationAlignment)
+    384    1.8%    1.8%  T v8::internal::LookupIterator::FetchValue() const
+    378    1.8%    1.8%  T _munmap
+    376    1.7%    1.8%  t v8::internal::JsonStringifier::Result v8::internal::JsonStringifier::Serialize_<false>(v8::internal::Handle<v8::internal::Object>, bool, v8::internal::Handle<v8::internal::Object>)
+    355    1.6%    1.7%  T v8::internal::StringTable::LookupStringIfExists_NoAllocate(v8::internal::String*)
+    347    1.6%    1.6%  T void v8::internal::LookupIterator::Start<false>()
+    311    1.4%    1.5%  T v8::internal::Factory::NewJSArray(v8::internal::ElementsKind, v8::internal::PretenureFlag)
+    287    1.3%    1.4%  T v8::internal::JSReceiver::GetOwnPropertyDescriptor(v8::internal::LookupIterator*, v8::internal::PropertyDescriptor*)
+    283    1.3%    1.3%  T v8::internal::IncrementalMarking::Step(unsigned long, v8::internal::IncrementalMarking::CompletionAction, v8::internal::StepOrigin, v8::internal::WorklistToProcess)
+    274    1.3%    1.3%  t v8::internal::LookupIterator::LookupIterator(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::LookupIterator::Configuration)
+    262    1.2%    1.2%  T v8::internal::LookupIterator::PropertyOrElement(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, bool*, v8::internal::LookupIterator::Configuration)
+    244    1.1%    1.2%  t v8::internal::LookupIterator::PropertyOrElement(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::LookupIterator::Configuration)
+    228    1.1%    1.1%  T v8::internal::Object::GetProperty(v8::internal::LookupIterator*)
+    218    1.0%    1.0%  T v8::internal::JsonStringifier::SerializeString(v8::internal::Handle<v8::internal::String>)
+    210    1.0%    1.0%  t unsigned int std::__1::__sort3<v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&, v8::base::AtomicElement<v8::internal::Smi*>*>(v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&)
+    207    1.0%    1.0%  T v8::internal::FastGetOwnValuesOrEntries(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSReceiver>, bool, v8::internal::Handle<v8::internal::FixedArray>*)
+    202    0.9%    1.0%  T v8::internal::Object::SameValueZero(v8::internal::Object*)
+    196    0.9%    0.9%  t v8::internal::Object::GetSimpleHash(v8::internal::Object*)
+    194    0.9%    0.9%  T v8::internal::Heap::AllocateRawWithLigthRetry(int, v8::internal::AllocationSpace, v8::internal::AllocationAlignment)
+    190    0.9%    0.9%  T v8::internal::OrderedHashSet::ConvertToKeysArray(v8::internal::Handle<v8::internal::OrderedHashSet>, v8::internal::GetKeysConversion)
+    188    0.9%    0.9%  T v8::internal::Factory::InitializeJSObjectFromMap(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Map>)
+    187    0.9%    0.9%  T v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationSpace, v8::internal::AllocationAlignment)
+    170    0.8%    0.8%  t v8::internal::(anonymous namespace)::StringTableNoAllocateKey::IsMatch(v8::internal::Object*)
+    162    0.8%    0.8%  t int v8::internal::BinarySearch<(v8::internal::SearchMode)0, v8::internal::TransitionArray>(v8::internal::TransitionArray*, v8::internal::Name*, int, int*)
+    154    0.7%    0.7%  T void v8::internal::LookupIterator::RestartInternal<false>(v8::internal::LookupIterator::InterceptorState)
+    142    0.7%    0.7%  T v8::internal::JSReceiver::GetPropertyAttributes(v8::internal::LookupIterator*)
+    141    0.7%    0.7%  t v8::internal::JsonStringifier::Result v8::internal::JsonStringifier::Serialize_<true>(v8::internal::Handle<v8::internal::Object>, bool, v8::internal::Handle<v8::internal::Object>)
+    137    0.6%    0.6%  T v8::internal::JsonStringifier::SerializeSmi(v8::internal::Smi*)
+    134    0.6%    0.6%  T v8::internal::Heap::Scavenge()
+    131    0.6%    0.6%  T v8::internal::JSObject::FastPropertyAt(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Representation, v8::internal::FieldIndex)
+    116    0.5%    0.5%  T v8::internal::KeyAccumulator::AddKey(v8::internal::Handle<v8::internal::Object>, v8::internal::AddKeyConversion)
+    113    0.5%    0.5%  T v8::internal::Factory::NewJSArrayWithElements(v8::internal::Handle<v8::internal::FixedArrayBase>, v8::internal::ElementsKind, int, v8::internal::PretenureFlag)
+    112    0.5%    0.5%  T v8::internal::Factory::InitializeJSObjectBody(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>, int)
+    110    0.5%    0.5%  T v8::internal::String::GetFlatContent()
+    110    0.5%    0.5%  T _mach_msg_overwrite
+    108    0.5%    0.5%  T v8::internal::JSArray::SetLength(v8::internal::Handle<v8::internal::JSArray>, unsigned int)
+    106    0.5%    0.5%  t v8::internal::Scavenger::ScavengeObject(v8::internal::HeapObjectReference**, v8::internal::HeapObject*)
+     99    0.5%    0.5%  T v8::internal::IntToCString(int, v8::internal::Vector<char>)
+     97    0.4%    0.5%  t v8::internal::ConsString* v8::internal::String::VisitFlat<v8::internal::IteratingStringHasher>(v8::internal::IteratingStringHasher*, v8::internal::String*, int)
+     97    0.4%    0.5%  T v8::internal::KeyAccumulator::IsShadowed(v8::internal::Handle<v8::internal::Object>)
+     95    0.4%    0.4%  T v8::internal::Scavenger::ScavengePage(v8::internal::MemoryChunk*)
+     95    0.4%    0.4%  T node::contextify::ContextifyScript::New(v8::FunctionCallbackInfo<v8::Value> const&)
+     86    0.4%    0.4%  T v8::internal::KeyAccumulator::AddKey(v8::internal::Object*, v8::internal::AddKeyConversion)
+     85    0.4%    0.4%  T v8::internal::Factory::InitializeMap(v8::internal::Map*, v8::internal::InstanceType, int, v8::internal::ElementsKind, int)
+     84    0.4%    0.4%  T _vm_region_recurse_64
+     82    0.4%    0.4%  T v8::internal::JsonParser<true>::ParseJsonObject()
+     73    0.3%    0.3%  t node::fs::Read(v8::FunctionCallbackInfo<v8::Value> const&)
+     70    0.3%    0.3%  T v8::internal::Factory::NewRawOneByteString(int, v8::internal::PretenureFlag)
+     69    0.3%    0.3%  t v8::internal::(anonymous namespace)::MakeStringThin(v8::internal::String*, v8::internal::String*, v8::internal::Isolate*)
+     62    0.3%    0.3%  t v8::internal::PagedSpace::Available()
+     55    0.3%    0.3%  T v8::internal::Object::GetOrCreateHash(v8::internal::Isolate*)
+     54    0.3%    0.3%  T v8::internal::LookupIterator::GetDataValue() const
+     53    0.2%    0.3%  t unsigned int std::__1::__sort4<v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&, v8::base::AtomicElement<v8::internal::Smi*>*>(v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&)
+     53    0.2%    0.3%  T v8::internal::Factory::NewJSArrayStorage(v8::internal::Handle<v8::internal::JSArray>, int, int, v8::internal::ArrayStorageAllocationMode)
+     51    0.2%    0.2%  t void std::__1::__insertion_sort_3<v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&, v8::base::AtomicElement<v8::internal::Smi*>*>(v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&)
+     51    0.2%    0.2%  T v8::internal::JsonStringifier::StackPush(v8::internal::Handle<v8::internal::Object>)
+     49    0.2%    0.2%  T v8::internal::JsonParser<true>::ParseJsonNumber()
+     46    0.2%    0.2%  t v8::internal::HeapObject::SizeFromMap(v8::internal::Map*) const
+     46    0.2%    0.2%  t v8::internal::DescriptorArray::Append(v8::internal::Descriptor*)
+     44    0.2%    0.2%  t v8::internal::JSObject::WriteToField(int, v8::internal::PropertyDetails, v8::internal::Object*)
+     44    0.2%    0.2%  T v8::internal::Map::RawCopy(v8::internal::Handle<v8::internal::Map>, int, int)
+     44    0.2%    0.2%  T v8::internal::JSObject::MigrateToMap(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>, int)
+     43    0.2%    0.2%  t void v8::internal::String::WriteToFlat<unsigned char>(v8::internal::String*, unsigned char*, int, int)
+     43    0.2%    0.2%  t void v8::internal::Map::BodyDescriptor::IterateBody<v8::internal::MarkingVisitor<(v8::internal::FixedArrayVisitationMode)1, (v8::internal::TraceRetainingPathMode)1, v8::internal::IncrementalMarkingState> >(v8::internal::Map*, v8::internal::HeapObject*, int, v8::internal::MarkingVisitor<(v8::internal::FixedArrayVisitationMode)1, (v8::internal::TraceRetainingPathMode)1, v8::internal::IncrementalMarkingState>*)
+     41    0.2%    0.2%  T v8::internal::JsonParser<true>::ScanJsonString()
+     41    0.2%    0.2%  T v8::internal::IncrementalMarking::WhiteToGreyAndPush(v8::internal::HeapObject*)
+     39    0.2%    0.2%  t __malloc_initialize
+     39    0.2%    0.2%  T v8::internal::Factory::NewConsString(v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::String>)
+     37    0.2%    0.2%  t _szone_malloc_should_clear
+     37    0.2%    0.2%  T __simple_dprintf
+     36    0.2%    0.2%  T v8::base::Time::ToJsTime() const
+     36    0.2%    0.2%  T ___channel_get_opt
+     35    0.2%    0.2%  t void v8::internal::LookupIterator::NextInternal<false>(v8::internal::Map*, v8::internal::JSReceiver*)
+     35    0.2%    0.2%  T v8::internal::JsonStringifier::InitializeReplacer(v8::internal::Handle<v8::internal::Object>)
+     35    0.2%    0.2%  T v8::internal::Factory::NewConsString(v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::String>, int, bool)
+     34    0.2%    0.2%  T v8::internal::Map::EnsureDescriptorSlack(v8::internal::Handle<v8::internal::Map>, int)
+     34    0.2%    0.2%  T v8::internal::JsonStringifier::ApplyToJsonFunction(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>)
+     33    0.2%    0.2%  T v8::internal::Scavenger::Process(v8::internal::OneshotBarrier*)
+     33    0.2%    0.2%  T _mach_vm_purgable_control
+     32    0.1%    0.2%  t v8::internal::(anonymous namespace)::CopyObjectToObjectElements(v8::internal::FixedArrayBase*, v8::internal::ElementsKind, unsigned int, v8::internal::FixedArrayBase*, v8::internal::ElementsKind, unsigned int, int)
+     31    0.1%    0.1%  t node::fs::InternalModuleReadJSON(v8::FunctionCallbackInfo<v8::Value> const&)
+     31    0.1%    0.1%  t __enlarge
+     31    0.1%    0.1%  T v8::internal::KeyAccumulator::CollectOwnElementIndices(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::Handle<v8::internal::JSObject>)
+     31    0.1%    0.1%  T v8::internal::JsonStringifier::Stringify(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>)
+     31    0.1%    0.1%  T v8::internal::IncrementalStringBuilder::IncrementalStringBuilder(v8::internal::Isolate*)
+     30    0.1%    0.1%  T v8::internal::DescriptorArray::CopyFrom(int, v8::internal::DescriptorArray*)
+     29    0.1%    0.1%  T v8::internal::TransitionsAccessor::Initialize()
+     29    0.1%    0.1%  T v8::internal::TransitionsAccessor::ExpectedTransitionKey()
+     29    0.1%    0.1%  T v8::internal::SeqString::Truncate(v8::internal::Handle<v8::internal::SeqString>, int)
+     29    0.1%    0.1%  T v8::internal::Map::CopyAddDescriptor(v8::internal::Handle<v8::internal::Map>, v8::internal::Descriptor*, v8::internal::TransitionFlag)
+     29    0.1%    0.1%  T v8::internal::LargeObjectSpace::FindPage(unsigned long)
+     29    0.1%    0.1%  T v8::internal::Factory::NewUninitializedFixedArray(int, v8::internal::PretenureFlag)
+     28    0.1%    0.1%  t v8::internal::Worklist<v8::internal::HeapObject*, 64>::Pop(int, v8::internal::HeapObject**)
+     28    0.1%    0.1%  T v8::internal::Heap::CreateFillerObjectAt(unsigned long, int, v8::internal::ClearRecordedSlots, v8::internal::ClearFreedMemoryMode)
+     27    0.1%    0.1%  t v8::internal::Map::SetBackPointer(v8::internal::Object*, v8::internal::WriteBarrierMode)
+     26    0.1%    0.1%  t void v8::internal::Worklist<v8::internal::HeapObject*, 64>::Update<v8::internal::IncrementalMarking::UpdateMarkingWorklistAfterScavenge()::$_0>(v8::internal::IncrementalMarking::UpdateMarkingWorklistAfterScavenge()::$_0)
+     26    0.1%    0.1%  t unsigned int std::__1::__sort5<v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&, v8::base::AtomicElement<v8::internal::Smi*>*>(v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&)
+     26    0.1%    0.1%  T v8::internal::KeyAccumulator::GetKeys(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::KeyCollectionMode, v8::internal::PropertyFilter, v8::internal::GetKeysConversion, bool, bool)
+     26    0.1%    0.1%  T v8::internal::JSObject::OptimizeAsPrototype(v8::internal::Handle<v8::internal::JSObject>, bool)
+     26    0.1%    0.1%  T v8::internal::IncrementalStringBuilder::Finish()
+     25    0.1%    0.1%  T v8::internal::StackGuard::PushInterruptsScope(v8::internal::InterruptsScope*)
+     25    0.1%    0.1%  T v8::internal::Factory::NewNumber(double, v8::internal::PretenureFlag)
+     24    0.1%    0.1%  t v8::internal::Builtin_Impl_JsonStringify(v8::internal::BuiltinArguments, v8::internal::Isolate*)
+     24    0.1%    0.1%  T v8::internal::JSObject::EnsureWritableFastElements(v8::internal::Handle<v8::internal::JSObject>)
+     22    0.1%    0.1%  t v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)3> >::SetLengthImpl(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSArray>, unsigned int, v8::internal::Handle<v8::internal::FixedArrayBase>)
+     22    0.1%    0.1%  T v8::internal::Map::TransitionToDataProperty(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::PropertyConstness, v8::internal::Object::StoreFromKeyed)
+     20    0.1%    0.1%  t void v8::internal::Heap::CreateFillerForArray<v8::internal::FixedArrayBase>(v8::internal::FixedArrayBase*, int, int)
+     20    0.1%    0.1%  t v8::internal::HashTable<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::Rehash(v8::internal::NameDictionary*)
+     19    0.1%    0.1%  t void std::__1::vector<v8::internal::Handle<v8::internal::Object>, v8::internal::ZoneAllocator<v8::internal::Handle<v8::internal::Object> > >::__push_back_slow_path<v8::internal::Handle<v8::internal::Object> const&>(v8::internal::Handle<v8::internal::Object> const&&&)
+     19    0.1%    0.1%  t _small_free_list_remove_ptr_no_clear
+     19    0.1%    0.1%  T v8::internal::TransitionArray::Search(v8::internal::PropertyKind, v8::internal::Name*, v8::internal::PropertyAttributes, int*)
+     19    0.1%    0.1%  T v8::internal::Map::CopyWithField(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::FieldType>, v8::internal::PropertyAttributes, v8::internal::PropertyConstness, v8::internal::Representation, v8::internal::TransitionFlag)
+     19    0.1%    0.1%  T v8::internal::LookupIterator::ApplyTransitionToDataProperty(v8::internal::Handle<v8::internal::JSReceiver>)
+     19    0.1%    0.1%  T v8::internal::KeyAccumulator::CollectOwnPropertyNames(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::Handle<v8::internal::JSObject>)
+     19    0.1%    0.1%  T v8::internal::JsonParser<true>::Parse(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::Object>)
+     19    0.1%    0.1%  T v8::internal::IncrementalStringBuilder::Extend()
+     18    0.1%    0.1%  t v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)3> >::SetLength(v8::internal::Handle<v8::internal::JSArray>, unsigned int)
+     18    0.1%    0.1%  T v8::internal::Runtime_DateCurrentTime(int, v8::internal::Object**, v8::internal::Isolate*)
+     18    0.1%    0.1%  T v8::internal::JSObject::ValidateElements(v8::internal::JSObject*)
+     18    0.1%    0.1%  T v8::internal::JSFunction::EnsureHasInitialMap(v8::internal::Handle<v8::internal::JSFunction>)
+     17    0.1%    0.1%  t node::DLOpen(v8::FunctionCallbackInfo<v8::Value> const&)
+     17    0.1%    0.1%  T v8::internal::Heap::NotifyObjectLayoutChange(v8::internal::HeapObject*, int, v8::internal::PerThreadAssertScopeDebugOnly<(v8::internal::PerThreadAssertType)0, false> const&)
+     17    0.1%    0.1%  T ___carbon_delete
+     16    0.1%    0.1%  T v8::internal::Bitmap::Clear()
+     15    0.1%    0.1%  t v8::internal::(anonymous namespace)::CollectInterceptorKeys(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::Handle<v8::internal::JSObject>, v8::internal::KeyAccumulator*, v8::internal::(anonymous namespace)::IndexedOrNamed)
+     15    0.1%    0.1%  T v8::internal::StoreBuffer::InsertDuringRuntime(v8::internal::StoreBuffer*, unsigned long)
+     15    0.1%    0.1%  T v8::internal::StackGuard::PopInterruptsScope()
+     15    0.1%    0.1%  T v8::internal::JsonParser<true>::ParseJsonString(v8::internal::Handle<v8::internal::String>)
+     15    0.1%    0.1%  T v8::internal::JsonParser<true>::JsonParser(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>)
+     15    0.1%    0.1%  T v8::internal::JSObject::AllocateStorageForMap(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Map>)
+     15    0.1%    0.1%  T v8::internal::HashTable<v8::internal::NumberDictionary, v8::internal::NumberDictionaryShape>::FindEntry(v8::internal::Isolate*, unsigned int)
+     14    0.1%    0.1%  T v8::internal::OrderedHashTable<v8::internal::OrderedHashSet, 1>::Allocate(v8::internal::Isolate*, int, v8::internal::PretenureFlag)
+     14    0.1%    0.1%  T v8::internal::Map::CopyDropDescriptors(v8::internal::Handle<v8::internal::Map>)
+     14    0.1%    0.1%  T v8::internal::JSDate::CurrentTimeValue(v8::internal::Isolate*)
+     14    0.1%    0.1%  T v8::internal::FixedArray::Shrink(int)
+     14    0.1%    0.1%  T _xprintf_exec
+     13    0.1%    0.1%  T v8::internal::StringTable::LookupString(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>)
+     13    0.1%    0.1%  T v8::internal::Factory::NewMap(v8::internal::InstanceType, int, v8::internal::ElementsKind, int)
+     13    0.1%    0.1%  T v8::internal::Factory::NewJSObject(v8::internal::Handle<v8::internal::JSFunction>, v8::internal::PretenureFlag)
+     13    0.1%    0.1%  T v8::internal::Factory::NewJSArray(v8::internal::ElementsKind, int, int, v8::internal::ArrayStorageAllocationMode, v8::internal::PretenureFlag)
+     13    0.1%    0.1%  T node::NodePlatform::CurrentClockTimeMillis()
+     12    0.1%    0.1%  T v8::internal::Zone::Zone(v8::internal::AccountingAllocator*, char const*, v8::internal::SegmentSize)
+     12    0.1%    0.1%  T v8::internal::Object::AddDataProperty(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::ShouldThrow, v8::internal::Object::StoreFromKeyed)
+     12    0.1%    0.1%  T v8::internal::Map::ShareDescriptor(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::DescriptorArray>, v8::internal::Descriptor*)
+     12    0.1%    0.1%  T v8::internal::DescriptorArray::Allocate(v8::internal::Isolate*, int, int, v8::internal::PretenureFlag)
+     12    0.1%    0.1%  T v8::internal::AccountingAllocator::GetSegment(unsigned long)
+     11    0.1%    0.1%  T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+     11    0.1%    0.1%  T v8::internal::Map::GetOrCreatePrototypeChainValidityCell(v8::internal::Handle<v8::internal::Map>, v8::internal::Isolate*)
+     11    0.1%    0.1%  T v8::internal::LookupIterator::PrepareTransitionToDataProperty(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::Object::StoreFromKeyed)
+     11    0.1%    0.1%  T v8::internal::KeyAccumulator::CollectOwnKeys(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::Handle<v8::internal::JSObject>)
+     11    0.1%    0.1%  T v8::internal::JsonStringifier::JsonStringifier(v8::internal::Isolate*)
+     11    0.1%    0.1%  T v8::internal::JsonParser<true>::ParseJsonValue()
+     11    0.1%    0.1%  T v8::internal::Handle<v8::internal::FixedArray> v8::internal::Factory::NewFixedArrayWithMap<v8::internal::FixedArray>(v8::internal::Heap::RootListIndex, int, v8::internal::PretenureFlag)
+     11    0.1%    0.1%  T ___mach_stack_logging_enumerate_records
+     10    0.0%    0.0%  t v8::internal::ScavengingTask::RunInParallel()
+     10    0.0%    0.0%  t v8::internal::Dictionary<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::Add(v8::internal::Handle<v8::internal::NameDictionary>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyDetails, int*)
+     10    0.0%    0.0%  T v8::internal::String::IsOneByteEqualTo(v8::internal::Vector<unsigned char const>)
+     10    0.0%    0.0%  T v8::internal::String::ComputeAndSetHash()
+     10    0.0%    0.0%  T v8::internal::Runtime_GenerateRandomNumbers(int, v8::internal::Object**, v8::internal::Isolate*)
+     10    0.0%    0.0%  T v8::internal::Map::GetVisitorId(v8::internal::Map*)
+     10    0.0%    0.0%  T v8::internal::Map::ConnectTransition(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::SimpleTransitionFlag)
+     10    0.0%    0.0%  T v8::internal::KeyAccumulator::CollectKeys(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::Handle<v8::internal::JSReceiver>)
+     10    0.0%    0.0%  T v8::base::Time::Now()
+      9    0.0%    0.0%  t void v8::internal::SlotSet::Insert<(v8::internal::AccessMode)0>(int)
+      9    0.0%    0.0%  t v8::internal::PrototypeIterator::AdvanceFollowingProxiesIgnoringAccessChecks()
+      9    0.0%    0.0%  t v8::internal::Builtin_Impl_JsonParse(v8::internal::BuiltinArguments, v8::internal::Isolate*)
+      9    0.0%    0.0%  T v8::internal::Heap::SetStackLimits()
+      9    0.0%    0.0%  T v8::base::RecursiveMutex::Lock()
+      9    0.0%    0.0%  T _mprotect
+      9    0.0%    0.0%  T _mach_msg
+      9    0.0%    0.0%  T ___exp10f
+      8    0.0%    0.0%  t v8::internal::PrototypeIterator::PrototypeIterator(v8::internal::Handle<v8::internal::Map>, v8::internal::PrototypeIterator::WhereToEnd)
+      8    0.0%    0.0%  t v8::internal::Handle<v8::internal::PropertyArray> v8::internal::Factory::CopyArrayAndGrow<v8::internal::PropertyArray>(v8::internal::Handle<v8::internal::PropertyArray>, int, v8::internal::PretenureFlag)
+      8    0.0%    0.0%  t v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)3> >::CollectElementIndicesImpl(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::FixedArrayBase>, v8::internal::KeyAccumulator*)
+      8    0.0%    0.0%  T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+      8    0.0%    0.0%  T v8::internal::JsonParser<true>::ParseJson()
+      8    0.0%    0.0%  T v8::internal::JSObject::GetElementsAccessor()
+      8    0.0%    0.0%  T v8::internal::IncrementalMarking::RecordWriteSlow(v8::internal::HeapObject*, v8::internal::HeapObjectReference**, v8::internal::Object*)
+      8    0.0%    0.0%  T v8::internal::FlatStringReader::FlatStringReader(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>)
+      8    0.0%    0.0%  T v8::internal::Factory::NewFixedArray(int, v8::internal::PretenureFlag)
+      8    0.0%    0.0%  T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+      8    0.0%    0.0%  T v8::base::bits::RoundUpToPowerOfTwo32(unsigned int)
+      8    0.0%    0.0%  T node::fs::Close(v8::FunctionCallbackInfo<v8::Value> const&)
+      7    0.0%    0.0%  t void v8::internal::BodyDescriptorApply<v8::internal::CallIterateBody, void, v8::internal::Map*, v8::internal::HeapObject*, int, v8::internal::IterateAndScavengePromotedObjectsVisitor*>(v8::internal::InstanceType, v8::internal::Map*, v8::internal::HeapObject*, int, v8::internal::IterateAndScavengePromotedObjectsVisitor*)
+      7    0.0%    0.0%  t v8::internal::(anonymous namespace)::TypedElementsAccessor<(v8::internal::ElementsKind)12, signed char>::TryCopyElementsFastNumber(v8::internal::Context*, v8::internal::JSArray*, v8::internal::JSTypedArray*, unsigned long, unsigned int)
+      7    0.0%    0.0%  T v8::internal::TransitionsAccessor::SearchTransition(v8::internal::Name*, v8::internal::PropertyKind, v8::internal::PropertyAttributes)
+      7    0.0%    0.0%  T v8::internal::TransitionsAccessor::ReplaceTransitions(v8::internal::MaybeObject*)
+      7    0.0%    0.0%  T v8::internal::TransitionsAccessor::ExpectedTransitionTarget()
+      7    0.0%    0.0%  T v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.0%    0.0%  T v8::internal::Runtime_ObjectValues(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.0%    0.0%  T v8::internal::Runtime::SetObjectProperty(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, v8::internal::LanguageMode)
+      7    0.0%    0.0%  T v8::internal::JSObject::LazyRegisterPrototypeUser(v8::internal::Handle<v8::internal::Map>, v8::internal::Isolate*)
+      7    0.0%    0.0%  T v8::base::OS::TimeCurrentMillis()
+      7    0.0%    0.0%  T node::NodePlatform::MonotonicallyIncreasingTime()
+      6    0.0%    0.0%  t void node::Buffer::(anonymous namespace)::StringSlice<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&)
+      6    0.0%    0.0%  t v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)3> >::CollectElementIndices(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::FixedArrayBase>, v8::internal::KeyAccumulator*)
+      6    0.0%    0.0%  t _free_small
+      6    0.0%    0.0%  T v8::internal::Zone::New(unsigned long)
+      6    0.0%    0.0%  T v8::internal::TransitionsAccessor::Insert(v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Map>, v8::internal::SimpleTransitionFlag)
+      6    0.0%    0.0%  T v8::internal::TransitionsAccessor::FindTransitionToDataProperty(v8::internal::Handle<v8::internal::Name>, v8::internal::TransitionsAccessor::RequestedLocation)
+      6    0.0%    0.0%  T v8::internal::StubCache::Set(v8::internal::Name*, v8::internal::Map*, v8::internal::Object*)
+      6    0.0%    0.0%  T v8::internal::SerializerDeserializer::Iterate(v8::internal::Isolate*, v8::internal::RootVisitor*)
+      6    0.0%    0.0%  T v8::internal::Map::SetPrototype(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Object>, bool)
+      6    0.0%    0.0%  T v8::internal::LargeObjectSpace::Contains(v8::internal::HeapObject*)
+      6    0.0%    0.0%  T v8::internal::AccountingAllocator::ReturnSegment(v8::internal::Segment*)
+      5    0.0%    0.0%  t void v8::internal::BodyDescriptorBase::IterateMaybeWeakPointer<v8::internal::MarkingVisitor<(v8::internal::FixedArrayVisitationMode)1, (v8::internal::TraceRetainingPathMode)1, v8::internal::IncrementalMarkingState> >(v8::internal::HeapObject*, int, v8::internal::MarkingVisitor<(v8::internal::FixedArrayVisitationMode)1, (v8::internal::TraceRetainingPathMode)1, v8::internal::IncrementalMarkingState>*)
+      5    0.0%    0.0%  t v8::internal::compiler::(anonymous namespace)::SourcePositionWrapper::Reduce(v8::internal::compiler::Node*)
+      5    0.0%    0.0%  t node::GetBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+      5    0.0%    0.0%  t _update_cache_for_file_streams
+      5    0.0%    0.0%  t _szone_pressure_relief
+      5    0.0%    0.0%  t _create_scalable_szone
+      5    0.0%    0.0%  T v8::internal::Zone::~Zone()
+      5    0.0%    0.0%  T v8::internal::V8::GetCurrentPlatform()
+      5    0.0%    0.0%  T v8::internal::Runtime_KeyedGetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      5    0.0%    0.0%  T v8::internal::NewSpace::AddFreshPage()
+      5    0.0%    0.0%  T v8::internal::MemoryChunk::Initialize(v8::internal::Heap*, unsigned long, unsigned long, unsigned long, unsigned long, v8::internal::Executability, v8::internal::Space*, v8::internal::VirtualMemory*)
+      5    0.0%    0.0%  T v8::internal::LayoutDescriptor::New(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::DescriptorArray>, int)
+      5    0.0%    0.0%  T v8::internal::JSReceiver::SetProperties(v8::internal::HeapObject*)
+      5    0.0%    0.0%  T v8::internal::JSReceiver::GetOwnValues(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::PropertyFilter, bool)
+      5    0.0%    0.0%  T v8::internal::Heap::RightTrimFixedArray(v8::internal::FixedArrayBase*, int)
+      5    0.0%    0.0%  T v8::internal::FlatStringReader::PostGarbageCollection()
+      5    0.0%    0.0%  T v8::internal::FieldType::Any(v8::internal::Isolate*)
+      5    0.0%    0.0%  T v8::internal::Descriptor::DataField(v8::internal::Handle<v8::internal::Name>, int, v8::internal::PropertyAttributes, v8::internal::PropertyConstness, v8::internal::Representation, v8::internal::Handle<v8::internal::Object>)
+      4    0.0%    0.0%  t v8::internal::LookupIterator::PropertyOrElement(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::LookupIterator::Configuration)
+      4    0.0%    0.0%  t __cxxabiv1::do_free(void*)
+      4    0.0%    0.0%  T v8::internal::Sweeper::RawSweep(v8::internal::Page*, v8::internal::Sweeper::FreeListRebuildingMode, v8::internal::FreeSpaceTreatmentMode)
+      4    0.0%    0.0%  T v8::internal::SemiSpace::Swap(v8::internal::SemiSpace*, v8::internal::SemiSpace*)
+      4    0.0%    0.0%  T v8::internal::Scanner::Scan()
+      4    0.0%    0.0%  T v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.0%    0.0%  T v8::internal::RootScavengeVisitor::VisitRootPointers(v8::internal::Root, char const*, v8::internal::Object**, v8::internal::Object**)
+      4    0.0%    0.0%  T v8::internal::Map::CopyReplaceDescriptors(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::DescriptorArray>, v8::internal::Handle<v8::internal::LayoutDescriptor>, v8::internal::TransitionFlag, v8::internal::MaybeHandle<v8::internal::Name>, char const*, v8::internal::SimpleTransitionFlag)
+      4    0.0%    0.0%  T v8::internal::LookupIterator::GetFieldIndex() const
+      4    0.0%    0.0%  T v8::internal::LoadIC::Load(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>)
+      4    0.0%    0.0%  T v8::internal::LoadIC::ComputeHandler(v8::internal::LookupIterator*)
+      4    0.0%    0.0%  T v8::internal::JSObject::MakePrototypesFast(v8::internal::Handle<v8::internal::Object>, v8::internal::WhereToStart, v8::internal::Isolate*)
+      4    0.0%    0.0%  T v8::internal::JSObject::DefineOwnPropertyIgnoreAttributes(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::ShouldThrow, v8::internal::JSObject::AccessorInfoHandling)
+      4    0.0%    0.0%  T v8::internal::HashTable<v8::internal::StringTable, v8::internal::StringTableShape>::Rehash(v8::internal::StringTable*)
+      4    0.0%    0.0%  T v8::internal::DescriptorArray::GeneralizeAllFields()
+      3    0.0%    0.0%  t void v8::internal::BodyDescriptorBase::IterateBodyImpl<v8::internal::IterateAndScavengePromotedObjectsVisitor>(v8::internal::Map*, v8::internal::HeapObject*, int, int, v8::internal::IterateAndScavengePromotedObjectsVisitor*)
+      3    0.0%    0.0%  t v8::internal::Worklist<std::__1::pair<v8::internal::HeapObject*, int>, 256>::Pop(int, std::__1::pair<v8::internal::HeapObject*, int>*)
+      3    0.0%    0.0%  t v8::internal::PrototypeIterator::Advance()
+      3    0.0%    0.0%  t v8::internal::InternalizedStringTableCleaner::VisitPointers(v8::internal::HeapObject*, v8::internal::Object**, v8::internal::Object**)
+      3    0.0%    0.0%  t v8::internal::AccountingAllocator::ZoneDestruction(v8::internal::Zone const*)
+      3    0.0%    0.0%  t v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::FastHoleyObjectElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)3> >::GetCapacity(v8::internal::JSObject*, v8::internal::FixedArrayBase*)
+      3    0.0%    0.0%  t v8::internal::(anonymous namespace)::ElementsAccessorBase<v8::internal::(anonymous namespace)::DictionaryElementsAccessor, v8::internal::(anonymous namespace)::ElementsKindTraits<(v8::internal::ElementsKind)6> >::GetEntryForIndex(v8::internal::Isolate*, v8::internal::JSObject*, v8::internal::FixedArrayBase*, unsigned int)
+      3    0.0%    0.0%  t std::__1::__hash_table<std::__1::__hash_value_type<unsigned long long, v8::internal::Cancelable*>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, v8::internal::Cancelable*>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, v8::internal::Cancelable*>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, v8::internal::Cancelable*> > >::__node_insert_unique(std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, v8::internal::Cancelable*>, void*>*)
+      3    0.0%    0.0%  t node::fs::InternalModuleStat(v8::FunctionCallbackInfo<v8::Value> const&)
+      3    0.0%    0.0%  t _tiny_malloc_from_free_list
+      3    0.0%    0.0%  t _allocate_pages
+      3    0.0%    0.0%  T v8::internal::compiler::GraphReducer::ReduceTop()
+      3    0.0%    0.0%  T v8::internal::TransitionsAccessor::CanHaveMoreTransitions()
+      3    0.0%    0.0%  T v8::internal::StoreBuffer::MoveEntriesToRememberedSet(int)
+      3    0.0%    0.0%  T v8::internal::StackFrame::ComputeType(v8::internal::StackFrameIteratorBase const*, v8::internal::StackFrame::State*)
+      3    0.0%    0.0%  T v8::internal::RootScavengeVisitor::VisitRootPointer(v8::internal::Root, char const*, v8::internal::Object**)
+      3    0.0%    0.0%  T v8::internal::Object::SetProperty(v8::internal::LookupIterator*, v8::internal::Handle<v8::internal::Object>, v8::internal::LanguageMode, v8::internal::Object::StoreFromKeyed)
+      3    0.0%    0.0%  T v8::internal::Map::GetOrCreatePrototypeInfo(v8::internal::Handle<v8::internal::Map>, v8::internal::Isolate*)
+      3    0.0%    0.0%  T v8::internal::LookupIterator::WriteDataValue(v8::internal::Handle<v8::internal::Object>, bool)
+      3    0.0%    0.0%  T v8::internal::JSReceiver::GetOwnEntries(v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::PropertyFilter, bool)
+      3    0.0%    0.0%  T v8::internal::IncrementalMarking::MarkBlackAndPush(v8::internal::HeapObject*)
+      3    0.0%    0.0%  T v8::internal::Heap::GetFillToAlign(unsigned long, v8::internal::AllocationAlignment)
+      3    0.0%    0.0%  T v8::internal::HashTable<v8::internal::NumberDictionary, v8::internal::NumberDictionaryShape>::Rehash(v8::internal::NumberDictionary*)
+      3    0.0%    0.0%  T v8::internal::FreeList::Allocate(unsigned long, unsigned long*)
+      3    0.0%    0.0%  T v8::internal::FeedbackVector::GetKind(v8::internal::FeedbackSlot) const
+      3    0.0%    0.0%  T v8::internal::FeedbackNexus::StateFromFeedback() const
+      3    0.0%    0.0%  T v8::internal::FastKeyAccumulator::Prepare()
+      3    0.0%    0.0%  T v8::internal::Factory::NewBlockContext(v8::internal::Handle<v8::internal::Context>, v8::internal::Handle<v8::internal::ScopeInfo>)
+      3    0.0%    0.0%  T v8::internal::Dictionary<v8::internal::NumberDictionary, v8::internal::NumberDictionaryShape>::Add(v8::internal::Handle<v8::internal::NumberDictionary>, unsigned int, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyDetails, int*)
+      3    0.0%    0.0%  T v8::internal::ArrayBufferTracker::ProcessBuffers(v8::internal::Page*, v8::internal::ArrayBufferTracker::ProcessingMode)
+      3    0.0%    0.0%  T v8::internal::AllocWithRetry(unsigned long)
+      3    0.0%    0.0%  T v8::Platform::SystemClockTimeMillis()
+      3    0.0%    0.0%  T _vasxprintf_exec
+      3    0.0%    0.0%  T _guarded_open_np
+      3    0.0%    0.0%  T _fparseln
+      2    0.0%    0.0%  t void v8::internal::String::WriteToFlat<unsigned short>(v8::internal::String*, unsigned short*, int, int)
+      2    0.0%    0.0%  t void v8::internal::LiveObjectVisitor::VisitBlackObjectsNoFail<v8::internal::EvacuateNewSpacePageVisitor<(v8::internal::PageEvacuationMode)1>, v8::internal::MajorNonAtomicMarkingState>(v8::internal::MemoryChunk*, v8::internal::MajorNonAtomicMarkingState*, v8::internal::EvacuateNewSpacePageVisitor<(v8::internal::PageEvacuationMode)1>*, v8::internal::LiveObjectVisitor::IterationMode)
+      2    0.0%    0.0%  t v8::internal::ParserBase<v8::internal::PreParser>::ParseAssignmentExpression(bool, bool*)
+      2    0.0%    0.0%  t v8::internal::ParserBase<v8::internal::Parser>::BindingPatternUnexpectedToken()
+      2    0.0%    0.0%  t v8::internal::PagedSpace::is_local()
+      2    0.0%    0.0%  t v8::internal::LocalAllocator::AllocateInLAB(int, v8::internal::AllocationAlignment)
+      2    0.0%    0.0%  t unsigned int v8::internal::StringHasher::HashSequentialString<unsigned char>(unsigned char const*, int, unsigned int)
+      2    0.0%    0.0%  t std::__1::basic_ostream<char, std::__1::char_traits<char> >& std::__1::__put_character_sequence<char, std::__1::char_traits<char> >(std::__1::basic_ostream<char, std::__1::char_traits<char> >&, char const*, unsigned long)
+      2    0.0%    0.0%  t _uv__hrtime
+      2    0.0%    0.0%  t _large_malloc
+      2    0.0%    0.0%  t __pthread_mutex_unlock_slow
+      2    0.0%    0.0%  t __pthread_mutex_lock_slow
+      2    0.0%    0.0%  t __os_nospin_lock_unlock_slow
+      2    0.0%    0.0%  T void v8::internal::LookupIterator::Start<true>()
+      2    0.0%    0.0%  T void node::StreamBase::JSMethod<node::LibuvStreamWrap, &(int node::StreamBase::WriteString<(node::encoding)1>(v8::FunctionCallbackInfo<v8::Value> const&))>(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.0%    0.0%  T v8::internal::compiler::OperatorProperties::HasFrameStateInput(v8::internal::compiler::Operator const*)
+      2    0.0%    0.0%  T v8::internal::compiler::MoveOptimizer::MigrateMoves(v8::internal::compiler::Instruction*, v8::internal::compiler::Instruction*)
+      2    0.0%    0.0%  T v8::internal::compiler::LiveRangeBuilder::ProcessInstructions(v8::internal::compiler::InstructionBlock const*, v8::internal::BitVector*)
+      2    0.0%    0.0%  T v8::internal::compiler::GraphTrimmer::TrimGraph()
+      2    0.0%    0.0%  T v8::internal::compiler::GraphReducer::Reduce(v8::internal::compiler::Node*)
+      2    0.0%    0.0%  T v8::internal::Runtime_ObjectEntries(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  T v8::internal::Runtime_KeyedStoreIC_Slow(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  T v8::internal::Object::ToInt32(int*)
+      2    0.0%    0.0%  T v8::internal::Object::OptimalType(v8::internal::Isolate*, v8::internal::Representation)
+      2    0.0%    0.0%  T v8::internal::NormalizedMapCache::Get(v8::internal::Handle<v8::internal::Map>, v8::internal::PropertyNormalizationMode)
+      2    0.0%    0.0%  T v8::internal::NewSpace::EnsureAllocation(int, v8::internal::AllocationAlignment)
+      2    0.0%    0.0%  T v8::internal::Map::InstancesNeedRewriting(v8::internal::Map*, int, int, int, int*) const
+      2    0.0%    0.0%  T v8::internal::LoadIC::UpdateCaches(v8::internal::LookupIterator*)
+      2    0.0%    0.0%  T v8::internal::LayoutDescriptor::ShareAppend(v8::internal::Handle<v8::internal::Map>, v8::internal::PropertyDetails)
+      2    0.0%    0.0%  T v8::internal::LargeObjectSpace::InsertChunkMapEntries(v8::internal::LargePage*)
+      2    0.0%    0.0%  T v8::internal::LargeObjectSpace::AllocateRaw(int, v8::internal::Executability)
+      2    0.0%    0.0%  T v8::internal::JSObject::DefinePropertyOrElementIgnoreAttributes(v8::internal::Handle<v8::internal::JSObject>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes)
+      2    0.0%    0.0%  T v8::internal::IncrementalMarking::RevisitObject(v8::internal::HeapObject*)
+      2    0.0%    0.0%  T v8::internal::IC::UpdateState(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>)
+      2    0.0%    0.0%  T v8::internal::IC::UpdateMegamorphicCache(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::MaybeObjectHandle const&)
+      2    0.0%    0.0%  T v8::internal::IC::PatchCache(v8::internal::Handle<v8::internal::Name>, v8::internal::MaybeObjectHandle const&)
+      2    0.0%    0.0%  T v8::internal::HashTable<v8::internal::StringTable, v8::internal::StringTableShape>::EnsureCapacity(v8::internal::Handle<v8::internal::StringTable>, int, v8::internal::PretenureFlag)
+      2    0.0%    0.0%  T v8::internal::GCTracer::CurrentOldGenerationAllocationThroughputInBytesPerMillisecond() const
+      2    0.0%    0.0%  T v8::internal::Factory::TryNewCode(v8::internal::CodeDesc const&, v8::internal::Code::Kind, v8::internal::Handle<v8::internal::Object>, int, v8::internal::MaybeHandle<v8::internal::ByteArray>, v8::internal::MaybeHandle<v8::internal::DeoptimizationData>, v8::internal::Movability, unsigned int, bool, int, int, int)
+      2    0.0%    0.0%  T v8::internal::Deserializer<v8::internal::DefaultDeserializerAllocator>::ReadData(v8::internal::MaybeObject**, v8::internal::MaybeObject**, int, unsigned long)
+      2    0.0%    0.0%  T v8::internal::DependentCode::MarkCodeForDeoptimization(v8::internal::Isolate*, v8::internal::DependentCode::DependencyGroup)
+      2    0.0%    0.0%  T v8::internal::CommitPageSize()
+      2    0.0%    0.0%  T v8::internal::CancelableTaskManager::TryAbort(unsigned long long)
+      2    0.0%    0.0%  T v8::internal::Builtin_JsonParse(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  T v8::internal::Accessors::FunctionPrototypeGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+      2    0.0%    0.0%  T node::TTYWrap::New(v8::FunctionCallbackInfo<v8::Value> const&)
+      2    0.0%    0.0%  T node::BackgroundTaskRunner::PostTask(std::__1::unique_ptr<v8::Task, std::__1::default_delete<v8::Task> >)
+      2    0.0%    0.0%  T _vdxprintf_exec
+      2    0.0%    0.0%  T _setbuffer
+      2    0.0%    0.0%  T _setaudit
+      2    0.0%    0.0%  T _scalable_zone_statistics
+      2    0.0%    0.0%  T _inet_nsap_addr
+      2    0.0%    0.0%  T _free
+      2    0.0%    0.0%  T _catgets
+      2    0.0%    0.0%  T __pthread_qos_class_decode
+      2    0.0%    0.0%  T __os_nospin_lock_unlock
+      2    0.0%    0.0%  T ___terminate_with_payload
+      2    0.0%    0.0%  T ___mac_get_link
+      1    0.0%    0.0%  t void std::__1::__tree_balance_after_insert<std::__1::__tree_node_base<void*>*>(std::__1::__tree_node_base<void*>*, std::__1::__tree_node_base<void*>*)
+      1    0.0%    0.0%  t v8::internal::compiler::ScheduleLateNodeVisitor::ScheduleRegion(v8::internal::compiler::BasicBlock*, v8::internal::compiler::Node*)
+      1    0.0%    0.0%  t v8::internal::compiler::ScheduleLateNodeVisitor::ScheduleNode(v8::internal::compiler::BasicBlock*, v8::internal::compiler::Node*)
+      1    0.0%    0.0%  t v8::internal::compiler::ScheduleLateNodeVisitor::GetBlockForUse(v8::internal::compiler::Edge)
+      1    0.0%    0.0%  t v8::internal::compiler::ScheduleEarlyNodeVisitor::VisitNode(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  t v8::internal::compiler::RepresentationSelector::UpdateFeedbackType(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  t v8::internal::compiler::EscapeAnalysisTracker::Scope::~Scope()
+      1    0.0%    0.0%  t v8::internal::compiler::EscapeAnalysisTracker::Scope::SetEscaped(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  t v8::internal::compiler::EarlyGraphTrimmingPhase::Run(v8::internal::compiler::PipelineData*, v8::internal::Zone*)
+      1    0.0%    0.0%  t v8::internal::compiler::CommonOperatorGlobalCache::CommonOperatorGlobalCache()
+      1    0.0%    0.0%  t v8::internal::compiler::BinopMatcher<v8::internal::compiler::IntMatcher<long long, (v8::internal::compiler::IrOpcode::Value)24>, v8::internal::compiler::IntMatcher<long long, (v8::internal::compiler::IrOpcode::Value)24> >::BinopMatcher(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  t v8::internal::compiler::(anonymous namespace)::UpdateInLiveness(v8::internal::interpreter::Bytecode, v8::internal::compiler::BytecodeLivenessState&, v8::internal::interpreter::BytecodeArrayAccessor const&)
+      1    0.0%    0.0%  t v8::internal::compiler::(anonymous namespace)::OperandSet::ContainsOpOrAlias(v8::internal::compiler::InstructionOperand const&) const
+      1    0.0%    0.0%  t v8::internal::compiler::(anonymous namespace)::GetSpecializationContext(v8::internal::compiler::Node*, unsigned long*, v8::Maybe<v8::internal::compiler::OuterContext>)
+      1    0.0%    0.0%  t v8::internal::SlotSet::RemoveRange(int, int, v8::internal::SlotSet::EmptyBucketMode)
+      1    0.0%    0.0%  t v8::internal::SlotSet::FreeToBeFreedBuckets()
+      1    0.0%    0.0%  t v8::internal::RecordMigratedSlotVisitor::RecordMigratedSlot(v8::internal::HeapObject*, v8::internal::MaybeObject*, unsigned long)
+      1    0.0%    0.0%  t v8::internal::ProfilingMigrationObserver::Move(v8::internal::AllocationSpace, v8::internal::HeapObject*, v8::internal::HeapObject*, int)
+      1    0.0%    0.0%  t v8::internal::PointersUpdatingVisitor::VisitPointers(v8::internal::HeapObject*, v8::internal::Object**, v8::internal::Object**)
+      1    0.0%    0.0%  t v8::internal::ParserBase<v8::internal::PreParser>::ParseBlock(v8::internal::ZoneList<v8::internal::AstRawString const*>*, bool*)
+      1    0.0%    0.0%  t v8::internal::ParserBase<v8::internal::Parser>::ValidateLetPattern(bool*)
+      1    0.0%    0.0%  t v8::internal::ParserBase<v8::internal::Parser>::ParseMemberExpression(bool*, bool*)
+      1    0.0%    0.0%  t v8::internal::ParserBase<v8::internal::Parser>::ParseExpressionOrLabelledStatement(v8::internal::ZoneList<v8::internal::AstRawString const*>*, v8::internal::AllowLabelledFunctionStatement, bool*)
+      1    0.0%    0.0%  t v8::internal::ParserBase<v8::internal::Parser>::ParseAssignmentExpression(bool, bool*)
+      1    0.0%    0.0%  t v8::internal::ParserBase<v8::internal::Parser>::ParseArrayLiteral(bool*)
+      1    0.0%    0.0%  t v8::internal::ParserBase<v8::internal::Parser>::ArrowFormalParametersUnexpectedToken()
+      1    0.0%    0.0%  t v8::internal::PagedSpace::Size()
+      1    0.0%    0.0%  t v8::internal::LargeObjectSpace::SizeOfObjects()
+      1    0.0%    0.0%  t v8::internal::InternalizedStringKey::IsMatch(v8::internal::Object*)
+      1    0.0%    0.0%  t v8::internal::InternalizedStringKey::AsHandle(v8::internal::Isolate*)
+      1    0.0%    0.0%  t v8::internal::IncrementalMarkingRootMarkingVisitor::VisitRootPointer(v8::internal::Root, char const*, v8::internal::Object**)
+      1    0.0%    0.0%  t v8::internal::GenericStringUtf16CharacterStream::~GenericStringUtf16CharacterStream()
+      1    0.0%    0.0%  t v8::internal::FixStaleLeftTrimmedHandlesVisitor::VisitRootPointers(v8::internal::Root, char const*, v8::internal::Object**, v8::internal::Object**)
+      1    0.0%    0.0%  t v8::internal::EvacuateNewSpaceVisitor::Visit(v8::internal::HeapObject*, int)
+      1    0.0%    0.0%  t v8::internal::CompactionSpace::is_local()
+      1    0.0%    0.0%  t v8::internal::AccountingAllocator::ZoneCreation(v8::internal::Zone const*)
+      1    0.0%    0.0%  t v8::internal::(anonymous namespace)::DictionaryElementsAccessor::AddImpl(v8::internal::Handle<v8::internal::JSObject>, unsigned int, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, unsigned int)
+      1    0.0%    0.0%  t v8::internal::(anonymous namespace)::CopyDictionaryToObjectElements(v8::internal::FixedArrayBase*, unsigned int, v8::internal::FixedArrayBase*, v8::internal::ElementsKind, unsigned int, int)
+      1    0.0%    0.0%  t v8::internal::(anonymous namespace)::CheckEquivalent(v8::internal::Map const*, v8::internal::Map const*)
+      1    0.0%    0.0%  t v8::internal::(anonymous namespace)::AddDescriptorsByTemplate(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::DescriptorArray>, v8::internal::Handle<v8::internal::NumberDictionary>, v8::internal::Handle<v8::internal::JSObject>, v8::internal::Arguments&)
+      1    0.0%    0.0%  t std::__1::vector<v8::internal::interpreter::BytecodeRegisterOptimizer::RegisterInfo*, v8::internal::ZoneAllocator<v8::internal::interpreter::BytecodeRegisterOptimizer::RegisterInfo*> >::__append(unsigned long)
+      1    0.0%    0.0%  t std::__1::vector<v8::internal::SourcePosition, v8::internal::ZoneAllocator<v8::internal::SourcePosition> >::__append(unsigned long, v8::internal::SourcePosition const&)
+      1    0.0%    0.0%  t std::__1::istreambuf_iterator<wchar_t, std::__1::char_traits<wchar_t> > std::__1::num_get<wchar_t, std::__1::istreambuf_iterator<wchar_t, std::__1::char_traits<wchar_t> > >::__do_get_floating_point<double>(std::__1::istreambuf_iterator<wchar_t, std::__1::char_traits<wchar_t> >, std::__1::istreambuf_iterator<wchar_t, std::__1::char_traits<wchar_t> >, std::__1::ios_base&, unsigned int&, double&) const
+      1    0.0%    0.0%  t std::__1::deque<std::__1::unique_ptr<v8::Task, std::__1::default_delete<v8::Task> >, std::__1::allocator<std::__1::unique_ptr<v8::Task, std::__1::default_delete<v8::Task> > > >::push_back(std::__1::unique_ptr<v8::Task, std::__1::default_delete<v8::Task> >&&)
+      1    0.0%    0.0%  t std::__1::__split_buffer<v8::internal::interpreter::BytecodeRegisterOptimizer::RegisterInfo**, v8::internal::RecyclingZoneAllocator<v8::internal::interpreter::BytecodeRegisterOptimizer::RegisterInfo**>&>::push_back(v8::internal::interpreter::BytecodeRegisterOptimizer::RegisterInfo**&&)
+      1    0.0%    0.0%  t std::__1::__hash_table<std::__1::__hash_value_type<v8::internal::JSArrayBuffer*, unsigned long>, std::__1::__unordered_map_hasher<v8::internal::JSArrayBuffer*, std::__1::__hash_value_type<v8::internal::JSArrayBuffer*, unsigned long>, v8::internal::LocalArrayBufferTracker::Hasher, true>, std::__1::__unordered_map_equal<v8::internal::JSArrayBuffer*, std::__1::__hash_value_type<v8::internal::JSArrayBuffer*, unsigned long>, std::__1::equal_to<v8::internal::JSArrayBuffer*>, true>, std::__1::allocator<std::__1::__hash_value_type<v8::internal::JSArrayBuffer*, unsigned long> > >::__rehash(unsigned long)
+      1    0.0%    0.0%  t std::__1::__hash_table<node::Environment::CleanupHookCallback, node::Environment::CleanupHookCallback::Hash, node::Environment::CleanupHookCallback::Equal, std::__1::allocator<node::Environment::CleanupHookCallback> >::remove(std::__1::__hash_const_iterator<std::__1::__hash_node<node::Environment::CleanupHookCallback, void*>*>)
+      1    0.0%    0.0%  t node::fs::Open(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  t node::LibuvStreamWrap::Initialize(v8::Local<v8::Object>, v8::Local<v8::Value>, v8::Local<v8::Context>)::$_0::__invoke(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  t node::GetInternalBinding(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  t int v8::internal::SlotSet::Iterate<v8::internal::RememberedSetUpdatingItem<v8::internal::MajorNonAtomicMarkingState>::UpdateUntypedPointers()::'lambda'(unsigned long)>(v8::internal::RememberedSetUpdatingItem<v8::internal::MajorNonAtomicMarkingState>::UpdateUntypedPointers()::'lambda'(unsigned long), v8::internal::SlotSet::EmptyBucketMode)
+      1    0.0%    0.0%  t bool std::__1::__insertion_sort_incomplete<v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&, v8::base::AtomicElement<v8::internal::Smi*>*>(v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&)
+      1    0.0%    0.0%  t _moreglue
+      1    0.0%    0.0%  t _insert_node
+      1    0.0%    0.0%  t _allocate_pages_securely
+      1    0.0%    0.0%  t ___printf_render_str
+      1    0.0%    0.0%  t ___collate_equiv_value
+      1    0.0%    0.0%  T v8_inspector::V8Console::V8Console(v8_inspector::V8InspectorImpl*)
+      1    0.0%    0.0%  T v8::internal::interpreter::ConstantArrayBuilder::CreateReservedEntry()
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeRegisterOptimizer::RegisterTransfer(v8::internal::interpreter::BytecodeRegisterOptimizer::RegisterInfo*, v8::internal::interpreter::BytecodeRegisterOptimizer::RegisterInfo*)
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeRegisterOptimizer::PrepareOutputRegister(v8::internal::interpreter::Register)
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeRegisterOptimizer::Flush()
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeGenerator::VisitCountOperation(v8::internal::CountOperation*)
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeGenerator::AllocateDeferredConstants(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Script>)
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeArrayWriter::Write(v8::internal::interpreter::BytecodeNode*)
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeArrayWriter::ToBytecodeArray(v8::internal::Isolate*, int, int, v8::internal::Handle<v8::internal::ByteArray>)
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeArrayWriter::EmitBytecode(v8::internal::interpreter::BytecodeNode const*)
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeArrayIterator::Advance()
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeArrayBuilder::CallProperty(v8::internal::interpreter::Register, v8::internal::interpreter::RegisterList, int)
+      1    0.0%    0.0%  T v8::internal::interpreter::BytecodeArrayAccessor::GetRegisterOperand(int) const
+      1    0.0%    0.0%  T v8::internal::compiler::Type::SlowIs(v8::internal::compiler::Type) const
+      1    0.0%    0.0%  T v8::internal::compiler::Type::Min() const
+      1    0.0%    0.0%  T v8::internal::compiler::Scheduler::DecrementUnscheduledUseCount(v8::internal::compiler::Node*, int, v8::internal::compiler::Node*)
+      1    0.0%    0.0%  T v8::internal::compiler::Scheduler::BuildCFG()
+      1    0.0%    0.0%  T v8::internal::compiler::Schedule::block(v8::internal::compiler::Node*) const
+      1    0.0%    0.0%  T v8::internal::compiler::Schedule::AddNode(v8::internal::compiler::BasicBlock*, v8::internal::compiler::Node*)
+      1    0.0%    0.0%  T v8::internal::compiler::OperatorProperties::HasContextInput(v8::internal::compiler::Operator const*)
+      1    0.0%    0.0%  T v8::internal::compiler::OperationTyper::SubtractRanger(double, double, double, double)
+      1    0.0%    0.0%  T v8::internal::compiler::OperationTyper::NumberShiftLeft(v8::internal::compiler::Type, v8::internal::compiler::Type)
+      1    0.0%    0.0%  T v8::internal::compiler::NodeProperties::IsEffectEdge(v8::internal::compiler::Edge)
+      1    0.0%    0.0%  T v8::internal::compiler::NodeProperties::IsControlEdge(v8::internal::compiler::Edge)
+      1    0.0%    0.0%  T v8::internal::compiler::NodeProperties::GetControlInput(v8::internal::compiler::Node*, int)
+      1    0.0%    0.0%  T v8::internal::compiler::NodeMarkerBase::NodeMarkerBase(v8::internal::compiler::Graph*, unsigned int)
+      1    0.0%    0.0%  T v8::internal::compiler::NodeCache<long long, v8::base::hash<long long>, std::__1::equal_to<long long> >::GetCachedNodes(v8::internal::ZoneVector<v8::internal::compiler::Node*>*)
+      1    0.0%    0.0%  T v8::internal::compiler::Node::InsertInput(v8::internal::Zone*, int, v8::internal::compiler::Node*)
+      1    0.0%    0.0%  T v8::internal::compiler::MoveOptimizer::OptimizeMerge(v8::internal::compiler::InstructionBlock*)
+      1    0.0%    0.0%  T v8::internal::compiler::MoveOptimizer::CompressGaps(v8::internal::compiler::Instruction*)
+      1    0.0%    0.0%  T v8::internal::compiler::LoadElimination::ComputeLoopState(v8::internal::compiler::Node*, v8::internal::compiler::LoadElimination::AbstractState const*) const
+      1    0.0%    0.0%  T v8::internal::compiler::LiveRangeConnector::ResolveControlFlow(v8::internal::Zone*)
+      1    0.0%    0.0%  T v8::internal::compiler::LiveRange::DetachAt(v8::internal::compiler::LifetimePosition, v8::internal::compiler::LiveRange*, v8::internal::Zone*, v8::internal::compiler::LiveRange::HintConnectionOption)
+      1    0.0%    0.0%  T v8::internal::compiler::JSNativeContextSpecialization::BuildPropertyLoad(v8::internal::compiler::Node*, v8::internal::compiler::Node*, v8::internal::compiler::Node*, v8::internal::compiler::Node*, v8::internal::compiler::Node*, v8::internal::Handle<v8::internal::Name>, v8::internal::ZoneVector<v8::internal::compiler::Node*>*, v8::internal::compiler::PropertyAccessInfo const&)
+      1    0.0%    0.0%  T v8::internal::compiler::JSContextSpecialization::Reduce(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  T v8::internal::compiler::InstructionSelector::SelectInstructions()
+      1    0.0%    0.0%  T v8::internal::compiler::InstructionSelector::AddOperandToStateValueDescriptor(v8::internal::compiler::StateValueList*, v8::internal::ZoneVector<v8::internal::compiler::InstructionOperand>*, v8::internal::compiler::OperandGenerator*, v8::internal::compiler::StateObjectDeduplicator*, v8::internal::compiler::Node*, v8::internal::MachineType, v8::internal::compiler::FrameStateInputKind, v8::internal::Zone*)
+      1    0.0%    0.0%  T v8::internal::compiler::GraphReducer::ReduceNode(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  T v8::internal::compiler::DeadCodeElimination::Reduce(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  T v8::internal::compiler::CommonOperatorReducer::ReduceMerge(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  T v8::internal::compiler::CodeGenerator::AssembleMove(v8::internal::compiler::InstructionOperand*, v8::internal::compiler::InstructionOperand*)
+      1    0.0%    0.0%  T v8::internal::compiler::CheckpointElimination::Reduce(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  T v8::internal::compiler::BytecodeLivenessMap::BytecodeLivenessMap(int, v8::internal::Zone*)
+      1    0.0%    0.0%  T v8::internal::compiler::BranchElimination::ReduceBranch(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  T v8::internal::compiler::BranchElimination::Reduce(v8::internal::compiler::Node*)
+      1    0.0%    0.0%  T v8::internal::compiler::AccessInfoFactory::ComputePropertyAccessInfo(v8::internal::Handle<v8::internal::Map>, v8::internal::Handle<v8::internal::Name>, v8::internal::compiler::AccessMode, v8::internal::compiler::PropertyAccessInfo*)
+      1    0.0%    0.0%  T v8::internal::Zone::NewExpand(unsigned long)
+      1    0.0%    0.0%  T v8::internal::VirtualMemory::SetPermissions(unsigned long, unsigned long, v8::PageAllocator::Permission)
+      1    0.0%    0.0%  T v8::internal::StringTable::LookupKey(v8::internal::Isolate*, v8::internal::StringTableKey*)
+      1    0.0%    0.0%  T v8::internal::StringTable::AddKeyNoResize(v8::internal::Isolate*, v8::internal::StringTableKey*)
+      1    0.0%    0.0%  T v8::internal::String::SlowFlatten(v8::internal::Handle<v8::internal::ConsString>, v8::internal::PretenureFlag)
+      1    0.0%    0.0%  T v8::internal::String::SlowEquals(v8::internal::String*)
+      1    0.0%    0.0%  T v8::internal::StoreBuffer::StoreBufferOverflow(v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::StoreBuffer::DeleteDuringRuntime(v8::internal::StoreBuffer*, unsigned long, unsigned long)
+      1    0.0%    0.0%  T v8::internal::SpaceWithLinearArea::StartNextInlineAllocationStep()
+      1    0.0%    0.0%  T v8::internal::SemiSpace::set_age_mark(unsigned long)
+      1    0.0%    0.0%  T v8::internal::Script::GetPositionInfo(int, v8::internal::Script::PositionInfo*, v8::internal::Script::OffsetFlag) const
+      1    0.0%    0.0%  T v8::internal::Script::FindSharedFunctionInfo(v8::internal::Isolate*, v8::internal::FunctionLiteral const*)
+      1    0.0%    0.0%  T v8::internal::ScopeInfo::Create(v8::internal::Isolate*, v8::internal::Zone*, v8::internal::Scope*, v8::internal::MaybeHandle<v8::internal::ScopeInfo>)
+      1    0.0%    0.0%  T v8::internal::Scope::ResolveVariablesRecursively(v8::internal::ParseInfo*)
+      1    0.0%    0.0%  T v8::internal::Scope::LookupRecursive(v8::internal::ParseInfo*, v8::internal::VariableProxy*, v8::internal::Scope*)
+      1    0.0%    0.0%  T v8::internal::Scope::AllocateVariablesRecursively()
+      1    0.0%    0.0%  T v8::internal::ScavengeJob::ScheduleIdleTaskIfNeeded(v8::internal::Heap*, int)
+      1    0.0%    0.0%  T v8::internal::Scanner::ScanIdentifierOrKeywordInner(v8::internal::Scanner::LiteralScope*)
+      1    0.0%    0.0%  T v8::internal::SaveContext::~SaveContext()
+      1    0.0%    0.0%  T v8::internal::SafepointEntry::HasRegisters() const
+      1    0.0%    0.0%  T v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime::GetObjectProperty(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, bool*)
+      1    0.0%    0.0%  T v8::internal::RegExpMacroAssemblerX64::GetCode(v8::internal::Handle<v8::internal::String>)
+      1    0.0%    0.0%  T v8::internal::PagedSpaces::next()
+      1    0.0%    0.0%  T v8::internal::PagedSpace::SizeOfObjects()
+      1    0.0%    0.0%  T v8::internal::PagedSpace::SetReadAndExecutable()
+      1    0.0%    0.0%  T v8::internal::OptimizedCompilationJob::RecordCompilationStats() const
+      1    0.0%    0.0%  T v8::internal::ObjectVisitor::VisitRelocInfo(v8::internal::RelocIterator*)
+      1    0.0%    0.0%  T v8::internal::Object* v8::internal::VisitWeakList<v8::internal::AllocationSite>(v8::internal::Heap*, v8::internal::Object*, v8::internal::WeakObjectRetainer*)
+      1    0.0%    0.0%  T v8::internal::NewSpace::UpdateInlineAllocationLimit(unsigned long)
+      1    0.0%    0.0%  T v8::internal::MemoryAllocator::AllocateChunk(unsigned long, unsigned long, v8::internal::Executability, v8::internal::Space*)
+      1    0.0%    0.0%  T v8::internal::Map::Update(v8::internal::Handle<v8::internal::Map>)
+      1    0.0%    0.0%  T v8::internal::Map::UnwrapFieldType(v8::internal::Object*)
+      1    0.0%    0.0%  T v8::internal::Map::NumberOfEnumerableProperties() const
+      1    0.0%    0.0%  T v8::internal::Map::IsMapInArrayPrototypeChain() const
+      1    0.0%    0.0%  T v8::internal::LookupIterator::HolderIsReceiverOrHiddenPrototype() const
+      1    0.0%    0.0%  T v8::internal::Logger::CodeCreateEvent(v8::internal::CodeEventListener::LogEventsAndTags, v8::internal::AbstractCode*, v8::internal::SharedFunctionInfo*, v8::internal::Name*, int, int)
+      1    0.0%    0.0%  T v8::internal::JSObject::GetFastElementsUsage()
+      1    0.0%    0.0%  T v8::internal::JSObject::AddDataElement(v8::internal::Handle<v8::internal::JSObject>, unsigned int, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyAttributes, v8::internal::ShouldThrow)
+      1    0.0%    0.0%  T v8::internal::ItemParallelJob::~ItemParallelJob()
+      1    0.0%    0.0%  T v8::internal::IncrementalMarking::UpdateWeakReferencesAfterScavenge()
+      1    0.0%    0.0%  T v8::internal::IncrementalMarking::RecordWriteFromCode(v8::internal::HeapObject*, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::IncrementalMarking::AdvanceIncrementalMarkingOnAllocation()
+      1    0.0%    0.0%  T v8::internal::Histogram::AddSample(int)
+      1    0.0%    0.0%  T v8::internal::Heap::SizeOfObjects()
+      1    0.0%    0.0%  T v8::internal::Heap::SelectGarbageCollector(v8::internal::AllocationSpace, char const**)
+      1    0.0%    0.0%  T v8::internal::Heap::ProcessPretenuringFeedback()
+      1    0.0%    0.0%  T v8::internal::Heap::MergeAllocationSitePretenuringFeedback(std::__1::unordered_map<v8::internal::AllocationSite*, unsigned long, std::__1::hash<v8::internal::AllocationSite*>, std::__1::equal_to<v8::internal::AllocationSite*>, std::__1::allocator<std::__1::pair<v8::internal::AllocationSite* const, unsigned long> > > const&)
+      1    0.0%    0.0%  T v8::internal::Heap::IncrementalMarkingLimitReached()
+      1    0.0%    0.0%  T v8::internal::Heap::GarbageCollectionEpilogue()
+      1    0.0%    0.0%  T v8::internal::Heap::CommittedMemory()
+      1    0.0%    0.0%  T v8::internal::Heap::CollectGarbage(v8::internal::AllocationSpace, v8::internal::GarbageCollectionReason, v8::GCCallbackFlags)
+      1    0.0%    0.0%  T v8::internal::HandleScopeImplementer::IterateThis(v8::internal::RootVisitor*)
+      1    0.0%    0.0%  T v8::internal::HandleScopeImplementer::Iterate(v8::internal::RootVisitor*)
+      1    0.0%    0.0%  T v8::internal::HandleScope::Extend(v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::GlobalHandles::PostGarbageCollectionProcessing(v8::internal::GarbageCollector, v8::GCCallbackFlags)
+      1    0.0%    0.0%  T v8::internal::GCTracer::Start(v8::internal::GarbageCollector, v8::internal::GarbageCollectionReason, char const*)
+      1    0.0%    0.0%  T v8::internal::GCTracer::Scope::Scope(v8::internal::GCTracer*, v8::internal::GCTracer::Scope::ScopeId)
+      1    0.0%    0.0%  T v8::internal::FrameSummary::code_offset() const
+      1    0.0%    0.0%  T v8::internal::FixedArrayOfWeakCells::Iterator::Reset(v8::internal::Object*)
+      1    0.0%    0.0%  T v8::internal::FeedbackVector::New(v8::internal::Isolate*, v8::internal::Handle<v8::internal::SharedFunctionInfo>)
+      1    0.0%    0.0%  T v8::internal::FeedbackNexus::GetCompareOperationFeedback() const
+      1    0.0%    0.0%  T v8::internal::Factory::NewBoilerplateDescription(int, int, int, bool)
+      1    0.0%    0.0%  T v8::internal::Factory::CopyPropertyArrayAndGrow(v8::internal::Handle<v8::internal::PropertyArray>, int, v8::internal::PretenureFlag)
+      1    0.0%    0.0%  T v8::internal::Deserializer<v8::internal::BuiltinDeserializerAllocator>::ReadData(v8::internal::MaybeObject**, v8::internal::MaybeObject**, int, unsigned long)
+      1    0.0%    0.0%  T v8::internal::DeclarationScope::AllowsLazyCompilation() const
+      1    0.0%    0.0%  T v8::internal::ConcurrentMarking::ClearLiveness(v8::internal::MemoryChunk*)
+      1    0.0%    0.0%  T v8::internal::CompilationDependencies::Commit(v8::internal::Handle<v8::internal::Code>)
+      1    0.0%    0.0%  T v8::internal::CompilationCacheTable::LookupRegExp(v8::internal::Handle<v8::internal::String>, v8::base::Flags<v8::internal::JSRegExp::Flag, int>)
+      1    0.0%    0.0%  T v8::internal::CompilationCacheRegExp::Lookup(v8::internal::Handle<v8::internal::String>, v8::base::Flags<v8::internal::JSRegExp::Flag, int>)
+      1    0.0%    0.0%  T v8::internal::CompilationCache::PutEval(v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Handle<v8::internal::Context>, v8::internal::Handle<v8::internal::SharedFunctionInfo>, v8::internal::Handle<v8::internal::FeedbackCell>, int)
+      1    0.0%    0.0%  T v8::internal::CancelableTask::CancelableTask(v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::BuiltinDeserializer::ExtractCodeObjectSize(int)
+      1    0.0%    0.0%  T v8::internal::BitVector::Iterator::Advance()
+      1    0.0%    0.0%  T v8::internal::BaseNameDictionary<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::Add(v8::internal::Handle<v8::internal::NameDictionary>, v8::internal::Handle<v8::internal::Name>, v8::internal::Handle<v8::internal::Object>, v8::internal::PropertyDetails, int*)
+      1    0.0%    0.0%  T v8::internal::AstValueFactory::Internalize(v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::AstValueFactory::GetOneByteStringInternal(v8::internal::Vector<unsigned char const>)
+      1    0.0%    0.0%  T v8::internal::Assembler::bind_to(v8::internal::Label*, int)
+      1    0.0%    0.0%  T v8::internal::AllocationObserver::AllocationStep(int, unsigned long, unsigned long)
+      1    0.0%    0.0%  T v8::internal::Accessors::ErrorStackSetter(v8::Local<v8::Name>, v8::Local<v8::Value>, v8::PropertyCallbackInfo<v8::Boolean> const&)
+      1    0.0%    0.0%  T v8::base::hash_combine(unsigned long, unsigned long)
+      1    0.0%    0.0%  T v8::base::TimeTicks::HighResolutionNow()
+      1    0.0%    0.0%  T v8::base::RecursiveMutex::Unlock()
+      1    0.0%    0.0%  T v8::base::PageAllocator::SetPermissions(void*, unsigned long, v8::PageAllocator::Permission)
+      1    0.0%    0.0%  T v8::base::PageAllocator::GetRandomMmapAddr()
+      1    0.0%    0.0%  T v8::base::Mutex::Lock()
+      1    0.0%    0.0%  T v8::Object::Get(v8::Local<v8::Context>, v8::Local<v8::Value>)
+      1    0.0%    0.0%  T std::__1::promise<void>::set_exception_at_thread_exit(std::exception_ptr)
+      1    0.0%    0.0%  T std::__1::basic_istream<wchar_t, std::__1::char_traits<wchar_t> >::get(wchar_t&)
+      1    0.0%    0.0%  T std::__1::__get_sp_mut(void const*)
+      1    0.0%    0.0%  T node::performance::MarkGarbageCollectionEnd(v8::Isolate*, v8::GCType, v8::GCCallbackFlags, void*)
+      1    0.0%    0.0%  T node::fs::AfterInteger(uv_fs_s*)
+      1    0.0%    0.0%  T node::contextify::ContextifyContext::PropertyGetterCallback(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  T node::Cwd(v8::FunctionCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  T _vm_allocate
+      1    0.0%    0.0%  T _pthread_rwlock_init
+      1    0.0%    0.0%  T _os_channel_create_extended
+      1    0.0%    0.0%  T __simple_vsprintf
+      1    0.0%    0.0%  T ___sinit
+      1    0.0%    0.0%  T ___mac_get_mount
+
+ [Summary]:
+   ticks  total  nonlib   name
+   2494   11.5%   11.8%  JavaScript
+  18425   85.3%   87.1%  C++
+   1545    7.2%    7.3%  GC
+    440    2.0%          Shared libraries
+    240    1.1%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+   5344   31.0%   24.7%  T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+   4895   28.4%   22.7%  T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+   2663   15.4%   12.3%  T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+   1084    6.3%    5.0%  T v8::internal::Builtin_JsonParse(int, v8::internal::Object**, v8::internal::Isolate*)
+    702    4.1%    3.3%  T v8::internal::StringTable::LookupStringIfExists_NoAllocate(v8::internal::String*)
+    683    4.0%    3.2%  T v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+    412    2.4%    1.9%  T v8::internal::Runtime_DateCurrentTime(int, v8::internal::Object**, v8::internal::Isolate*)
+    248    1.4%    1.1%  T v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*)
+    243    1.4%    1.1%  T v8::internal::Runtime_ObjectEntries(int, v8::internal::Object**, v8::internal::Isolate*)
+    230    1.3%    1.1%  T v8::internal::Runtime_ObjectValues(int, v8::internal::Object**, v8::internal::Isolate*)
+    133    0.8%    0.6%  T v8::internal::Runtime_GrowArrayElements(int, v8::internal::Object**, v8::internal::Isolate*)
+     90    0.5%    0.4%  t v8::internal::(anonymous namespace)::StringTableNoAllocateKey::IsMatch(v8::internal::Object*)
+     74    0.4%    0.3%  T v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+     48    0.3%    0.2%  T v8::internal::Runtime_KeyedGetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     45    0.3%    0.2%  T v8::internal::Runtime_CompileForOnStackReplacement(int, v8::internal::Object**, v8::internal::Isolate*)
+     40    0.2%    0.2%  T v8::internal::Runtime_CompileLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+     39    0.2%    0.2%  T v8::internal::Runtime_KeyedStoreIC_Slow(int, v8::internal::Object**, v8::internal::Isolate*)
+     26    0.2%    0.1%  T v8::internal::Runtime_AddDictionaryProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     24    0.1%    0.1%  t v8::internal::ConsString* v8::internal::String::VisitFlat<v8::internal::IteratingStringHasher>(v8::internal::IteratingStringHasher*, v8::internal::String*, int)
+     23    0.1%    0.1%  T v8::internal::Runtime_CompileOptimized_Concurrent(int, v8::internal::Object**, v8::internal::Isolate*)
+     18    0.1%    0.1%  T v8::internal::Builtin_FunctionConstructor(int, v8::internal::Object**, v8::internal::Isolate*)
+     18    0.1%    0.1%  T _munmap
+     17    0.1%    0.1%  t void v8::internal::String::WriteToFlat<unsigned char>(v8::internal::String*, unsigned char*, int, int)
+     17    0.1%    0.1%  t v8::internal::(anonymous namespace)::MakeStringThin(v8::internal::String*, v8::internal::String*, v8::internal::Isolate*)
+     11    0.1%    0.1%  T v8::internal::IncrementalMarking::WhiteToGreyAndPush(v8::internal::HeapObject*)
+     10    0.1%    0.0%  T v8::internal::Runtime_GenerateRandomNumbers(int, v8::internal::Object**, v8::internal::Isolate*)
+      9    0.1%    0.0%  T v8::internal::Runtime_StackGuard(int, v8::internal::Object**, v8::internal::Isolate*)
+      8    0.0%    0.0%  T v8::internal::Runtime_CompileOptimized_NotConcurrent(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.0%    0.0%  T v8::internal::Runtime_TypedArrayCopyElements(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.0%    0.0%  T v8::internal::Runtime_KeyedStoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.0%    0.0%  T v8::internal::Runtime_InterpreterDeserializeLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      7    0.0%    0.0%  T v8::internal::IncrementalMarking::RecordWriteSlow(v8::internal::HeapObject*, v8::internal::HeapObjectReference**, v8::internal::Object*)
+      6    0.0%    0.0%  t v8::internal::HeapObject::SizeFromMap(v8::internal::Map*) const
+      6    0.0%    0.0%  T v8::internal::Heap::NotifyObjectLayoutChange(v8::internal::HeapObject*, int, v8::internal::PerThreadAssertScopeDebugOnly<(v8::internal::PerThreadAssertType)0, false> const&)
+      5    0.0%    0.0%  T v8::internal::String::GetFlatContent()
+      5    0.0%    0.0%  T v8::internal::Runtime_StoreIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.0%    0.0%  T v8::internal::Runtime_PushBlockContext(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.0%    0.0%  T v8::internal::Runtime_DeserializeLazy(int, v8::internal::Object**, v8::internal::Isolate*)
+      4    0.0%    0.0%  T v8::internal::Builtin_ArrayBufferConstructor(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.0%    0.0%  T v8::internal::String::ComputeAndSetHash()
+      3    0.0%    0.0%  T v8::internal::Builtin_DateNow(int, v8::internal::Object**, v8::internal::Isolate*)
+      3    0.0%    0.0%  T __simple_dprintf
+      3    0.0%    0.0%  T ___mach_stack_logging_enumerate_records
+      2    0.0%    0.0%  T v8::internal::Runtime_StoreCallbackProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  T v8::internal::Runtime_RegExpInitializeAndCompile(int, v8::internal::Object**, v8::internal::Isolate*)
+      2    0.0%    0.0%  T v8::internal::Runtime_NewObject(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  t void v8::internal::String::WriteToFlat<unsigned short>(v8::internal::String*, unsigned short*, int, int)
+      1    0.0%    0.0%  t v8::internal::Handle<v8::internal::PropertyArray> v8::internal::Factory::CopyArrayAndGrow<v8::internal::PropertyArray>(v8::internal::Handle<v8::internal::PropertyArray>, int, v8::internal::PretenureFlag)
+      1    0.0%    0.0%  t std::__1::deque<std::__1::unique_ptr<v8::Task, std::__1::default_delete<v8::Task> >, std::__1::allocator<std::__1::unique_ptr<v8::Task, std::__1::default_delete<v8::Task> > > >::push_back(std::__1::unique_ptr<v8::Task, std::__1::default_delete<v8::Task> >&&)
+      1    0.0%    0.0%  t std::__1::__hash_table<std::__1::__hash_value_type<unsigned long long, v8::internal::Cancelable*>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, v8::internal::Cancelable*>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, v8::internal::Cancelable*>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, v8::internal::Cancelable*> > >::__node_insert_unique(std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, v8::internal::Cancelable*>, void*>*)
+      1    0.0%    0.0%  t __cxxabiv1::do_free(void*)
+      1    0.0%    0.0%  T v8::internal::Runtime_StringIndexOfUnchecked(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime_StringCharCodeAt(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime_RegExpExec(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime_NewClosure(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime_LoadPropertyWithInterceptor(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime_KeyedLoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime_DefineDataPropertyInLiteral(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime_DefineClass(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime_CreateArrayLiteral(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime_AllocateInTargetSpace(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Runtime_AllocateInNewSpace(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::JSFunction::EnsureHasInitialMap(v8::internal::Handle<v8::internal::JSFunction>)
+      1    0.0%    0.0%  T v8::internal::IncrementalMarking::RecordWriteFromCode(v8::internal::HeapObject*, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Heap::CreateFillerObjectAt(unsigned long, int, v8::internal::ClearRecordedSlots, v8::internal::ClearFreedMemoryMode)
+      1    0.0%    0.0%  T v8::internal::Builtin_ObjectDefineGetter(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Builtin_CallSitePrototypeGetFileName(int, v8::internal::Object**, v8::internal::Isolate*)
+      1    0.0%    0.0%  T v8::internal::Accessors::ErrorStackGetter(v8::Local<v8::Name>, v8::PropertyCallbackInfo<v8::Value> const&)
+      1    0.0%    0.0%  T node::BackgroundTaskRunner::PostTask(std::__1::unique_ptr<v8::Task, std::__1::default_delete<v8::Task> >)
+      1    0.0%    0.0%  T ___carbon_delete
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+   1122    5.2%  t v8::internal::LookupIterator::State v8::internal::LookupIterator::LookupInRegularHolder<false>(v8::internal::Map*, v8::internal::JSReceiver*)
+    484   43.1%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    484  100.0%      Builtin: ObjectValues
+    475   98.1%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    462   97.3%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    462  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     12    2.5%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+     12  100.0%            Builtin: ArrayForEach
+      9    1.9%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      8   88.9%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      8  100.0%            Builtin: ArrayForEach
+      1   11.1%          LazyCompile: ~predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+      1  100.0%            LazyCompile: ~neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+    484   43.1%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    484  100.0%      Builtin: ObjectEntries
+    475   98.1%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    461   97.1%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    461  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     14    2.9%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+     14  100.0%            Builtin: ArrayForEach
+      9    1.9%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      9  100.0%          Builtin: ArrayForEach
+      9  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     69    6.1%    T v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     69  100.0%      LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     69  100.0%        LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     69  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     69  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+     62    5.5%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+     37   59.7%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+     36   97.3%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     36  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     36  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      1    2.7%        Builtin: ArrayMap
+      1  100.0%          LazyCompile: ~HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+      1  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     24   38.7%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     23   95.8%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     23  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     23  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      1    4.2%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%          Builtin: ArrayForEach
+      1  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      1    1.6%      LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%        Builtin: ArrayForEach
+      1  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      1  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+
+   1096    5.1%  T v8::internal::BaseNameDictionary<v8::internal::NameDictionary, v8::internal::NameDictionaryShape>::CollectKeysTo(v8::internal::Handle<v8::internal::NameDictionary>, v8::internal::KeyAccumulator*)
+    761   69.4%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    761  100.0%      Builtin: ObjectValues
+    740   97.2%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    719   97.2%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    719  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     21    2.8%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+     21  100.0%            Builtin: ArrayForEach
+     21    2.8%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+     21  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+     21  100.0%            Builtin: ArrayForEach
+    335   30.6%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    335  100.0%      Builtin: ObjectEntries
+    332   99.1%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    326   98.2%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    326  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      6    1.8%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      6  100.0%            Builtin: ArrayForEach
+
+    921    4.3%  t void std::__1::__sort<v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&, v8::base::AtomicElement<v8::internal::Smi*>*>(v8::base::AtomicElement<v8::internal::Smi*>*, v8::base::AtomicElement<v8::internal::Smi*>*, v8::internal::EnumIndexComparator<v8::internal::NameDictionary>&)
+    580   63.0%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    580  100.0%      Builtin: ObjectValues
+    562   96.9%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    552   98.2%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    552  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      9    1.6%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      9  100.0%            Builtin: ArrayForEach
+     18    3.1%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+     18  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+     18  100.0%            Builtin: ArrayForEach
+    341   37.0%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    341  100.0%      Builtin: ObjectEntries
+    331   97.1%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    323   97.6%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    323  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      7    2.1%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      7  100.0%            Builtin: ArrayForEach
+     10    2.9%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+     10  100.0%          Builtin: ArrayForEach
+     10  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+
+    831    3.8%  T v8::internal::OrderedHashSet::Add(v8::internal::Handle<v8::internal::OrderedHashSet>, v8::internal::Handle<v8::internal::Object>)
+    477   57.4%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    477  100.0%      Builtin: ObjectValues
+    468   98.1%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    459   98.1%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    459  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      8    1.7%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      8  100.0%            Builtin: ArrayForEach
+      9    1.9%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      9  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      9  100.0%            Builtin: ArrayForEach
+    354   42.6%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    354  100.0%      Builtin: ObjectEntries
+    342   96.6%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    331   96.8%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    331  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      9    2.6%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      9  100.0%            Builtin: ArrayForEach
+     12    3.4%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+     12  100.0%          Builtin: ArrayForEach
+     12  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+
+    703    3.3%  T v8::internal::GetOwnValuesOrEntries(v8::internal::Isolate*, v8::internal::Handle<v8::internal::JSReceiver>, v8::internal::PropertyFilter, bool, bool)
+    459   65.3%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    459  100.0%      Builtin: ObjectEntries
+    450   98.0%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    432   96.0%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    432  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     17    3.8%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+     17  100.0%            Builtin: ArrayForEach
+      9    2.0%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      9  100.0%          Builtin: ArrayForEach
+      9  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    240   34.1%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    240  100.0%      Builtin: ObjectValues
+    235   97.9%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    230   97.9%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    230  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      5    2.1%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      5  100.0%            Builtin: ArrayForEach
+      5    2.1%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      5  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      5  100.0%            Builtin: ArrayForEach
+
+    613    2.8%  T v8::internal::Factory::NewFixedArrayWithFiller(v8::internal::Heap::RootListIndex, int, v8::internal::Object*, v8::internal::PretenureFlag)
+    329   53.7%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    329  100.0%      Builtin: ObjectEntries
+    323   98.2%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    317   98.1%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    317  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      6    1.9%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      6  100.0%            Builtin: ArrayForEach
+      6    1.8%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      6  100.0%          Builtin: ArrayForEach
+      6  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     83   13.5%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+     83  100.0%      Builtin: ObjectValues
+     79   95.2%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     78   98.7%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     78  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      1    1.3%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%            Builtin: ArrayForEach
+      4    4.8%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      4  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      4  100.0%            Builtin: ArrayForEach
+     75   12.2%    T v8::internal::Runtime_GrowArrayElements(int, v8::internal::Object**, v8::internal::Isolate*)
+     44   58.7%      LazyCompile: *pixels.forEach /Users/noisemachines/dev/markov-images/savePixelsToFile.js:11:18
+     44  100.0%        Builtin: ArrayForEach
+     44  100.0%          LazyCompile: ~pixelsToImage /Users/noisemachines/dev/markov-images/savePixelsToFile.js:9:23
+     44  100.0%            LazyCompile: ~savePixelsToFile /Users/noisemachines/dev/markov-images/savePixelsToFile.js:21:26
+     27   36.0%      LazyCompile: *receive /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:130:21
+     27  100.0%        LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     27  100.0%          Builtin: AsyncFunctionAwaitResolveClosure
+      2    2.7%      LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:70:25
+      2  100.0%        Builtin: ArrayForEach
+      2  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      2  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    2.7%      LazyCompile: *getPixels /Users/noisemachines/dev/markov-images/imageToPixels.js:8:26
+      2  100.0%        LazyCompile: ~handleJPEG /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node-pixels.js:29:20
+      2  100.0%          LazyCompile: ~doParse /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node-pixels.js:106:17
+      2  100.0%            LazyCompile: ~<anonymous> /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node-pixels.js:180:30
+     43    7.0%    T v8::internal::Runtime_ObjectEntries(int, v8::internal::Object**, v8::internal::Isolate*)
+     43  100.0%      Builtin: ObjectEntries
+     41   95.3%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     38   92.7%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     38  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      3    7.3%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      3  100.0%            Builtin: ArrayForEach
+      2    4.7%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%          Builtin: ArrayForEach
+      2  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     43    7.0%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+     33   76.7%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+     33  100.0%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     33  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     33  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     10   23.3%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     10  100.0%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     10  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     10  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+     14    2.3%    T v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     11   78.6%      LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     11  100.0%        LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     11  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     11  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      3   21.4%      LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      3  100.0%        LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      3  100.0%          Builtin: AsyncFunctionAwaitResolveClosure
+      7    1.1%    T v8::internal::Builtin_JsonParse(int, v8::internal::Object**, v8::internal::Isolate*)
+      7  100.0%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+      6   85.7%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      6  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      6  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      1   14.3%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%          Builtin: ArrayForEach
+      1  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+
+    470    2.2%  t v8::internal::OrderedHashTable<v8::internal::OrderedHashSet, 1>::Rehash(v8::internal::Handle<v8::internal::OrderedHashSet>, int)
+    240   51.1%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    240  100.0%      Builtin: ObjectEntries
+    237   98.8%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    234   98.7%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    234  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      3    1.3%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      3  100.0%          Builtin: ArrayForEach
+      3  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    230   48.9%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    230  100.0%      Builtin: ObjectValues
+    224   97.4%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    218   97.3%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    218  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      5    2.2%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      5  100.0%            Builtin: ArrayForEach
+      6    2.6%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      6  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      6  100.0%            Builtin: ArrayForEach
+
+    456    2.1%  Builtin: KeyedLoadIC_Megamorphic
+    233   51.1%    LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+    233  100.0%      LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    233  100.0%        LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+    233  100.0%          Builtin: AsyncFunctionAwaitResolveClosure
+    100   21.9%    LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    100  100.0%      LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+    100  100.0%        Builtin: AsyncFunctionAwaitResolveClosure
+     98   21.5%    LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     96   98.0%      LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     96  100.0%        LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     96  100.0%          Builtin: AsyncFunctionAwaitResolveClosure
+      2    2.0%      LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%        Builtin: ArrayForEach
+      2  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      2  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     20    4.4%    LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+     20  100.0%      Builtin: ArrayForEach
+     20  100.0%        LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     20  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     20  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+
+    447    2.1%  t v8::internal::Heap::AllocateRaw(int, v8::internal::AllocationSpace, v8::internal::AllocationAlignment)
+    229   51.2%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    229  100.0%      Builtin: ObjectEntries
+    221   96.5%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    217   98.2%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    217  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      4    1.8%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      4  100.0%            Builtin: ArrayForEach
+      7    3.1%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      7  100.0%          Builtin: ArrayForEach
+      7  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    105   23.5%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+     83   79.0%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+     83  100.0%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     83  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     83  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     22   21.0%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     19   86.4%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     19  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     19  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      3   13.6%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      3  100.0%          Builtin: ArrayForEach
+      3  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     32    7.2%    T v8::internal::Runtime_DateCurrentTime(int, v8::internal::Object**, v8::internal::Isolate*)
+     17   53.1%      LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     17  100.0%        LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     17  100.0%          Builtin: AsyncFunctionAwaitResolveClosure
+     14   43.8%      LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     14  100.0%        LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     14  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     14  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      1    3.1%      LazyCompile: *update /Users/noisemachines/dev/markov-images/node_modules/cli-progress/lib/Bar.js:281:11
+      1  100.0%        LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      1  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      1  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+     24    5.4%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+     24  100.0%      Builtin: ObjectValues
+     24  100.0%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     23   95.8%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     23  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      1    4.2%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%            Builtin: ArrayForEach
+     23    5.1%    T v8::internal::Runtime_ObjectEntries(int, v8::internal::Object**, v8::internal::Isolate*)
+     23  100.0%      Builtin: ObjectEntries
+     21   91.3%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     21  100.0%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     21  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    8.7%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%          Builtin: ArrayForEach
+      2  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     17    3.8%    T v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+     17  100.0%      LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     17  100.0%        LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     17  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     17  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      9    2.0%    T v8::internal::Builtin_JsonParse(int, v8::internal::Object**, v8::internal::Isolate*)
+      8   88.9%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+      5   62.5%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      5  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      5  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      2   25.0%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%          Builtin: ArrayForEach
+      2  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      1   12.5%        LazyCompile: ~neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%          Builtin: ArrayForEach
+      1  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      1   11.1%      LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%        Builtin: ArrayForEach
+      1  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      1  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+
+    384    1.8%  T v8::internal::LookupIterator::FetchValue() const
+    200   52.1%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    200  100.0%      Builtin: ObjectEntries
+    198   99.0%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    192   97.0%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    192  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      6    3.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      6  100.0%            Builtin: ArrayForEach
+      2    1.0%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%          Builtin: ArrayForEach
+      2  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    178   46.4%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    178  100.0%      Builtin: ObjectValues
+    174   97.8%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    168   96.6%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    168  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      6    3.4%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      6  100.0%            Builtin: ArrayForEach
+      4    2.2%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      4  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      4  100.0%            Builtin: ArrayForEach
+      6    1.6%    T v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      6  100.0%      LazyCompile: *pixels.forEach /Users/noisemachines/dev/markov-images/savePixelsToFile.js:11:18
+      6  100.0%        Builtin: ArrayForEach
+      6  100.0%          LazyCompile: ~pixelsToImage /Users/noisemachines/dev/markov-images/savePixelsToFile.js:9:23
+      6  100.0%            LazyCompile: ~savePixelsToFile /Users/noisemachines/dev/markov-images/savePixelsToFile.js:21:26
+
+    378    1.8%  T _munmap
+     10    2.6%    T v8::internal::Runtime_GrowArrayElements(int, v8::internal::Object**, v8::internal::Isolate*)
+      5   50.0%      LazyCompile: *receive /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:130:21
+      5  100.0%        LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      5  100.0%          Builtin: AsyncFunctionAwaitResolveClosure
+      5   50.0%      LazyCompile: *getPixels /Users/noisemachines/dev/markov-images/imageToPixels.js:8:26
+      5  100.0%        LazyCompile: ~handleJPEG /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node-pixels.js:29:20
+      5  100.0%          LazyCompile: ~doParse /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node-pixels.js:106:17
+      5  100.0%            LazyCompile: ~<anonymous> /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node-pixels.js:180:30
+      5    1.3%    LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      5  100.0%      Builtin: AsyncFunctionAwaitResolveClosure
+      5    1.3%    LazyCompile: *decodeHuffman /Users/noisemachines/dev/markov-images/node_modules/get-pixels/node_modules/jpeg-js/lib/decoder.js:119:27
+      5  100.0%      LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      5  100.0%        Builtin: AsyncFunctionAwaitResolveClosure
+
+    376    1.7%  t v8::internal::JsonStringifier::Result v8::internal::JsonStringifier::Serialize_<false>(v8::internal::Handle<v8::internal::Object>, bool, v8::internal::Handle<v8::internal::Object>)
+    376  100.0%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+    283   75.3%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+    283  100.0%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+    283  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    283  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     91   24.2%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     89   97.8%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     89  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     89  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      2    2.2%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%          Builtin: ArrayForEach
+      2  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+
+    365    1.7%  /usr/lib/system/libsystem_pthread.dylib
+    266   72.9%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+    214   80.5%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+    212   99.1%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+    212  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    212  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     52   19.5%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     51   98.1%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     51  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     51  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      1    1.9%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%          Builtin: ArrayForEach
+      1  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     80   21.9%    T v8::internal::Builtin_JsonParse(int, v8::internal::Object**, v8::internal::Isolate*)
+     80  100.0%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     79   98.8%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     79  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     79  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      1    1.3%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%          Builtin: ArrayForEach
+      1  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+
+    355    1.6%  T v8::internal::StringTable::LookupStringIfExists_NoAllocate(v8::internal::String*)
+    238   67.0%    LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+    238  100.0%      LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    238  100.0%        LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+    238  100.0%          Builtin: AsyncFunctionAwaitResolveClosure
+    114   32.1%    LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    110   96.5%      LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    110  100.0%        LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+    110  100.0%          Builtin: AsyncFunctionAwaitResolveClosure
+      4    3.5%      LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      4  100.0%        Builtin: ArrayForEach
+      4  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      4  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+
+    347    1.6%  T void v8::internal::LookupIterator::Start<false>()
+    158   45.5%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    158  100.0%      Builtin: ObjectEntries
+    154   97.5%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    152   98.7%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    152  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    1.3%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%            Builtin: ArrayForEach
+      4    2.5%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      4  100.0%          Builtin: ArrayForEach
+      4  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    148   42.7%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    148  100.0%      Builtin: ObjectValues
+    142   95.9%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    139   97.9%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    139  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    1.4%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%            Builtin: ArrayForEach
+      6    4.1%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      6  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      6  100.0%            Builtin: ArrayForEach
+     30    8.6%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+     23   76.7%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+     23  100.0%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     23  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     23  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      7   23.3%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+      7  100.0%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      7  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      7  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      5    1.4%    T v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      5  100.0%      LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+      5  100.0%        LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      5  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      5  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+
+    317    1.5%  LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    317  100.0%    LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+    317  100.0%      Builtin: AsyncFunctionAwaitResolveClosure
+
+    311    1.4%  T v8::internal::Factory::NewJSArray(v8::internal::ElementsKind, v8::internal::PretenureFlag)
+    201   64.6%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    201  100.0%      Builtin: ObjectEntries
+    198   98.5%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    194   98.0%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    194  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      4    2.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      4  100.0%            Builtin: ArrayForEach
+      3    1.5%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      3  100.0%          Builtin: ArrayForEach
+      3  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     56   18.0%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+     44   78.6%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+     43   97.7%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     43  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     43  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      1    2.3%        Builtin: ArrayMap
+      1  100.0%          LazyCompile: ~HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+      1  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     12   21.4%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     12  100.0%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     12  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     12  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+     34   10.9%    T v8::internal::Runtime_ObjectEntries(int, v8::internal::Object**, v8::internal::Isolate*)
+     34  100.0%      Builtin: ObjectEntries
+     34  100.0%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     34  100.0%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     34  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     16    5.1%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+     16  100.0%      Builtin: ObjectValues
+     16  100.0%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     16  100.0%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     16  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+
+    287    1.3%  T v8::internal::JSReceiver::GetOwnPropertyDescriptor(v8::internal::LookupIterator*, v8::internal::PropertyDescriptor*)
+    147   51.2%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    147  100.0%      Builtin: ObjectEntries
+    142   96.6%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    138   97.2%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    138  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      4    2.8%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      4  100.0%            Builtin: ArrayForEach
+      5    3.4%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      5  100.0%          Builtin: ArrayForEach
+      5  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    140   48.8%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    140  100.0%      Builtin: ObjectValues
+    138   98.6%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    137   99.3%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    137  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    1.4%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      2  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%            Builtin: ArrayForEach
+
+    283    1.3%  T v8::internal::IncrementalMarking::Step(unsigned long, v8::internal::IncrementalMarking::CompletionAction, v8::internal::StepOrigin, v8::internal::WorklistToProcess)
+
+    274    1.3%  t v8::internal::LookupIterator::LookupIterator(v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::LookupIterator::Configuration)
+    112   40.9%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    112  100.0%      Builtin: ObjectEntries
+    108   96.4%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    106   98.1%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    106  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    1.9%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%            Builtin: ArrayForEach
+      4    3.6%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      4  100.0%          Builtin: ArrayForEach
+      4  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    106   38.7%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    106  100.0%      Builtin: ObjectValues
+    102   96.2%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     98   96.1%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     98  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      3    2.9%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      3  100.0%            Builtin: ArrayForEach
+      4    3.8%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      4  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      4  100.0%            Builtin: ArrayForEach
+     44   16.1%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+     38   86.4%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+     38  100.0%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     38  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     38  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      6   13.6%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+      6  100.0%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      6  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      6  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      9    3.3%    T v8::internal::Runtime_SetProperty(int, v8::internal::Object**, v8::internal::Isolate*)
+      9  100.0%      LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+      9  100.0%        LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      9  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      9  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+
+    262    1.2%  T v8::internal::LookupIterator::PropertyOrElement(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Object>, bool*, v8::internal::LookupIterator::Configuration)
+    138   52.7%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    138  100.0%      Builtin: ObjectEntries
+    135   97.8%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    133   98.5%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    133  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    1.5%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%            Builtin: ArrayForEach
+      3    2.2%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      3  100.0%          Builtin: ArrayForEach
+      3  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    122   46.6%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    122  100.0%      Builtin: ObjectValues
+    121   99.2%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    120   99.2%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    120  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+
+    244    1.1%  t v8::internal::LookupIterator::PropertyOrElement(v8::internal::Isolate*, v8::internal::Handle<v8::internal::Object>, v8::internal::Handle<v8::internal::Name>, v8::internal::LookupIterator::Configuration)
+    125   51.2%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    125  100.0%      Builtin: ObjectEntries
+    123   98.4%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    122   99.2%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    122  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    1.6%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%          Builtin: ArrayForEach
+      2  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    119   48.8%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    119  100.0%      Builtin: ObjectValues
+    117   98.3%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+    112   95.7%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    112  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      5    4.3%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      5  100.0%            Builtin: ArrayForEach
+      2    1.7%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      2  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%            Builtin: ArrayForEach
+
+    240    1.1%  UNKNOWN
+     64   26.7%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+     64  100.0%      Builtin: ObjectValues
+     63   98.4%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     60   95.2%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     60  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    3.2%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%            Builtin: ArrayForEach
+      1    1.6%          LazyCompile: ~neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%            Builtin: ArrayForEach
+      1    1.6%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      1  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%            Builtin: ArrayForEach
+     43   17.9%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+     43  100.0%      Builtin: ObjectEntries
+     42   97.7%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     39   92.9%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     39  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    4.8%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%            Builtin: ArrayForEach
+      1    2.4%          LazyCompile: ~neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%            Builtin: ArrayForEach
+      1    2.3%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%          Builtin: ArrayForEach
+      1  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     11    4.6%    T v8::internal::Builtin_JsonParse(int, v8::internal::Object**, v8::internal::Isolate*)
+     10   90.9%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+      9   90.0%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      9  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      9  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      1   10.0%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%          Builtin: ArrayForEach
+      1  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      1    9.1%      LazyCompile: ~readPackage internal/modules/cjs/loader.js:152:21
+      1  100.0%        LazyCompile: ~tryPackage internal/modules/cjs/loader.js:173:20
+      1  100.0%          LazyCompile: ~Module._findPath internal/modules/cjs/loader.js:220:28
+      1  100.0%            LazyCompile: ~Module._resolveFilename internal/modules/cjs/loader.js:547:35
+     10    4.2%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+      6   60.0%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+      6  100.0%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+      6  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      6  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      4   40.0%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+      4  100.0%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      4  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      4  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      9    3.8%    T v8::internal::Runtime_DateCurrentTime(int, v8::internal::Object**, v8::internal::Isolate*)
+      5   55.6%      LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+      5  100.0%        LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      5  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      5  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      4   44.4%      LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      4  100.0%        LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      4  100.0%          Builtin: AsyncFunctionAwaitResolveClosure
+      5    2.1%    T v8::internal::Builtin_HandleApiCall(int, v8::internal::Object**, v8::internal::Isolate*)
+      5  100.0%      Script: ~<anonymous> /Users/noisemachines/dev/markov-images/node_modules/sharp/lib/constructor.js:1:11
+      5  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:650:37
+      5  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:698:37
+      5  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:590:33
+      5    2.1%    LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      5  100.0%      Builtin: AsyncFunctionAwaitResolveClosure
+      4    1.7%    LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+      4  100.0%      LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      4  100.0%        LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      4  100.0%          Builtin: AsyncFunctionAwaitResolveClosure
+
+    228    1.1%  T v8::internal::Object::GetProperty(v8::internal::LookupIterator*)
+    106   46.5%    T v8::internal::Runtime_ObjectValuesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+    106  100.0%      Builtin: ObjectValues
+    103   97.2%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     99   96.1%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     99  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      4    3.9%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      4  100.0%            Builtin: ArrayForEach
+      3    2.8%        LazyCompile: *sumValues /Users/noisemachines/dev/markov-images/HiMarkov.js:6:19
+      3  100.0%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      3  100.0%            Builtin: ArrayForEach
+     98   43.0%    T v8::internal::Runtime_ObjectEntriesSkipFastPath(int, v8::internal::Object**, v8::internal::Isolate*)
+     98  100.0%      Builtin: ObjectEntries
+     95   96.9%        LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     92   96.8%          LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     92  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      2    2.1%          LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      2  100.0%            Builtin: ArrayForEach
+      1    1.1%          LazyCompile: ~neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      1  100.0%            Builtin: ArrayForEach
+      3    3.1%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      3  100.0%          Builtin: ArrayForEach
+      3  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     20    8.8%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+     12   60.0%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+     12  100.0%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+     12  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     12  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      8   40.0%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+      8  100.0%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+      8  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+      8  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      4    1.8%    T v8::internal::Runtime_LoadIC_Miss(int, v8::internal::Object**, v8::internal::Isolate*)
+      4  100.0%      LazyCompile: *pixels.forEach /Users/noisemachines/dev/markov-images/savePixelsToFile.js:11:18
+      4  100.0%        Builtin: ArrayForEach
+      4  100.0%          LazyCompile: ~pixelsToImage /Users/noisemachines/dev/markov-images/savePixelsToFile.js:9:23
+      4  100.0%            LazyCompile: ~savePixelsToFile /Users/noisemachines/dev/markov-images/savePixelsToFile.js:21:26
+
+    218    1.0%  T v8::internal::JsonStringifier::SerializeString(v8::internal::Handle<v8::internal::String>)
+    218  100.0%    T v8::internal::Builtin_JsonStringify(int, v8::internal::Object**, v8::internal::Isolate*)
+    148   67.9%      LazyCompile: *stringifyNonPrimitives /Users/noisemachines/dev/markov-images/HiMarkov.js:4:32
+    148  100.0%        LazyCompile: *HiMarkov /Users/noisemachines/dev/markov-images/HiMarkov.js:15:15
+    148  100.0%          LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+    148  100.0%            LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     70   32.1%      LazyCompile: *predict /Users/noisemachines/dev/markov-images/HiMarkov.js:47:11
+     67   95.7%        LazyCompile: *growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+     67  100.0%          LazyCompile: ~growMarkovImage /Users/noisemachines/dev/markov-images/growMarkovImage.js:14:25
+     67  100.0%            Builtin: AsyncFunctionAwaitResolveClosure
+      3    4.3%        LazyCompile: *neighbors.forEach.neighbor /Users/noisemachines/dev/markov-images/growMarkovPixels.js:120:23
+      3  100.0%          Builtin: ArrayForEach
+      3  100.0%            LazyCompile: ~growMarkovPixels /Users/noisemachines/dev/markov-images/growMarkovPixels.js:57:26
+
