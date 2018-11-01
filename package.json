@@ -5,22 +5,31 @@
   "author": "<thomas@noisemachines.io>",
   "license": "MIT",
   "dependencies": {
-    "@sindresorhus/is": "^0.11.0",
+    "@types/double-ended-queue": "^2.1.0",
+    "@types/node": "^10.12.1",
+    "canvas": "^2.0.1",
     "cli-progress": "^2.1.0",
     "dedupe": "^2.1.0",
     "double-ended-queue": "^2.1.0-0",
-    "get-pixels": "^3.3.2",
     "globby": "^8.0.1",
     "image-downloader": "^3.4.1",
     "images-scraper": "^2.0.11",
-    "javascript-stringify": "^1.6.0",
-    "markov-chains": "^1.0.2",
-    "ndarray": "^1.0.18",
-    "p-progress": "^0.2.0",
-    "save-pixels": "^2.3.4",
-    "sharp": "^0.20.8"
+    "micro": "^9.3.3",
+    "p-progress": "^0.2.0"
   },
   "devDependencies": {
-    "standard": "^12.0.1"
+    "micro-dev": "^3.0.0",
+    "standard": "^12.0.1",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.3"
+  },
+  "scripts": {
+    "start": "micro",
+    "dev": "micro-dev",
+    "deploy": "now --public --dotenv && now alias",
+    "build": "tsc --watch src/index.js"
+  },
+  "now": {
+    "alias": "data.noisemachines.io"
   }
 }

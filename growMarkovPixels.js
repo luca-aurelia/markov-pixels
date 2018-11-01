@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const HiMarkov = require('./HiMarkov')
+const HiMarkov = require('./src/HiMarkov')
 const readJsonFromStdin = require('./readJsonFromStdin')
 const CliProgress = require('cli-progress')
 const ndarray = require('ndarray')
