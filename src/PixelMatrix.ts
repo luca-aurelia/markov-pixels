@@ -1,4 +1,4 @@
-import Shape from './types/Shape'
+import Shape from '../types/Shape'
 
 interface ColorProfile {
   channels: number
@@ -75,6 +75,19 @@ export default class PixelMatrix {
     )
   }
   pixels: Uint8ClampedArray
+  private _pixelMatrix: Pixel[][] | undefined
+  get pixelMatrix() {
+    if (!this._pixelMatrix) {
+      const pixelMatrix = new Array(this.width)
+      this.forEach((pixel, point) => {
+        if (!pixelMatrix[point.x]) pixelMatrix[point.x] = []
+        pixelMatrix[point.x][point.y] = pixel
+      })
+      this._pixelMatrix = pixelMatrix
+    }
+
+    return this._pixelMatrix
+  }
   get channels() {
     return this.colorProfile.channels
   }
@@ -103,7 +116,7 @@ export default class PixelMatrix {
     const i = this.getIndex(point)
 
     let channels: number[] = []
-    for (let channelOffset = 0; channelOffset < 4; channelOffset++) {
+    for (let channelOffset = 0; channelOffset < this.colorProfile.channels; channelOffset++) {
       const channel = this.pixels[i + channelOffset]
       if (!channel) return EMPTY_PIXEL
       channels.push(channel)
@@ -156,6 +169,7 @@ export default class PixelMatrix {
     this.pixels[i + 1] = green
     this.pixels[i + 2] = blue
     this.pixels[i + 3] = alpha
+    this.pixelMatrix[point.x][point.y] = pixel
   }
   randomDitherFrom(newMatrix: PixelMatrix, samples = 1000) {
     for (let _ = 0; _ < samples; _++) {

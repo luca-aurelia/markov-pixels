@@ -1,5 +1,5 @@
 const stringify = (x: any): string => JSON.stringify(x)
-
+// const stringify = (pixel: any): string => `{ "red": ${pixel.red}, "green": ${pixel.green}, "blue": ${pixel.blue}, "alpha": ${pixel.alpha}}`
 interface NumbersByStrings {
   [key: string]: number
 }
@@ -24,11 +24,17 @@ interface TransitionCountsMap {
 
 class TransitionCounts<From, To> {
   private transitionCounts: TransitionCountsMap
-  constructor() {
+  private fromCodec: Codec<From>
+  private toCodec: Codec<To>
+  constructor(fromCodec: Codec<From>, toCodec: Codec<To>) {
     this.transitionCounts = {}
+    this.fromCodec = fromCodec
+    this.toCodec = toCodec
   }
   recordTransition(transition: StateTransition<From, To>) {
-    const [from, to] = transition.map(stringify)
+    const from = this.fromCodec.encode(transition[0])
+    const to = this.toCodec.encode(transition[1])
+
     if (!this.transitionCounts[from]) {
       this.transitionCounts[from] = {}
     }
@@ -38,14 +44,21 @@ class TransitionCounts<From, To> {
     this.transitionCounts[from][to] += 1
   }
   getTransitionCountsFrom(state: From): TransitionCountsToState {
-    const stringifiedFrom = stringify(state)
-    return this.transitionCounts[stringifiedFrom]
+    const encodedFrom = this.fromCodec.encode(state)
+    return this.transitionCounts[encodedFrom]
   }
+}
+
+interface Codec<T> {
+  encode: (input: T) => string
+  decode: (input: string) => T
 }
 
 export default class HiMarkov<From, To> {
   private transitionCounts: TransitionCounts<From, To>
-  constructor(stateTransitions: StateTransition<From, To>[]) {
+  private fromCodec: Codec<From>
+  private toCodec: Codec<To>
+  constructor(fromCodec: Codec<From>, toCodec: Codec<To>, stateTransitions: StateTransition<From, To>[] = []) {
     // stateTransitions is an array of arrays. Each nested array represents
     // an instance of a transition from one state to another.
     // stateTransitions = [
@@ -57,7 +70,9 @@ export default class HiMarkov<From, To> {
     // this.transitionCounts['sad']['happy'] returns the number of times
     // that a transition from 'sad' to 'happy' was present in stateTransitions
 
-    this.transitionCounts = new TransitionCounts()
+    this.fromCodec = fromCodec
+    this.toCodec = toCodec
+    this.transitionCounts = new TransitionCounts(fromCodec, toCodec)
 
     for (let i = 0; i < stateTransitions.length; i++) {
       const stateTransition = stateTransitions[i]
@@ -65,9 +80,12 @@ export default class HiMarkov<From, To> {
     }
   }
 
+  recordStateTransition(transition: StateTransition<From, To>) {
+    this.transitionCounts.recordTransition(transition)
+  }
+
   predict(from: From) {
     const transitionCountsFrom = this.transitionCounts.getTransitionCountsFrom(from)
-    // console.log({ transitionCountsFrom })
     const sumTransitionCounts = sumValues(transitionCountsFrom)
     const randomCountSum = Math.floor(sumTransitionCounts * Math.random())
 
@@ -79,13 +97,9 @@ export default class HiMarkov<From, To> {
       index++
     }
 
-    const prediction = entries[index - 1][0]
-
-    try {
-      return JSON.parse(prediction)
-    } catch (e) {
-      return prediction
-    }
+    const encodedPrediction = entries[index - 1][0]
+    const prediction = this.toCodec.decode(encodedPrediction)
+    return prediction
   }
 
   // predictInverse(from) {
