@@ -26,8 +26,8 @@ class TransitionCounts<From, To> {
   private transitionCounts: TransitionCountsMap
   private fromCodec: Codec<From>
   private toCodec: Codec<To>
-  constructor(fromCodec: Codec<From>, toCodec: Codec<To>) {
-    this.transitionCounts = {}
+  constructor(fromCodec: Codec<From>, toCodec: Codec<To>, transitionCounts: TransitionCountsMap = {}) {
+    this.transitionCounts = transitionCounts
     this.fromCodec = fromCodec
     this.toCodec = toCodec
   }
@@ -47,11 +47,47 @@ class TransitionCounts<From, To> {
     const encodedFrom = this.fromCodec.encode(state)
     return this.transitionCounts[encodedFrom]
   }
+  toJson() {
+    return JSON.stringify(this.transitionCounts)
+  }
 }
 
 interface Codec<T> {
   encode: (input: T) => string
   decode: (input: string) => T
+}
+
+export function countStateTransitions<From, To>(fromCodec: Codec<From>, toCodec: Codec<To>, stateTransitions: StateTransition<From, To>[]) {
+  const transitionCounts = new TransitionCounts(fromCodec, toCodec)
+
+  for (let i = 0; i < stateTransitions.length; i++) {
+    const stateTransition = stateTransitions[i]
+    transitionCounts.recordTransition(stateTransition)
+  }
+
+  return transitionCounts
+}
+
+export function predict<From, To>(transitionCounts: TransitionCounts<From, To>, from: From) {
+  const transitionCountsFrom = transitionCounts.getTransitionCountsFrom(from)
+  if (!transitionCountsFrom) {
+    return null
+  }
+
+  const sumTransitionCounts = sumValues(transitionCountsFrom)
+  const randomCountSum = Math.floor(sumTransitionCounts * Math.random())
+
+  let index = 0
+  let countSum = 0
+  const entries = Object.entries(transitionCountsFrom)
+  while (countSum <= randomCountSum) {
+    countSum += entries[index][1]
+    index++
+  }
+
+  const encodedPrediction = entries[index - 1][0]
+  const prediction = this.toCodec.decode(encodedPrediction)
+  return prediction
 }
 
 export default class HiMarkov<From, To> {
@@ -72,12 +108,7 @@ export default class HiMarkov<From, To> {
 
     this.fromCodec = fromCodec
     this.toCodec = toCodec
-    this.transitionCounts = new TransitionCounts(fromCodec, toCodec)
-
-    for (let i = 0; i < stateTransitions.length; i++) {
-      const stateTransition = stateTransitions[i]
-      this.transitionCounts.recordTransition(stateTransition)
-    }
+    this.transitionCounts = countStateTransitions(fromCodec, toCodec, stateTransitions)
   }
 
   recordStateTransition(transition: StateTransition<From, To>) {
@@ -85,21 +116,7 @@ export default class HiMarkov<From, To> {
   }
 
   predict(from: From) {
-    const transitionCountsFrom = this.transitionCounts.getTransitionCountsFrom(from)
-    const sumTransitionCounts = sumValues(transitionCountsFrom)
-    const randomCountSum = Math.floor(sumTransitionCounts * Math.random())
-
-    let index = 0
-    let countSum = 0
-    const entries = Object.entries(transitionCountsFrom)
-    while (countSum <= randomCountSum) {
-      countSum += entries[index][1]
-      index++
-    }
-
-    const encodedPrediction = entries[index - 1][0]
-    const prediction = this.toCodec.decode(encodedPrediction)
-    return prediction
+    return predict(this.transitionCounts, from)
   }
 
   // predictInverse(from) {

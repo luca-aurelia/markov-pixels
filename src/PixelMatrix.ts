@@ -45,14 +45,14 @@ const EMPTY_PIXEL: Pixel = {
   alpha: 0
 }
 
-const vonNeumannOffsets: Point[] = [
+export const vonNeumannOffsets: Point[] = [
   { x: -1, y: 0 },
   { x: 1, y: 0 },
   { x: 0, y: -1 },
   { x: 0, y: 1 }
 ]
 
-const mooreOffsets: Point[] = []
+export const mooreOffsets: Point[] = []
 
 for (let x = -1; x <= 1; x++) {
   for (let y = -1; y <= 1; y++) {
@@ -190,7 +190,7 @@ export default class PixelMatrix {
       })
     }
   }
-  private getIndex(point: Point): number {
+  protected getIndex(point: Point): number {
     const { x, y } = point
     if (!this.contains(point)) {
       throw new Error(
