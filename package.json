@@ -34,7 +34,7 @@
   },
   "scripts": {
     "service:start": "micro",
-    "service:dev": "ts-node --typeCheck node_modules/.bin/micro-dev src/service.ts",
+    "training-service:start": "ts-node --max-old-space-size=4096 -O '{\"module\": \"commonjs\", \"isolatedModules\": false }' --typeCheck node_modules/.bin/micro-dev --silent --port 3001 src/trainingService.ts",
     "service:deploy": "now --public --dotenv && now alias",
     "build": "tsc --watch --module commonjs",
     "browser:start": "react-scripts start",

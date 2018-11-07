@@ -3,7 +3,6 @@
     "outDir": "./built",
     "allowJs": true,
     "target": "es2017",
-    "noEmitOnError": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
     "noImplicitThis": true,
@@ -20,11 +19,11 @@
     "jsx": "preserve",
     "typeRoots": [
       ".node_modules/@types",
-      "./types"
+      "./@types"
     ]
   },
+  "exclude": [],
   "include": [
-    "./shared/**/*"
-  ],
-  "exclude": []
+    "src"
+  ]
 }

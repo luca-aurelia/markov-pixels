@@ -1,7 +1,8 @@
 import BrowserPixelMatrix, { Point } from './BrowserPixelMatrix'
+import PixelMatrix from './PixelMatrix';
 
 export default class ToroidalBrowserPixelMatrix extends BrowserPixelMatrix {
-  static fromPixelMatrix(pixelMatrix) {
+  static fromPixelMatrix(pixelMatrix: PixelMatrix) {
     return new ToroidalBrowserPixelMatrix(pixelMatrix.width, pixelMatrix.height, pixelMatrix.colorProfile, pixelMatrix.pixels)
   }
   static async load(imagePath: string): Promise<ToroidalBrowserPixelMatrix> {

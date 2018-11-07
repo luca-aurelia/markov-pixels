@@ -1,4 +1,4 @@
-import Shape from '../types/Shape'
+import Shape from './Shape'
 
 interface ColorProfile {
   channels: number

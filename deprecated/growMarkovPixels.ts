@@ -1,6 +1,6 @@
 import PixelMatrix, { Point, Pixel } from './PixelMatrix'
 import HiMarkov, { StateTransition } from './HiMarkov'
-import Shape from '../types/Shape'
+import Shape from './Shape'
 import * as Deque from 'double-ended-queue'
 
 type PixelToPixelTransition = StateTransition<Pixel, Pixel>

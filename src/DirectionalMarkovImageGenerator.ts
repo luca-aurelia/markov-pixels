@@ -1,8 +1,9 @@
 import PixelMatrix, { Point, Pixel, mooreOffsets } from './PixelMatrix'
 import HiMarkov, { StateTransition } from './HiMarkov'
 import arrayShuffle from 'array-shuffle'
-import MarkovImageGenerator, { pixelCodec, expand, initialize } from './MarkovImageGenerator'
-import Shape from '../types/Shape'
+import MarkovImageGenerator, { pixelStateTransitionCodec, expand, initialize } from './MarkovImageGenerator'
+import Shape from './Shape'
+import Deque from 'double-ended-queue'
 
 type directionallyExpand = expand |
   'directionallyExpandPoints' |
@@ -13,8 +14,13 @@ type directionallyInitialize = initialize
 
 const trainNoOp = (progress: number) => { }
 
-const getMooreNeighboringPointsWithOffsets = (pixelMatrix, point) => {
-  const pointsWithOffsets = []
+interface NeighboringPointWithOffset {
+  offset: Point
+  neighboringPoint: Point
+}
+
+const getMooreNeighboringPointsWithOffsets = (pixelMatrix: PixelMatrix, point: Point) => {
+  const pointsWithOffsets: NeighboringPointWithOffset[] = []
   mooreOffsets.forEach(offset => {
     const neighboringPoint = {
       x: point.x + offset.x,
@@ -37,11 +43,13 @@ const getMooreNeighboringPointsWithOffsets = (pixelMatrix, point) => {
 
 export default class DirectionalMarkovImageGenerator extends MarkovImageGenerator {
   markovChains: HiMarkov<Pixel, Pixel>[][]
-  train(onProgress = trainNoOp) {
+  constructor(trainingData: PixelMatrix) {
+    super(trainingData)
     this.markovChains = []
-
+  }
+  train(onProgress = trainNoOp) {
     // Dummy markov chain so that super class doesn't generate spurious errors
-    this.markovChain = new HiMarkov<Pixel, Pixel>(pixelCodec, pixelCodec)
+    this.markovChain = new HiMarkov<Pixel, Pixel>(pixelStateTransitionCodec)
 
     const numberOfMooreNeighbors = 8
     // This slightly overestimates the number of state transitions since pixels on the
@@ -67,15 +75,15 @@ export default class DirectionalMarkovImageGenerator extends MarkovImageGenerato
   getPixelsGenerator(outputShape: Shape, rate = 10, initializationAlgorithm: directionallyInitialize = 'initializeInCenter', expansionAlgorithm: directionallyExpand = 'directionallyExpandPointsInRandomBlobs'): () => { progress: number, pixels: PixelMatrix } {
     return super.getPixelsGenerator(outputShape, rate, initializationAlgorithm, expansionAlgorithm as expand)
   }
-  private getMarkovChainFor(offset) {
+  private getMarkovChainFor(offset: Point) {
     if (!this.markovChains[offset.x]) this.markovChains[offset.x] = []
     if (!this.markovChains[offset.x][offset.y]) {
-      this.markovChains[offset.x][offset.y] = new HiMarkov(pixelCodec, pixelCodec)
+      this.markovChains[offset.x][offset.y] = new HiMarkov(pixelStateTransitionCodec)
     }
     return this.markovChains[offset.x][offset.y]
   }
-  private directionallyExpandPointsInRandomBlobs(expansionRate, pointsToExpandFrom, markovPixels) {
-    const expand = point => {
+  private directionallyExpandPointsInRandomBlobs(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix) {
+    const expand = (point: Point) => {
       const color = markovPixels.get(point)
       const neighbors = getMooreNeighboringPointsWithOffsets(markovPixels, point)
       const shuffledNeighbors = arrayShuffle(neighbors)
@@ -87,6 +95,7 @@ export default class DirectionalMarkovImageGenerator extends MarkovImageGenerato
         if (neighboringPixel.red || neighboringPixel.green || neighboringPixel.blue || neighboringPixel.alpha) return
 
         let neighborColor = this.getMarkovChainFor(offset).predict(color)
+        if (!neighborColor) throw new Error(`Prediction failed`)
         markovPixels.set(neighboringPoint, neighborColor)
         if (Math.random() > 0.5) {
           pointsToExpandFrom.unshift(neighboringPoint)
@@ -104,8 +113,8 @@ export default class DirectionalMarkovImageGenerator extends MarkovImageGenerato
 
     return pointsExpanded
   }
-  private directionallyExpandPointsInRandomWalk(expansionRate, pointsToExpandFrom, markovPixels) {
-    const expand = point => {
+  private directionallyExpandPointsInRandomWalk(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix) {
+    const expand = (point: Point) => {
       const color = markovPixels.get(point)
       const neighbors = getMooreNeighboringPointsWithOffsets(markovPixels, point)
       const shuffledNeighbors = arrayShuffle(neighbors)
@@ -117,6 +126,7 @@ export default class DirectionalMarkovImageGenerator extends MarkovImageGenerato
         if (neighboringPixel.red || neighboringPixel.green || neighboringPixel.blue || neighboringPixel.alpha) return
 
         let neighborColor = this.getMarkovChainFor(offset).predict(color)
+        if (!neighborColor) throw new Error(`Prediction failed`)
         markovPixels.set(neighboringPoint, neighborColor)
         if (Math.random() > 0.5) {
           pointsToExpandFrom.unshift(neighboringPoint)
@@ -136,8 +146,8 @@ export default class DirectionalMarkovImageGenerator extends MarkovImageGenerato
 
     return pointsExpanded
   }
-  private directionallyExpandPoints(expansionRate, pointsToExpandFrom, markovPixels) {
-    const expand = point => {
+  private directionallyExpandPoints(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix) {
+    const expand = (point: Point) => {
       const color = markovPixels.get(point)
       const neighbors = getMooreNeighboringPointsWithOffsets(markovPixels, point)
       // const shuffledNeighbors = arrayShuffle(neighbors)
@@ -149,6 +159,7 @@ export default class DirectionalMarkovImageGenerator extends MarkovImageGenerato
         if (neighboringPixel.red || neighboringPixel.green || neighboringPixel.blue || neighboringPixel.alpha) return
 
         let neighborColor = this.getMarkovChainFor(offset).predict(color)
+        if (!neighborColor) throw new Error(`Prediction failed`)
         markovPixels.set(neighboringPoint, neighborColor)
         pointsToExpandFrom.unshift(neighboringPoint)
       })
