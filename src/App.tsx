@@ -32,8 +32,9 @@ class App extends Component {
     return <div style={divStyle}>
       {/* <div style={{ width: containerWidth + 'px', height: containerWidth * 3 + 'px' }}> */}
       {/* <MarkovCanvas src={a} trainingDataSrc={'src/images/Kawase Hasui/no border/sc205798 no border.jpg'} delay={1 * delayStepSize} width={width} height={height} padding={padding} rate={rate} /> */}
-      <MarkovCanvas src={b} trainingDataSrc={'src/images/Kawase Hasui/no border/sc205799 no border.jpg'} delay={4 * delayStepSize} width={width} height={height} padding={padding} rate={rate} />
-      {/* <MarkovCanvas src={c} trainingDataSrc={'src/images/Kawase Hasui/no border/sc205802 no border.jpg'} delay={7 * delayStepSize} width={width} height={height} padding={padding} rate={rate} /> */}
+      {/* <MarkovCanvas src={b} trainingDataSrc={'src/images/Kawase Hasui/no border/sc205799 no border.jpg'} delay={4 * delayStepSize} width={width} height={height} padding={padding} rate={rate} /> */}
+      <MarkovCanvas src={c} trainingDataSrc={'src/images/Kawase Hasui/no border/sc205802 no border.jpg'} delay={7 * delayStepSize} width={width} height={height} padding={padding} rate={rate} />
+      <MarkovCanvas src={c} trainingDataSrc={'src/images/Kawase Hasui/no border/sc205802 no border.jpg'} delay={7 * delayStepSize} width={width} height={height} padding={padding} rate={rate} array={true} />
       {/* </div> */}
       {/* <div style={{ width: containerWidth + 'px', height: containerWidth * 3 + 'px' }}> */}
       {/* <MarkovCanvas src={d} trainingDataSrc={'src/images/Kawase Hasui/no border/sc205804 no border.jpg'} delay={2 * delayStepSize} width={width} height={height} padding={padding} rate={rate} /> */}

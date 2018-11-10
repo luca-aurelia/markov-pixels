@@ -11,7 +11,8 @@ interface MarkovCanvasProps {
   padding: number,
   rate: number,
   src: string,
-  trainingDataSrc: string
+  trainingDataSrc: string,
+  array: boolean | undefined
 }
 
 class MarkovCanvas extends Component {
@@ -44,12 +45,17 @@ class MarkovCanvas extends Component {
     // const transitionCounts = await window.fetch(`http://localhost:3001/?training-image=${this.props.trainingDataSrc}`).then(response => response.json())
     // markovChain.transitionCounts = transitionCounts
     this.generator = new MarkovImageGenerator(trainingData)
-    this.generator.train()
+    if (this.props.array) {
+      this.generator.trainArray()
+    } else {
+      this.generator.train()
+    }
     this.setState({ trained: true }, () => this.generatePixels())
   }
   generatePixels = () => {
     if (!this.generator) throw new Error('Can\'t generate pixels without generator')
-    const generatePixels = this.generator.getPixelsGenerator([this.props.width, this.props.height], this.props.rate, 'initializeInCenter', 'expandPoints')
+    const expansionAlgorithm = this.props.array ? 'expandPointsInRandomWalkArray' : 'expandPointsInRandomWalk'
+    const generatePixels = this.generator.getPixelsGenerator([this.props.width, this.props.height], this.props.rate, 'initializeInCenter', expansionAlgorithm)
 
     const iterate = () => {
       const generated = generatePixels()
