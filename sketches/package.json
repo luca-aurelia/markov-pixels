@@ -1,0 +1,19 @@
+{
+  "name": "sketches",
+  "version": "1.0.0",
+  "description": "",
+  "main": "2018.11.06-19.56.29.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "array-shuffle": "^1.0.1",
+    "canvas": "^2.0.1",
+    "canvas-sketch": "0.0.27",
+    "canvas-sketch-util": "^1.5.0",
+    "double-ended-queue": "^2.1.0-0"
+  }
+}

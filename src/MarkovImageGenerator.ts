@@ -1,21 +1,43 @@
 import PixelMatrix, { Point, Pixel } from './PixelMatrix'
-import HiMarkov, { StateTransition } from './HiMarkov'
-import HeyMarkov from './HeyMarkov'
+import HiMarkov, { StateTransition, StateSorter } from './HiMarkov'
 import Shape from './Shape'
 import Deque from 'double-ended-queue'
 import arrayShuffle from 'array-shuffle'
+import { SortResults } from 'sorted';
 
 export type initialize =
   'initializeInCenter' |
-  'initializeRandomly'
+  'initializeRandomly' |
+  'initializeInTopLeft' |
+  'initializeInTopRight' |
+  'initializeInBottomRight' |
+  'initializeInBottomLeft'
+
+export const initializationAlgorithms: initialize[] = [
+  'initializeInCenter',
+  'initializeRandomly',
+  'initializeInTopLeft',
+  'initializeInTopRight',
+  'initializeInBottomRight',
+  'initializeInBottomLeft'
+]
 
 export type expand =
   'expandPoints' |
   'expandPointsInRandomBlobs' |
   'expandPointsInRandomWalk' |
-  'expandPointsInRandomWalkArray'
+  'expandPointsInRandomOverwritableWalk'
+
+export const expansionAlgorithms: expand[] = [
+  'expandPoints',
+  'expandPointsInRandomBlobs',
+  'expandPointsInRandomWalk',
+  'expandPointsInRandomOverwritableWalk'
+]
 
 type PixelToPixelTransition = StateTransition<Pixel, Pixel>
+type PixelsGenerator = (inferenceParameter?: number) => { progress: number, pixels: PixelMatrix }
+type getInferenceParameter = (pixel: Pixel, point: Point) => number
 const trainNoOp = (progress: number) => { }
 const generateNoOp = (progress: number, pixelMatrixInProgress: PixelMatrix) => { }
 
@@ -34,8 +56,10 @@ export const pixelStateTransitionCodec = {
   to: pixelCodec
 }
 
-export const train = (trainingData: PixelMatrix, onProgress = trainNoOp) => {
-  const markovChain = new HiMarkov(pixelStateTransitionCodec)
+const pixelSorterNoOp = (a: Pixel, b: Pixel): SortResults => 0
+
+export const train = (trainingData: PixelMatrix, onProgress = trainNoOp, pixelSorter = pixelSorterNoOp) => {
+  const markovChain = new HiMarkov(pixelStateTransitionCodec, [], pixelSorter)
 
   const numberOfMooreNeighbors = 8
   // This slightly overestimates the number of state transitions since pixels on the
@@ -54,41 +78,19 @@ export const train = (trainingData: PixelMatrix, onProgress = trainNoOp) => {
   return markovChain
 }
 
-const trainArray = (trainingData: PixelMatrix, onProgress = trainNoOp) => {
-  const markovChain = new HeyMarkov(pixelStateTransitionCodec)
-
-  const numberOfMooreNeighbors = 8
-  // This slightly overestimates the number of state transitions since pixels on the
-  // edge of the matrix don't actually have 8 Moore neighbors
-  let totalStateTransitions = trainingData.countPixels * numberOfMooreNeighbors
-  let stateTransitionsRecorded = 0
-  trainingData.forEach((pixel: Pixel, point: Point) => {
-    trainingData.getMooreNeighboringPixels(point).forEach(neighbor => {
-      const stateTransition: StateTransition<Pixel, Pixel> = [pixel, neighbor]
-      markovChain.recordStateTransition(stateTransition)
-      stateTransitionsRecorded++
-      onProgress(stateTransitionsRecorded / totalStateTransitions)
-    })
-  })
-
-  return markovChain
-}
+const isEmptyPixel = ({ red, green, blue, alpha }: Pixel) => red === 0 && green === 0 && blue === 0 && alpha === 0
 
 export default class MarkovImageGenerator {
   trainingData: PixelMatrix
   markovChain: HiMarkov<Pixel, Pixel> | undefined
-  otherMarkovChain: HeyMarkov<Pixel, Pixel> | undefined
   constructor(trainingData: PixelMatrix, markovChain?: HiMarkov<Pixel, Pixel>) {
     this.trainingData = trainingData
     this.markovChain = markovChain
   }
-  train(onProgress = trainNoOp) {
-    this.markovChain = train(this.trainingData, onProgress)
+  train(onProgress = trainNoOp, pixelSorter = pixelSorterNoOp) {
+    this.markovChain = train(this.trainingData, onProgress, pixelSorter)
   }
-  trainArray(onProgress = trainNoOp) {
-    this.otherMarkovChain = trainArray(this.trainingData, onProgress)
-  }
-  getPixelsGenerator(outputShape: Shape, rate = 10, initializationAlgorithm: initialize = 'initializeInCenter', expansionAlgorithm: expand = 'expandPointsInRandomWalk'): () => { progress: number, pixels: PixelMatrix } {
+  getPixelsGenerator(outputShape: Shape, rate = 10, initializationAlgorithm: initialize = 'initializeInCenter', expansionAlgorithm: expand = 'expandPointsInRandomWalk', getInferenceParameter?: getInferenceParameter): PixelsGenerator {
     if (!this.markovChain) {
       throw new Error(`Can't generate pixels without a markov chain. Make sure you called MarkovImageGenerator#train before trying to generate pixels.`)
     }
@@ -104,7 +106,7 @@ export default class MarkovImageGenerator {
 
     const generatePixels = () => {
       if (pointsToExpandFrom.length > 0) {
-        const pointsExpanded = this[expansionAlgorithm](rate, pointsToExpandFrom, markovPixels)
+        const pointsExpanded = this[expansionAlgorithm](rate, pointsToExpandFrom, markovPixels, getInferenceParameter)
         pixelsGenerated += pointsExpanded
       }
 
@@ -123,6 +125,30 @@ export default class MarkovImageGenerator {
     markovPixels.set(startingPoint, startingColor)
     pointsToExpandFrom.push(startingPoint)
   }
+  private initializeInTopLeft(markovPixels: PixelMatrix, pointsToExpandFrom: Deque<Point>) {
+    const startingPoint = { x: 0, y: 0 }
+    const startingColor = this.trainingData.getRandomPixel()
+    markovPixels.set(startingPoint, startingColor)
+    pointsToExpandFrom.push(startingPoint)
+  }
+  private initializeInTopRight(markovPixels: PixelMatrix, pointsToExpandFrom: Deque<Point>) {
+    const startingPoint = { x: markovPixels.width - 1, y: 0 }
+    const startingColor = this.trainingData.getRandomPixel()
+    markovPixels.set(startingPoint, startingColor)
+    pointsToExpandFrom.push(startingPoint)
+  }
+  private initializeInBottomRight(markovPixels: PixelMatrix, pointsToExpandFrom: Deque<Point>) {
+    const startingPoint = { x: markovPixels.width - 1, y: markovPixels.height - 1 }
+    const startingColor = this.trainingData.getRandomPixel()
+    markovPixels.set(startingPoint, startingColor)
+    pointsToExpandFrom.push(startingPoint)
+  }
+  private initializeInBottomLeft(markovPixels: PixelMatrix, pointsToExpandFrom: Deque<Point>) {
+    const startingPoint = { x: 0, y: markovPixels.height - 1 }
+    const startingColor = this.trainingData.getRandomPixel()
+    markovPixels.set(startingPoint, startingColor)
+    pointsToExpandFrom.push(startingPoint)
+  }
   private initializeRandomly(markovPixels: PixelMatrix, pointsToExpandFrom: Deque<Point>) {
     const randomlyInitializeMarkovPixel = () => {
       const startingPoint = markovPixels.getRandomPoint()
@@ -136,7 +162,7 @@ export default class MarkovImageGenerator {
     }
   }
 
-  private expandPointsInRandomBlobs(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix) {
+  private expandPointsInRandomBlobs(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix, getInferenceParameter?: getInferenceParameter) {
     const expand = (point: Point) => {
       const color = markovPixels.get(point)
       const neighbors = markovPixels.getMooreNeighboringPoints(point)
@@ -146,9 +172,11 @@ export default class MarkovImageGenerator {
         const neighboringPixel = markovPixels.get(neighbor)
         // console.log({ neighboringPixel })
         // if neighbor is already colored, don't change color
-        if (neighboringPixel.red || neighboringPixel.green || neighboringPixel.blue || neighboringPixel.alpha) return
+        if (!isEmptyPixel(neighboringPixel)) return
 
-        const neighborColor = this.markovChain!.predict(color)
+        let inferenceParameter
+        if (getInferenceParameter) inferenceParameter = getInferenceParameter(neighboringPixel, neighbor)
+        const neighborColor = this.markovChain!.predict(color, inferenceParameter)
         if (!neighborColor) throw new Error(`Prediction failed`)
         markovPixels.set(neighbor, neighborColor)
         if (Math.random() > 0.5) {
@@ -169,7 +197,7 @@ export default class MarkovImageGenerator {
 
     return pointsExpanded
   }
-  private expandPointsInRandomWalk(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix) {
+  private expandPointsInRandomWalk(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix, getInferenceParameter?: getInferenceParameter) {
     const expand = (point: Point) => {
       const color = markovPixels.get(point)
       const neighbors = markovPixels.getMooreNeighboringPoints(point)
@@ -181,7 +209,10 @@ export default class MarkovImageGenerator {
         // if neighbor is already colored, don't change color
         if (neighboringPixel.red || neighboringPixel.green || neighboringPixel.blue || neighboringPixel.alpha) return
 
-        const neighborColor = this.markovChain!.predict(color)
+        let inferenceParameter
+        if (getInferenceParameter) inferenceParameter = getInferenceParameter(neighboringPixel, neighbor)
+
+        const neighborColor = this.markovChain!.predict(color, inferenceParameter)
         if (!neighborColor) throw new Error(`Prediction failed`)
         markovPixels.set(neighbor, neighborColor)
         if (Math.random() > 0.5) {
@@ -202,7 +233,7 @@ export default class MarkovImageGenerator {
 
     return pointsExpanded
   }
-  private expandPointsInRandomWalkArray(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix) {
+  private expandPointsInRandomOverwritableWalk(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix, getInferenceParameter?: getInferenceParameter) {
     const expand = (point: Point) => {
       const color = markovPixels.get(point)
       const neighbors = markovPixels.getMooreNeighboringPoints(point)
@@ -212,9 +243,12 @@ export default class MarkovImageGenerator {
         const neighboringPixel = markovPixels.get(neighbor)
         // console.log({ neighboringPixel })
         // if neighbor is already colored, don't change color
-        if (neighboringPixel.red || neighboringPixel.green || neighboringPixel.blue || neighboringPixel.alpha) return
+        if (!isEmptyPixel(neighboringPixel) && Math.random() > 0.2) return
 
-        const neighborColor = this.otherMarkovChain!.predict(color)
+        let inferenceParameter
+        if (getInferenceParameter) inferenceParameter = getInferenceParameter(neighboringPixel, neighbor)
+
+        const neighborColor = this.markovChain!.predict(color, inferenceParameter)
         if (!neighborColor) throw new Error(`Prediction failed`)
         markovPixels.set(neighbor, neighborColor)
         if (Math.random() > 0.5) {
@@ -235,19 +269,22 @@ export default class MarkovImageGenerator {
 
     return pointsExpanded
   }
-  private expandPoints(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix) {
+  private expandPoints(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix, getInferenceParameter?: getInferenceParameter) {
     const expand = (point: Point) => {
       const color = markovPixels.get(point)
       const neighbors = markovPixels.getMooreNeighboringPoints(point)
-      const shuffledNeighbors = arrayShuffle(neighbors)
+      // const shuffledNeighbors = arrayShuffle(neighbors)
 
-      shuffledNeighbors.forEach((neighbor: Point) => {
+      neighbors.forEach((neighbor: Point) => {
         const neighboringPixel = markovPixels.get(neighbor)
         // console.log({ neighboringPixel })
         // if neighbor is already colored, don't change color
         if (neighboringPixel.red || neighboringPixel.green || neighboringPixel.blue || neighboringPixel.alpha) return
 
-        const neighborColor = this.markovChain!.predict(color)
+        let inferenceParameter
+        if (getInferenceParameter) inferenceParameter = getInferenceParameter(neighboringPixel, neighbor)
+
+        const neighborColor = this.markovChain!.predict(color, inferenceParameter)
         if (!neighborColor) throw new Error(`Prediction failed`)
         markovPixels.set(neighbor, neighborColor)
         pointsToExpandFrom.push(neighbor)

@@ -5,13 +5,13 @@ import { train } from './MarkovImageGenerator'
 import PixelMatrix from './PixelMatrix'
 import loadPixelMatrix from './loadPixelMatrix'
 import reportProgress from '../shared/reportProgress'
-import { TransitionCounts } from './HiMarkov'
+import { TransitionsByFromState } from './HiMarkov'
 import fs from 'fs'
 
 const trainOnUrl = async (trainingImageUrl: string) => {
   const trainingPixels = await loadPixelMatrix(trainingImageUrl)
   const markovChain = train(trainingPixels, reportProgress('Training'))
-  return markovChain.transitionCounts
+  return markovChain.transitionsByFromState
 }
 
 const getFirstIfArray = (x: string | string[]) => {
@@ -22,8 +22,8 @@ const getFirstIfArray = (x: string | string[]) => {
   }
 }
 
-interface TransitionCountPromisesByUrl {
-  [url: string]: Promise<TransitionCounts>
+interface TransitionCountPromisesByUrl<To> {
+  [url: string]: Promise<TransitionsByFromState<To>>
 }
 
 const transitionCountPromisesByUrl: TransitionCountPromisesByUrl = {}
@@ -36,7 +36,7 @@ export default async (req: Request, res: ServerResponse) => {
 
   const trainingImageUrl = getFirstIfArray(options['training-image'])
 
-  const fileName = `./src/transitionCounts/${trainingImageUrl.replace(/\//g, '-')}.json`
+  const fileName = `./src/TransitionsByFromState/${trainingImageUrl.replace(/\//g, '-')}.json`
   if (fs.existsSync(fileName)) {
     const transitionCounts = await fs.promises.readFile(fileName)
     micro.send(res, 200, transitionCounts)

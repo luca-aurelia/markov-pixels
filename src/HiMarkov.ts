@@ -1,21 +1,13 @@
+import sorted, { Sorted, SortResults } from 'sorted'
 interface NumbersByStrings {
   [key: string]: number
 }
 
-const sumValues = (obj: NumbersByStrings): number => {
-  let total = 0
-  for (const value of Object.values(obj)) {
-    total += value
-  }
-  return total
-}
-
+export type StateSorter<State> = (a: State, b: State) => SortResults
 export type StateTransition<From, To> = [From, To]
 
-export interface TransitionCounts {
-  [fromState: string]: {
-    [toState: string]: number
-  }
+export interface TransitionsByFromState<To> {
+  [fromState: string]: Sorted<To>
 }
 
 export interface Codec<T> {
@@ -28,26 +20,23 @@ export interface StateTransitionCodec<From, To> {
   to: Codec<To>
 }
 
-function recordStateTransition<From, To>(codec: StateTransitionCodec<From, To>, transitionCounts: TransitionCounts, transition: StateTransition<From, To>) {
-  const from = codec.from.encode(transition[0])
-  const to = codec.to.encode(transition[1])
+function recordStateTransition<From, To>(codec: StateTransitionCodec<From, To>, transitionsByFromState: TransitionsByFromState<To>, transition: StateTransition<From, To>, toStateSorter: StateSorter<To>) {
+  const [from, to] = transition
+  const encodedFrom = codec.from.encode(from)
+  // const to = codec.to.encode(transition[1])
 
-  if (!transitionCounts[from]) {
-    transitionCounts[from] = {}
+  if (!transitionsByFromState[encodedFrom]) {
+    transitionsByFromState[encodedFrom] = sorted<To>([], toStateSorter)
   }
 
-  if (!transitionCounts[from][to]) {
-    transitionCounts[from][to] = 0
-  }
+  transitionsByFromState[encodedFrom].push(to)
 
-  transitionCounts[from][to] += 1
-
-  return transitionCounts
+  return transitionsByFromState
 }
 
-function getTransitionCountsFrom<From, To>(codec: StateTransitionCodec<From, To>, transitionCounts: TransitionCounts, from: From) {
+function getTransitionsFrom<From, To>(codec: StateTransitionCodec<From, To>, transitionsByFromState: TransitionsByFromState<To>, from: From) {
   const encodedFrom = codec.from.encode(from)
-  return transitionCounts[encodedFrom]
+  return transitionsByFromState[encodedFrom]
 }
 
 // stateTransitions is an array of arrays. Each nested array represents
@@ -58,59 +47,66 @@ function getTransitionCountsFrom<From, To>(codec: StateTransitionCodec<From, To>
 //   ['sad', 'happy'], // indicates 'sad' became 'happy' a second time
 // ]
 
-// transitionCounts['sad']['happy'] returns the number of times
+// transitionsByFromState['sad']['happy'] returns the number of times
 // that a transition from 'sad' to 'happy' was present in stateTransitions
-export function countStateTransitions<From, To>(codec: StateTransitionCodec<From, To>, stateTransitions: StateTransition<From, To>[]) {
-  const transitionCounts: TransitionCounts = {}
+export function recordStateTransitions<From, To>(codec: StateTransitionCodec<From, To>, stateTransitions: StateTransition<From, To>[], toStateSorter: StateSorter<To>) {
+  const transitionsByFromState: TransitionsByFromState<To> = {}
 
   for (let i = 0; i < stateTransitions.length; i++) {
     const stateTransition = stateTransitions[i]
-    recordStateTransition(codec, transitionCounts, stateTransition)
+    recordStateTransition(codec, transitionsByFromState, stateTransition, toStateSorter)
   }
 
-  return transitionCounts
+  return transitionsByFromState
 }
 
-export function predict<From, To>(codec: StateTransitionCodec<From, To>, transitionCounts: TransitionCounts, from: From) {
-  const transitionCountsFrom = getTransitionCountsFrom(codec, transitionCounts, from)
-  if (!transitionCountsFrom) {
+const getRandomElement = <T>(collection: Sorted<T>) => {
+  const i = Math.floor(Math.random() * collection.length)
+  return collection.get(i)
+}
+
+export function predict<From, To>(codec: StateTransitionCodec<From, To>, transitionsByFromState: TransitionsByFromState<To>, from: From, inferenceParameter?: number) {
+  const transitionsFrom = getTransitionsFrom(codec, transitionsByFromState, from)
+  if (!transitionsFrom) {
     return null
   }
+  let prediction
+  if (inferenceParameter === undefined) {
+    prediction = getRandomElement(transitionsFrom)
+  } else {
+    if (inferenceParameter < 0 || inferenceParameter > 1) throw new Error(`If inference parameter is provided, it must be between 0 and 1 (inclusive), but was ${inferenceParameter}`)
+    const lastIndex = transitionsFrom.length - 1
+    const index = Math.round(inferenceParameter * lastIndex)
+    prediction = transitionsFrom.get(index)
 
-  const sumTransitionCounts = sumValues(transitionCountsFrom)
-  const randomCountSum = Math.floor(sumTransitionCounts * Math.random())
-
-  let index = 0
-  let countSum = 0
-  const entries = Object.entries(transitionCountsFrom)
-  while (countSum <= randomCountSum) {
-    countSum += entries[index][1]
-    index++
+    if (!prediction) debugger
   }
-
-  const encodedPrediction = entries[index - 1][0]
-  const prediction = codec.to.decode(encodedPrediction)
   return prediction
 }
 
+
+const toStateSorterNoOp = <To>(toState: To): SortResults => 1
+
 export default class HiMarkov<From, To> {
-  transitionCounts: TransitionCounts
+  transitionsByFromState: TransitionsByFromState<To>
   private codec: StateTransitionCodec<From, To>
-  constructor(codec: StateTransitionCodec<From, To>, stateTransitions: StateTransition<From, To>[] = []) {
+  private toStateSorter: StateSorter<To>
+  constructor(codec: StateTransitionCodec<From, To>, stateTransitions: StateTransition<From, To>[] = [], toStateSorter: StateSorter<To> = toStateSorterNoOp) {
     this.codec = codec
-    this.transitionCounts = countStateTransitions(codec, stateTransitions)
+    this.transitionsByFromState = recordStateTransitions(codec, stateTransitions, toStateSorter)
+    this.toStateSorter = toStateSorter
   }
 
   recordStateTransition(transition: StateTransition<From, To>) {
-    this.transitionCounts = recordStateTransition(this.codec, this.transitionCounts, transition)
+    this.transitionsByFromState = recordStateTransition(this.codec, this.transitionsByFromState, transition, this.toStateSorter)
   }
 
-  predict(from: From) {
-    return predict(this.codec, this.transitionCounts, from)
+  predict(from: From, inferenceParameter?: number) {
+    return predict(this.codec, this.transitionsByFromState, from, inferenceParameter)
   }
 
   // predictInverse(from) {
-  // const transitionCountsFrom = this.transitionCounts.getTransitionCountsFrom(from)
+  // const transitionCountsFrom = this.transitionsByFromState.getTransitionCountsFrom(from)
 
   // const max = Object.values(
   //   transitionCountsFrom
