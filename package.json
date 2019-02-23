@@ -19,12 +19,14 @@
     "globby": "^8.0.1",
     "image-downloader": "^3.4.1",
     "images-scraper": "^2.0.11",
+    "localforage": "^1.7.3",
     "micro": "^9.3.3",
     "p-progress": "^0.2.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-scripts": "^2.1.1",
-    "sorted": "^0.1.1"
+    "sorted": "^0.1.1",
+    "structurae": "^0.0.24"
   },
   "devDependencies": {
     "canvas-sketch-cli": "^1.1.8",

@@ -1,9 +1,10 @@
 import PixelMatrix, { Point, Pixel } from './PixelMatrix'
-import HiMarkov, { StateTransition, StateSorter } from './HiMarkov'
+import HiMarkov, { StateTransition, StateSorter, SerializedTransitionsByFromState } from './HiMarkov'
+import GraphMarkov from './GraphMarkov'
 import Shape from './Shape'
 import Deque from 'double-ended-queue'
 import arrayShuffle from 'array-shuffle'
-import { SortResults } from 'sorted';
+import localForage from 'localforage'
 
 export type initialize =
   'initializeInCenter' |
@@ -51,21 +52,49 @@ const pixelCodec = {
   }
 }
 
-export const pixelStateTransitionCodec = {
+const twoFiveSixSquared = 256 * 256
+const numberCodec = {
+  encode({ red, green, blue, alpha }: Pixel) {
+    return red + (green * 256) + (blue * twoFiveSixSquared)
+  },
+  decode(n: number) {
+    return {
+      red: Math.round(n % 256),
+      green: Math.round((n / 256) % 256),
+      blue: Math.round(n / (twoFiveSixSquared)),
+      alpha: 255
+    }
+  }
+}
+
+export const stringCodecs = {
   from: pixelCodec,
   to: pixelCodec
 }
 
-const pixelSorterNoOp = (a: Pixel, b: Pixel): SortResults => 0
+export const numberCodecs = {
+  from: numberCodec,
+  to: numberCodec
+}
 
-export const train = (trainingData: PixelMatrix, onProgress = trainNoOp, pixelSorter = pixelSorterNoOp) => {
-  const markovChain = new HiMarkov(pixelStateTransitionCodec, [], pixelSorter)
+const pixelSorterNoOp = (a: Pixel, b: Pixel): -1 | 0 | 1 => 0
 
+export const train = async (trainingDataKey: string, trainingData: PixelMatrix, onProgress = trainNoOp, pixelSorter = pixelSorterNoOp) => {
+  // let serializedTrainingData = await localForage.getItem(trainingDataKey) as SerializedTransitionsByFromState<Pixel>
+  // if (serializedTrainingData != null) {
+  //   console.log('loading from serialized')
+  //   return HiMarkov.fromSerialized(pixelStateTransitionCodec, serializedTrainingData, pixelSorter)
+  // }
+
+  // const markovChain = new HiMarkov(stringCodec, [], pixelSorter)
+  const trainingDataSize = trainingData.width * trainingData.height
+  const markovChain = new GraphMarkov(numberCodecs, pixelSorter, trainingDataSize)
   const numberOfMooreNeighbors = 8
   // This slightly overestimates the number of state transitions since pixels on the
   // edge of the matrix don't actually have 8 Moore neighbors
   let totalStateTransitions = trainingData.countPixels * numberOfMooreNeighbors
   let stateTransitionsRecorded = 0
+  console.log('recording state transitions  ')
   trainingData.forEach((pixel: Pixel, point: Point) => {
     trainingData.getMooreNeighboringPixels(point).forEach(neighbor => {
       const stateTransition: StateTransition<Pixel, Pixel> = [pixel, neighbor]
@@ -75,6 +104,9 @@ export const train = (trainingData: PixelMatrix, onProgress = trainNoOp, pixelSo
     })
   })
 
+  // console.log('state transitions recorded. caching state transitions.')
+  // localForage.setItem(trainingDataKey, markovChain.serializeStateTransitions())
+
   return markovChain
 }
 
@@ -82,13 +114,16 @@ const isEmptyPixel = ({ red, green, blue, alpha }: Pixel) => red === 0 && green 
 
 export default class MarkovImageGenerator {
   trainingData: PixelMatrix
-  markovChain: HiMarkov<Pixel, Pixel> | undefined
-  constructor(trainingData: PixelMatrix, markovChain?: HiMarkov<Pixel, Pixel>) {
+  // markovChain: HiMarkov<Pixel, Pixel> | undefined
+  markovChain: GraphMarkov<Pixel, Pixel> | undefined
+  src: string
+  constructor(src: string, trainingData: PixelMatrix, markovChain?: GraphMarkov<Pixel, Pixel>) {
+    this.src = src
     this.trainingData = trainingData
     this.markovChain = markovChain
   }
-  train(onProgress = trainNoOp, pixelSorter = pixelSorterNoOp) {
-    this.markovChain = train(this.trainingData, onProgress, pixelSorter)
+  async train(onProgress = trainNoOp, pixelSorter = pixelSorterNoOp) {
+    this.markovChain = await train(this.src, this.trainingData, onProgress, pixelSorter)
   }
   getPixelsGenerator(outputShape: Shape, rate = 10, initializationAlgorithm: initialize = 'initializeInCenter', expansionAlgorithm: expand = 'expandPointsInRandomWalk', getInferenceParameter?: getInferenceParameter): PixelsGenerator {
     if (!this.markovChain) {

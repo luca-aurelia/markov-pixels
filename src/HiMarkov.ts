@@ -1,13 +1,17 @@
-import sorted, { Sorted, SortResults } from 'sorted'
+import sorted, { Sorted } from 'sorted'
 interface NumbersByStrings {
   [key: string]: number
 }
 
-export type StateSorter<State> = (a: State, b: State) => SortResults
+export type StateSorter<State> = (a: State, b: State) => -1 | 0 | 1
 export type StateTransition<From, To> = [From, To]
 
 export interface TransitionsByFromState<To> {
   [fromState: string]: Sorted<To>
+}
+
+export interface SerializedTransitionsByFromState<To> {
+  [fromState: string]: Array<To>
 }
 
 export interface Codec<T> {
@@ -75,22 +79,32 @@ export function predict<From, To>(codec: StateTransitionCodec<From, To>, transit
     prediction = getRandomElement(transitionsFrom)
   } else {
     if (inferenceParameter < 0 || inferenceParameter > 1) throw new Error(`If inference parameter is provided, it must be between 0 and 1 (inclusive), but was ${inferenceParameter}`)
-    const lastIndex = transitionsFrom.length - 1
-    const index = Math.round(inferenceParameter * lastIndex)
-    prediction = transitionsFrom.get(index)
 
-    if (!prediction) debugger
+    const index = Math.floor(inferenceParameter * transitionsFrom.length)
+    prediction = transitionsFrom.get(index)
   }
   return prediction
 }
 
 
-const toStateSorterNoOp = <To>(toState: To): SortResults => 1
+const toStateSorterNoOp = <To>(toState: To): -1 | 0 | 1 => 1
 
 export default class HiMarkov<From, To> {
   transitionsByFromState: TransitionsByFromState<To>
   private codec: StateTransitionCodec<From, To>
   private toStateSorter: StateSorter<To>
+  static fromSerialized<From, To>(codec: StateTransitionCodec<From, To>, serialized: SerializedTransitionsByFromState<To>, toStateSorter: StateSorter<To> = toStateSorterNoOp) {
+    const markovChain = new HiMarkov(codec, [], toStateSorter)
+    markovChain.transitionsByFromState = this.deserializeStateTransitions(serialized, toStateSorter)
+    return markovChain
+  }
+  static deserializeStateTransitions<To>(serialized: SerializedTransitionsByFromState<To>, toStateSorter: StateSorter<To>) {
+    const deserialized: TransitionsByFromState<To> = {}
+    for (const key of Object.keys(serialized)) {
+      deserialized[key] = sorted.fromSorted(serialized[key], toStateSorter)
+    }
+    return deserialized
+  }
   constructor(codec: StateTransitionCodec<From, To>, stateTransitions: StateTransition<From, To>[] = [], toStateSorter: StateSorter<To> = toStateSorterNoOp) {
     this.codec = codec
     this.transitionsByFromState = recordStateTransitions(codec, stateTransitions, toStateSorter)
@@ -103,6 +117,14 @@ export default class HiMarkov<From, To> {
 
   predict(from: From, inferenceParameter?: number) {
     return predict(this.codec, this.transitionsByFromState, from, inferenceParameter)
+  }
+
+  serializeStateTransitions() {
+    const serialized: SerializedTransitionsByFromState<To> = {}
+    for (const key of Object.keys(this.transitionsByFromState)) {
+      serialized[key] = this.transitionsByFromState[key].toArray()
+    }
+    return serialized
   }
 
   // predictInverse(from) {
