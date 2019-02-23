@@ -24,7 +24,7 @@
     "p-progress": "^0.2.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-scripts": "^2.1.1",
+    "react-scripts": "^2.1.5",
     "sorted": "^0.1.1",
     "structurae": "^0.0.24"
   },
@@ -48,10 +48,12 @@
   "now": {
     "alias": "data.noisemachines.io"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-react-app"
+    ]
+  },
   "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
+    "chrome >= 72"
   ]
 }
