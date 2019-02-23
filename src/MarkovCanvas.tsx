@@ -3,9 +3,6 @@ import { Pixel, Point } from './PixelMatrix'
 import MarkovImageGenerator, { expansionAlgorithms, initializationAlgorithms, initialize, expand } from './MarkovImageGenerator'
 import BrowserPixelMatrix from './BrowserPixelMatrix'
 import arrayShuffle from 'array-shuffle';
-import PrecomputedRandomNumbers from './PrecomputedRandomNumbers'
-
-const randoms = new PrecomputedRandomNumbers(10000000, n => n * 0.2)
 
 interface MarkovCanvasProps {
   delay: number,
@@ -77,14 +74,14 @@ class MarkovCanvas extends Component {
     const src = arrayShuffle(this.props.sources)[0]
     const trainingData = await BrowserPixelMatrix.load(src)
     this.generator = new MarkovImageGenerator(src, trainingData)
-    await this.generator.train(this.onTrainingProgress, sortByBrightness)
+    await this.generator.train(this.onTrainingProgress, sortByGreen)
     console.log('trained')
     this.setState({ trained: true })
   }
   generatePixels = () => {
     if (!this.generator) throw new Error('Can\'t generate pixels without generator')
     // const expansionAlgorithm = arrayShuffle(expansionAlgorithms)[0]
-    let expansionAlgorithm: expand = 'expandPointsInRandomBlobs'
+    let expansionAlgorithm: expand = 'expandPointsInRandomWalk'
     expansionAlgorithm = this.props.expansionAlgorithm || expansionAlgorithm
     // const initializationAlgorithm = arrayShuffle(initializationAlgorithms)[0]
     let initializationAlgorithm: initialize = 'initializeInCenter'
@@ -96,25 +93,19 @@ class MarkovCanvas extends Component {
 
     const center = { x: this.props.width / 2, y: this.props.height / 2 }
     const maxDistance = getDistance(center, { x: this.props.width, y: this.props.height })
-    const getDistanceFromCenter = (pixel: Pixel, point: Point) => {
-      const distance = getDistance(center, point) / maxDistance
-      return distance
+    const getNormalizedDistanceFromCenter = (pixel: Pixel, point: Point) => {
+      return getDistance(center, point) / maxDistance
     }
-    const getDiamondDistanceFromCenter = (pixel: Pixel, point: Point) => {
+    const getNormalizedDiamondDistanceFromCenter = (pixel: Pixel, point: Point) => {
       let x = point.x - center.x
       let y = point.y - center.y
       if (x < 0) x *= -1
       if (y < 0) y *= -1
-      // return (x + y) / (center.x + center.y)
-      return (x + y)
+      return (x + y) / (center.x + center.y)
     }
     const getInferenceParameter = (pixel: Pixel, point: Point) => {
-      // const rand = randoms.getNext()!
-      const rand = Math.random()
-      if (rand < 0.1) return rand
-      const ip = (getDiamondDistanceFromCenter(pixel, point) % 20) / 20
-      // return randoms.getNext()!
-      return ip
+      const ip = getNormalizedDiamondDistanceFromCenter(pixel, point)
+      return (ip * 10) % 1
     }
 
     const generatePixels = this.generator.getPixelsGenerator(
