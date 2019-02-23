@@ -1,6 +1,5 @@
 import PixelMatrix, { Point, Pixel } from './PixelMatrix'
 import HiMarkov, { StateTransition, StateSorter, SerializedTransitionsByFromState } from './HiMarkov'
-import GraphMarkov from './GraphMarkov'
 import Shape from './Shape'
 import Deque from 'double-ended-queue'
 import arrayShuffle from 'array-shuffle'
@@ -86,9 +85,9 @@ export const train = async (trainingDataKey: string, trainingData: PixelMatrix, 
   //   return HiMarkov.fromSerialized(pixelStateTransitionCodec, serializedTrainingData, pixelSorter)
   // }
 
-  // const markovChain = new HiMarkov(stringCodec, [], pixelSorter)
+  // const markovChain = new GraphMarkov(numberCodecs, pixelSorter, trainingDataSize)
+  const markovChain = new HiMarkov(stringCodecs, [], pixelSorter)
   const trainingDataSize = trainingData.width * trainingData.height
-  const markovChain = new GraphMarkov(numberCodecs, pixelSorter, trainingDataSize)
   const numberOfMooreNeighbors = 8
   // This slightly overestimates the number of state transitions since pixels on the
   // edge of the matrix don't actually have 8 Moore neighbors
@@ -114,10 +113,10 @@ const isEmptyPixel = ({ red, green, blue, alpha }: Pixel) => red === 0 && green 
 
 export default class MarkovImageGenerator {
   trainingData: PixelMatrix
-  // markovChain: HiMarkov<Pixel, Pixel> | undefined
-  markovChain: GraphMarkov<Pixel, Pixel> | undefined
+  markovChain: HiMarkov<Pixel, Pixel> | undefined
+  // markovChain: GraphMarkov<Pixel, Pixel> | undefined
   src: string
-  constructor(src: string, trainingData: PixelMatrix, markovChain?: GraphMarkov<Pixel, Pixel>) {
+  constructor(src: string, trainingData: PixelMatrix, markovChain?: HiMarkov<Pixel, Pixel>) {
     this.src = src
     this.trainingData = trainingData
     this.markovChain = markovChain

@@ -118,7 +118,9 @@ export default class PixelMatrix {
     let channels: number[] = []
     for (let channelOffset = 0; channelOffset < this.colorProfile.channels; channelOffset++) {
       const channel = this.pixels[i + channelOffset]
-      if (!channel) return EMPTY_PIXEL
+      if (channel == null) {
+        throw new Error('Pixel value was missing.')
+      }
       channels.push(channel)
     }
 

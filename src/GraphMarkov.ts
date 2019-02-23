@@ -1,5 +1,4 @@
-import { WeightedGraph, WeightedGraphMixin } from 'structurae'
-const WeightedUndirectedGraphConstructor = WeightedGraphMixin(Int32Array, false)
+import WeightedUndirectedGraph from './structurae/WeightedUndirectedGraph'
 
 interface NumbersByStrings {
   [key: string]: number
@@ -27,11 +26,11 @@ const stateSorterNoOp = <To>(toState: To): -1 | 0 | 1 => 1
 export default class GraphMarkov<From, To> {
   private codec: StateCodec<From, To>
   private stateSorter: StateSorter<To>
-  graph: WeightedGraph
+  graph: WeightedUndirectedGraph
   totalTransitionsCount: { [encodedState: number]: number }
 
   constructor(codec: StateCodec<From, To>, stateSorter: StateSorter<To> = stateSorterNoOp, size: number) {
-    this.graph = new WeightedUndirectedGraphConstructor({ size })
+    this.graph = new WeightedUndirectedGraph({ size })
     this.totalTransitionsCount = {}
     this.codec = codec
     this.stateSorter = stateSorter

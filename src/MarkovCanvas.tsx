@@ -3,6 +3,9 @@ import { Pixel, Point } from './PixelMatrix'
 import MarkovImageGenerator, { expansionAlgorithms, initializationAlgorithms, initialize, expand } from './MarkovImageGenerator'
 import BrowserPixelMatrix from './BrowserPixelMatrix'
 import arrayShuffle from 'array-shuffle';
+import PrecomputedRandomNumbers from './PrecomputedRandomNumbers'
+
+const randoms = new PrecomputedRandomNumbers(10000000, n => n * 0.2)
 
 interface MarkovCanvasProps {
   delay: number,
@@ -102,11 +105,15 @@ class MarkovCanvas extends Component {
       let y = point.y - center.y
       if (x < 0) x *= -1
       if (y < 0) y *= -1
-      return (x + y) / (center.x + center.y)
+      // return (x + y) / (center.x + center.y)
+      return (x + y)
     }
     const getInferenceParameter = (pixel: Pixel, point: Point) => {
-      const ip = getDiamondDistanceFromCenter(pixel, point)
-      if (Math.random() > 0.999) console.log(ip)
+      // const rand = randoms.getNext()!
+      const rand = Math.random()
+      if (rand < 0.1) return rand
+      const ip = (getDiamondDistanceFromCenter(pixel, point) % 20) / 20
+      // return randoms.getNext()!
       return ip
     }
 
@@ -114,7 +121,8 @@ class MarkovCanvas extends Component {
       [this.props.width, this.props.height],
       this.props.rate,
       initializationAlgorithm,
-      expansionAlgorithm
+      expansionAlgorithm,
+      getInferenceParameter
     )
 
     const iterate = () => {

@@ -5,6 +5,8 @@
   "author": "<thomas@noisemachines.io>",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "7.2.2",
+    "@svgr/webpack": "4.1.0",
     "@types/double-ended-queue": "^2.1.0",
     "@types/jest": "^23.3.9",
     "@types/micro": "^7.3.3",
@@ -12,21 +14,59 @@
     "@types/react": "^16.4.18",
     "@types/react-dom": "^16.0.9",
     "array-shuffle": "^1.0.1",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "9.0.0",
+    "babel-jest": "23.6.0",
+    "babel-loader": "8.0.5",
+    "babel-plugin-named-asset-import": "^0.3.1",
+    "babel-preset-react-app": "^7.0.1",
+    "bfj": "6.1.1",
     "canvas": "^2.0.1",
+    "case-sensitive-paths-webpack-plugin": "2.2.0",
     "cli-progress": "^2.1.0",
+    "css-loader": "1.0.0",
     "dedupe": "^2.1.0",
+    "dotenv": "6.0.0",
+    "dotenv-expand": "4.2.0",
     "double-ended-queue": "^2.1.0-0",
+    "file-loader": "2.0.0",
+    "fork-ts-checker-webpack-plugin-alt": "0.4.14",
+    "fs-extra": "7.0.1",
     "globby": "^8.0.1",
+    "html-webpack-plugin": "4.0.0-alpha.2",
+    "identity-obj-proxy": "3.0.0",
     "image-downloader": "^3.4.1",
     "images-scraper": "^2.0.11",
+    "jest": "23.6.0",
+    "jest-pnp-resolver": "1.0.2",
+    "jest-resolve": "23.6.0",
+    "jest-watch-typeahead": "^0.2.1",
     "localforage": "^1.7.3",
     "micro": "^9.3.3",
+    "mini-css-extract-plugin": "0.5.0",
+    "optimize-css-assets-webpack-plugin": "5.0.1",
     "p-progress": "^0.2.0",
+    "pnp-webpack-plugin": "1.2.1",
+    "postcss-flexbugs-fixes": "4.1.0",
+    "postcss-loader": "3.0.0",
+    "postcss-preset-env": "6.5.0",
+    "postcss-safe-parser": "4.0.1",
     "react": "^16.6.0",
+    "react-app-polyfill": "^0.2.1",
+    "react-dev-utils": "^7.0.3",
     "react-dom": "^16.6.0",
     "react-scripts": "^2.1.5",
+    "resolve": "1.10.0",
+    "sass-loader": "7.1.0",
     "sorted": "^0.1.1",
-    "structurae": "^0.0.24"
+    "structurae": "^0.0.24",
+    "style-loader": "0.23.1",
+    "terser-webpack-plugin": "1.2.2",
+    "url-loader": "1.1.2",
+    "webpack": "4.28.3",
+    "webpack-dev-server": "3.1.14",
+    "webpack-manifest-plugin": "2.0.4",
+    "workbox-webpack-plugin": "3.6.3"
   },
   "devDependencies": {
     "canvas-sketch-cli": "^1.1.8",
@@ -42,15 +82,14 @@
     "build": "tsc --watch --module commonjs",
     "browser:start": "react-scripts start",
     "browser:build": "react-scripts build",
-    "browser:test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "browser:test": "react-scripts test"
   },
   "now": {
     "alias": "data.noisemachines.io"
   },
   "babel": {
     "presets": [
-      "@babel/preset-react-app"
+      "react-app"
     ]
   },
   "browserslist": [

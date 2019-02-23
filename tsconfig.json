@@ -20,6 +20,11 @@
     "typeRoots": [
       ".node_modules/@types",
       "./@types"
+    ],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
     ]
   },
   "exclude": [],
