@@ -2,7 +2,10 @@ import React, { Component, CSSProperties } from 'react'
 import { Pixel, Point } from './PixelMatrix'
 import MarkovImageGenerator, { expansionAlgorithms, initializationAlgorithms, initialize, expand } from './MarkovImageGenerator'
 import BrowserPixelMatrix from './BrowserPixelMatrix'
+import PixelMatrix from './PixelMatrix'
 import arrayShuffle from 'array-shuffle';
+import gradient from './images/gradient.jpg'
+import gradient2 from './images/gradient2.jpg'
 
 interface MarkovCanvasProps {
   delay: number,
@@ -24,6 +27,7 @@ const sortByGreen = (a: Pixel, b: Pixel) => {
 }
 
 const brightness = (pixel: Pixel) => pixel.red + pixel.green + pixel.blue
+const normalizedBrightness = (pixel: Pixel) => brightness(pixel) / 765
 
 const sortByBrightness = (a: Pixel, b: Pixel) => {
   const aBrightness = brightness(a)
@@ -50,12 +54,15 @@ class MarkovCanvas extends Component {
   }
   canvas: HTMLCanvasElement | undefined
   generator: MarkovImageGenerator | undefined
+  src: string
+  trainingData?: PixelMatrix
   constructor(props: MarkovCanvasProps) {
     super(props)
     this.props = props
     this.state = {
       trained: false
     }
+    this.src = arrayShuffle(this.props.sources)[0]
   }
   receiveRef = async (canvas: HTMLCanvasElement) => {
     this.canvas = canvas
@@ -71,25 +78,22 @@ class MarkovCanvas extends Component {
   }
   train = async () => {
     console.log('training')
-    const src = arrayShuffle(this.props.sources)[0]
-    const trainingData = await BrowserPixelMatrix.load(src)
-    this.generator = new MarkovImageGenerator(src, trainingData)
+    this.trainingData = await BrowserPixelMatrix.load(this.src)
+    this.generator = new MarkovImageGenerator(this.src, this.trainingData)
     await this.generator.train(this.onTrainingProgress, sortByGreen)
     console.log('trained')
     this.setState({ trained: true })
   }
-  generatePixels = () => {
+  generatePixels = async () => {
     if (!this.generator) throw new Error('Can\'t generate pixels without generator')
-    // const expansionAlgorithm = arrayShuffle(expansionAlgorithms)[0]
-    let expansionAlgorithm: expand = 'expandPointsInRandomWalk'
+    if (!this.trainingData) throw new Error('Can\'t generate pixels before loading training data.')
+
+    let expansionAlgorithm: expand = 'expandPointsFromTop'
     expansionAlgorithm = this.props.expansionAlgorithm || expansionAlgorithm
-    // const initializationAlgorithm = arrayShuffle(initializationAlgorithms)[0]
-    let initializationAlgorithm: initialize = 'initializeInCenter'
+    let initializationAlgorithm: initialize = 'initializeInTopLeft'
     initializationAlgorithm = this.props.initializationAlgorithm || initializationAlgorithm
     console.log(expansionAlgorithm)
     console.log(initializationAlgorithm)
-
-    let currentStep = 0
 
     const center = { x: this.props.width / 2, y: this.props.height / 2 }
     const maxDistance = getDistance(center, { x: this.props.width, y: this.props.height })
@@ -103,9 +107,22 @@ class MarkovCanvas extends Component {
       if (y < 0) y *= -1
       return (x + y) / (center.x + center.y)
     }
+    const getVectorFromCenter = (pixel: Pixel, point: Point) => {
+      return {
+        x: point.x - center.x,
+        y: point.y - center.y
+      }
+    }
+    const otherImage = await BrowserPixelMatrix.load(gradient2)
+    const otherImageCenter = otherImage.getCenter()
     const getInferenceParameter = (pixel: Pixel, point: Point) => {
-      const ip = getNormalizedDiamondDistanceFromCenter(pixel, point)
-      return (ip * 10) % 1
+      const distanceFromCenter = getVectorFromCenter(pixel, point)
+      const otherImagePoint = {
+        x: otherImageCenter.x + distanceFromCenter.x,
+        y: otherImageCenter.y + distanceFromCenter.y
+      }
+      const otherImagePixel = otherImage.get(otherImagePoint)
+      return normalizedBrightness(otherImagePixel) * 0.8 + 0.1
     }
 
     const generatePixels = this.generator.getPixelsGenerator(
@@ -117,9 +134,7 @@ class MarkovCanvas extends Component {
     )
 
     const iterate = () => {
-      // const inferenceParameter = Math.min(1, currentStep / totalSteps)
       const generated = generatePixels()
-      currentStep += 1
       if (generated.progress < 1) {
         window.requestAnimationFrame(iterate)
       }

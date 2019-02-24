@@ -26,15 +26,15 @@ class App extends Component {
   render() {
     const divStyle: CSSProperties = { display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100vw', height: '100vh', position: 'relative' }
     const delayStepSize = 0
-    const width = 2000
-    const height = 2000
+    const width = 1000
+    const height = 1000
     const padding = 10
     const containerWidth = width + (padding * 2)
     const rate = 500
 
     return <div style={divStyle}>
       {/* <div style={{ width: containerWidth + 'px', height: containerWidth * 3 + 'px' }}> */}
-      <MarkovCanvas sources={imageUrls} delay={1 * delayStepSize} width={width} height={height} padding={padding} rate={rate} zIndex={0} initializationAlgorithm={'initializeInCenter'} />
+      <MarkovCanvas sources={imageUrls} delay={1 * delayStepSize} width={width} height={height} padding={padding} rate={rate} zIndex={0} />
       {/* <MarkovCanvas sources={imageUrls} delay={2 * delayStepSize} width={width} height={height} padding={padding} rate={rate} zIndex={1} initializationAlgorithm={'initializeInTopRight'} />
       <MarkovCanvas sources={imageUrls} delay={2 * delayStepSize} width={width} height={height} padding={padding} rate={rate} zIndex={2} initializationAlgorithm={'initializeInBottomRight'} />
       <MarkovCanvas sources={imageUrls} delay={2 * delayStepSize} width={width} height={height} padding={padding} rate={rate} zIndex={3} initializationAlgorithm={'initializeInBottomLeft'} /> */}

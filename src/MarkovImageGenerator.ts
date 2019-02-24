@@ -26,13 +26,15 @@ export type expand =
   'expandPoints' |
   'expandPointsInRandomBlobs' |
   'expandPointsInRandomWalk' |
-  'expandPointsInRandomOverwritableWalk'
+  'expandPointsInRandomOverwritableWalk' |
+  'expandPointsFromTop'
 
 export const expansionAlgorithms: expand[] = [
   'expandPoints',
   'expandPointsInRandomBlobs',
   'expandPointsInRandomWalk',
-  'expandPointsInRandomOverwritableWalk'
+  'expandPointsInRandomOverwritableWalk',
+  'expandPointsFromTop'
 ]
 
 type PixelToPixelTransition = StateTransition<Pixel, Pixel>
@@ -323,6 +325,38 @@ export default class MarkovImageGenerator {
         markovPixels.set(neighbor, neighborColor)
         pointsToExpandFrom.push(neighbor)
       })
+    }
+
+    let pointsExpanded = 0
+    for (let i = 0; i < expansionRate; i++) {
+      const point = pointsToExpandFrom.pop()!
+      if (!point) break
+      expand(point)
+      pointsExpanded++
+    }
+
+    return pointsExpanded
+  }
+  private expandPointsFromTop(expansionRate: number, pointsToExpandFrom: Deque<Point>, markovPixels: PixelMatrix, getInferenceParameter?: getInferenceParameter) {
+    const expand = (point: Point) => {
+      let neighbor = { x: point.x, y: point.y + 1 }
+      // If we've reached the bottom of this column, move to the next column
+      if (!markovPixels.contains(neighbor)) neighbor = { x: point.x + 1, y: 0 }
+      // If we've reached the last pixel, return
+      if (!markovPixels.contains(neighbor)) return
+
+      let neighboringPixel = markovPixels.get(neighbor)
+      // if neighbor is already colored, don't change color
+      if (neighboringPixel.red || neighboringPixel.green || neighboringPixel.blue || neighboringPixel.alpha) return
+
+      let inferenceParameter
+      if (getInferenceParameter) inferenceParameter = getInferenceParameter(neighboringPixel, neighbor)
+
+      const color = markovPixels.get(point)
+      const neighborColor = this.markovChain!.predict(color, inferenceParameter)
+      if (!neighborColor) throw new Error(`Prediction failed`)
+      markovPixels.set(neighbor, neighborColor)
+      pointsToExpandFrom.push(neighbor)
     }
 
     let pointsExpanded = 0
