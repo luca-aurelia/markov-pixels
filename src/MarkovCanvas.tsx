@@ -6,6 +6,8 @@ import PixelMatrix from './PixelMatrix'
 import arrayShuffle from 'array-shuffle';
 import gradient from './images/gradient.jpg'
 import gradient2 from './images/gradient2.jpg'
+import gradient3 from './images/gradient3.jpg'
+import gradient4 from './images/gradient4.jpg'
 
 interface MarkovCanvasProps {
   delay: number,
@@ -88,9 +90,9 @@ class MarkovCanvas extends Component {
     if (!this.generator) throw new Error('Can\'t generate pixels without generator')
     if (!this.trainingData) throw new Error('Can\'t generate pixels before loading training data.')
 
-    let expansionAlgorithm: expand = 'expandPointsFromTop'
+    let expansionAlgorithm: expand = 'expandPointsInRandomBlobs'
     expansionAlgorithm = this.props.expansionAlgorithm || expansionAlgorithm
-    let initializationAlgorithm: initialize = 'initializeInTopLeft'
+    let initializationAlgorithm: initialize = 'initializeRandomly'
     initializationAlgorithm = this.props.initializationAlgorithm || initializationAlgorithm
     console.log(expansionAlgorithm)
     console.log(initializationAlgorithm)
@@ -107,15 +109,19 @@ class MarkovCanvas extends Component {
       if (y < 0) y *= -1
       return (x + y) / (center.x + center.y)
     }
+    const getDiamondRampWavesInferenceParameter = (pixel: Pixel, point: Point) => {
+      const distance = getNormalizedDiamondDistanceFromCenter(pixel, point)
+      return (distance * 10) % 1
+    }
     const getVectorFromCenter = (pixel: Pixel, point: Point) => {
       return {
         x: point.x - center.x,
         y: point.y - center.y
       }
     }
-    const otherImage = await BrowserPixelMatrix.load(gradient2)
+    const otherImage = await BrowserPixelMatrix.load(gradient4)
     const otherImageCenter = otherImage.getCenter()
-    const getInferenceParameter = (pixel: Pixel, point: Point) => {
+    const getInferenceParameterFromOtherImage = (pixel: Pixel, point: Point) => {
       const distanceFromCenter = getVectorFromCenter(pixel, point)
       const otherImagePoint = {
         x: otherImageCenter.x + distanceFromCenter.x,
@@ -124,13 +130,16 @@ class MarkovCanvas extends Component {
       const otherImagePixel = otherImage.get(otherImagePoint)
       return normalizedBrightness(otherImagePixel) * 0.8 + 0.1
     }
+    const getInferenceParameterFromY = (pixel: Pixel, point: Point) => {
+      return point.y / this.props.height
+    }
 
     const generatePixels = this.generator.getPixelsGenerator(
       [this.props.width, this.props.height],
       this.props.rate,
       initializationAlgorithm,
       expansionAlgorithm,
-      getInferenceParameter
+      getDiamondRampWavesInferenceParameter
     )
 
     const iterate = () => {

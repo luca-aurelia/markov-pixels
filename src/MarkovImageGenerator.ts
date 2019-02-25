@@ -193,7 +193,7 @@ export default class MarkovImageGenerator {
       pointsToExpandFrom.push(startingPoint)
     }
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 10; i++) {
       randomlyInitializeMarkovPixel()
     }
   }
@@ -213,7 +213,10 @@ export default class MarkovImageGenerator {
         let inferenceParameter
         if (getInferenceParameter) inferenceParameter = getInferenceParameter(neighboringPixel, neighbor)
         const neighborColor = this.markovChain!.predict(color, inferenceParameter)
-        if (!neighborColor) throw new Error(`Prediction failed`)
+        if (!neighborColor) {
+          console.warn('Prediction failed')
+          return
+        }
         markovPixels.set(neighbor, neighborColor)
         if (Math.random() > 0.5) {
           pointsToExpandFrom.unshift(neighbor)
@@ -249,7 +252,10 @@ export default class MarkovImageGenerator {
         if (getInferenceParameter) inferenceParameter = getInferenceParameter(neighboringPixel, neighbor)
 
         const neighborColor = this.markovChain!.predict(color, inferenceParameter)
-        if (!neighborColor) throw new Error(`Prediction failed`)
+        if (!neighborColor) {
+          console.warn('Prediction failed')
+          return
+        }
         markovPixels.set(neighbor, neighborColor)
         if (Math.random() > 0.5) {
           pointsToExpandFrom.unshift(neighbor)
@@ -285,7 +291,10 @@ export default class MarkovImageGenerator {
         if (getInferenceParameter) inferenceParameter = getInferenceParameter(neighboringPixel, neighbor)
 
         const neighborColor = this.markovChain!.predict(color, inferenceParameter)
-        if (!neighborColor) throw new Error(`Prediction failed`)
+        if (!neighborColor) {
+          console.warn('Prediction failed')
+          return
+        }
         markovPixels.set(neighbor, neighborColor)
         if (Math.random() > 0.5) {
           pointsToExpandFrom.unshift(neighbor)
@@ -321,7 +330,10 @@ export default class MarkovImageGenerator {
         if (getInferenceParameter) inferenceParameter = getInferenceParameter(neighboringPixel, neighbor)
 
         const neighborColor = this.markovChain!.predict(color, inferenceParameter)
-        if (!neighborColor) throw new Error(`Prediction failed`)
+        if (!neighborColor) {
+          console.warn('Prediction failed')
+          return
+        }
         markovPixels.set(neighbor, neighborColor)
         pointsToExpandFrom.push(neighbor)
       })
@@ -354,7 +366,10 @@ export default class MarkovImageGenerator {
 
       const color = markovPixels.get(point)
       const neighborColor = this.markovChain!.predict(color, inferenceParameter)
-      if (!neighborColor) throw new Error(`Prediction failed`)
+      if (!neighborColor) {
+        console.warn('Prediction failed')
+        return
+      }
       markovPixels.set(neighbor, neighborColor)
       pointsToExpandFrom.push(neighbor)
     }

@@ -26,8 +26,8 @@ class App extends Component {
   render() {
     const divStyle: CSSProperties = { display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100vw', height: '100vh', position: 'relative' }
     const delayStepSize = 0
-    const width = 1000
-    const height = 1000
+    const width = 2000
+    const height = 2000
     const padding = 10
     const containerWidth = width + (padding * 2)
     const rate = 500
