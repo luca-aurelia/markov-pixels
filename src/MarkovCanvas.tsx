@@ -1,6 +1,6 @@
 import React, { Component, CSSProperties } from 'react'
 import { Pixel, Point } from './PixelMatrix'
-import MarkovImageGenerator, { expansionAlgorithms, initializationAlgorithms, initialize, expand } from './MarkovImageGenerator'
+import MarkovImageGenerator from './MarkovImageGenerator'
 import BrowserPixelMatrix from './BrowserPixelMatrix'
 import PixelMatrix from './PixelMatrix'
 import arrayShuffle from 'array-shuffle';
@@ -8,6 +8,10 @@ import gradient from './images/gradient.jpg'
 import gradient2 from './images/gradient2.jpg'
 import gradient3 from './images/gradient3.jpg'
 import gradient4 from './images/gradient4.jpg'
+import { initializeWithRandomColorFromTrainingData } from './initializers/color'
+import { initializeInCenter } from './initializers/point'
+import expand from './strokes/expand'
+import trainMarkovPaint from './paints/trainMarkovPaint'
 
 interface MarkovCanvasProps {
   delay: number,
@@ -16,9 +20,7 @@ interface MarkovCanvasProps {
   padding: number,
   rate: number,
   sources: string[],
-  zIndex: number,
-  expansionAlgorithm?: expand,
-  initializationAlgorithm?: initialize
+  zIndex: number
 }
 
 const sortByGreen = (a: Pixel, b: Pixel) => {
@@ -81,22 +83,6 @@ class MarkovCanvas extends Component {
   train = async () => {
     console.log('training')
     this.trainingData = await BrowserPixelMatrix.load(this.src)
-    this.generator = new MarkovImageGenerator(this.src, this.trainingData)
-    await this.generator.train(this.onTrainingProgress, sortByGreen)
-    console.log('trained')
-    this.setState({ trained: true })
-  }
-  generatePixels = async () => {
-    if (!this.generator) throw new Error('Can\'t generate pixels without generator')
-    if (!this.trainingData) throw new Error('Can\'t generate pixels before loading training data.')
-
-    let expansionAlgorithm: expand = 'expandPointsInRandomBlobs'
-    expansionAlgorithm = this.props.expansionAlgorithm || expansionAlgorithm
-    let initializationAlgorithm: initialize = 'initializeRandomly'
-    initializationAlgorithm = this.props.initializationAlgorithm || initializationAlgorithm
-    console.log(expansionAlgorithm)
-    console.log(initializationAlgorithm)
-
     const center = { x: this.props.width / 2, y: this.props.height / 2 }
     const maxDistance = getDistance(center, { x: this.props.width, y: this.props.height })
     const getNormalizedDistanceFromCenter = (pixel: Pixel, point: Point) => {
@@ -134,17 +120,23 @@ class MarkovCanvas extends Component {
       return point.y / this.props.height
     }
 
+    const markovPaint = await trainMarkovPaint(this.trainingData, this.onTrainingProgress, sortByBrightness)
+    const stroke = expand(markovPaint, this.props.rate || 5)
+
+    this.generator = new MarkovImageGenerator(this.src, this.trainingData, initializeInCenter, initializeWithRandomColorFromTrainingData, stroke)
+    console.log('trained')
+    this.setState({ trained: true })
+  }
+  generatePixels = async () => {
+    if (!this.generator) throw new Error('Can\'t generate pixels without generator')
+
     const generatePixels = this.generator.getPixelsGenerator(
-      [this.props.width, this.props.height],
-      this.props.rate,
-      initializationAlgorithm,
-      expansionAlgorithm,
-      getDiamondRampWavesInferenceParameter
+      [this.props.width, this.props.height]
     )
 
     const iterate = () => {
       const generated = generatePixels()
-      if (generated.progress < 1) {
+      if (!generated.finished) {
         window.requestAnimationFrame(iterate)
       }
 
