@@ -87,8 +87,6 @@ const getMarkovPainter = (markovChain: HiMarkov<Pixel, Pixel>, getInferenceParam
     return
   }
 
-  if (Math.random() < 0.01) console.log('painting')
-
   markovPixels.set(neighbor, prediction)
 }
 

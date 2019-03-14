@@ -1,7 +1,6 @@
 import React, { Component, CSSProperties } from 'react'
 import './App.css'
 import ToroidalBrowserPixelMatrix from './ToroidalBrowserPixelMatrix'
-import MarkovImageGenerator from './MarkovImageGenerator'
 import MarkovCanvas from './MarkovCanvas'
 import a from './images/kawase/borderless/sc205798.jpg'
 import b from './images/kawase/borderless/sc205799.jpg'

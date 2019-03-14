@@ -1,12 +1,9 @@
 import React, { Component, CSSProperties } from 'react'
 import { Pixel, Point } from './PixelMatrix'
-import MarkovImageGenerator from './MarkovImageGenerator'
+import getImageGenerator, { PixelsGenerator } from './getImageGenerator'
 import BrowserPixelMatrix from './BrowserPixelMatrix'
 import PixelMatrix from './PixelMatrix'
 import arrayShuffle from 'array-shuffle';
-import gradient from './images/gradient.jpg'
-import gradient2 from './images/gradient2.jpg'
-import gradient3 from './images/gradient3.jpg'
 import gradient4 from './images/gradient4.jpg'
 import { initializeWithRandomColorFromTrainingData } from './initializers/color'
 import { initializeInCenter } from './initializers/point'
@@ -57,9 +54,9 @@ class MarkovCanvas extends Component {
     trained: boolean
   }
   canvas: HTMLCanvasElement | undefined
-  generator: MarkovImageGenerator | undefined
   src: string
   trainingData?: PixelMatrix
+  generator?: PixelsGenerator
   constructor(props: MarkovCanvasProps) {
     super(props)
     this.props = props
@@ -81,8 +78,6 @@ class MarkovCanvas extends Component {
     this.train()
   }
   train = async () => {
-    console.log('training')
-    this.trainingData = await BrowserPixelMatrix.load(this.src)
     const center = { x: this.props.width / 2, y: this.props.height / 2 }
     const maxDistance = getDistance(center, { x: this.props.width, y: this.props.height })
     const getNormalizedDistanceFromCenter = (pixel: Pixel, point: Point) => {
@@ -120,22 +115,22 @@ class MarkovCanvas extends Component {
       return point.y / this.props.height
     }
 
+    console.log('training')
+    this.trainingData = await BrowserPixelMatrix.load(this.src)
+    const outputShape: [number, number] = [this.props.width, this.props.height]
+    const pointInitializer = initializeInCenter
+    const colorInitializer = initializeWithRandomColorFromTrainingData(this.trainingData)
     const markovPaint = await trainMarkovPaint(this.trainingData, this.onTrainingProgress, sortByBrightness)
     const stroke = expand(markovPaint, this.props.rate || 5)
 
-    this.generator = new MarkovImageGenerator(this.src, this.trainingData, initializeInCenter, initializeWithRandomColorFromTrainingData, stroke)
+    this.generator = getImageGenerator(outputShape, pointInitializer, colorInitializer, stroke)
     console.log('trained')
     this.setState({ trained: true })
   }
   generatePixels = async () => {
-    if (!this.generator) throw new Error('Can\'t generate pixels without generator')
-
-    const generatePixels = this.generator.getPixelsGenerator(
-      [this.props.width, this.props.height]
-    )
-
     const iterate = () => {
-      const generated = generatePixels()
+      if (!this.generator) throw new Error('Can\'t generate pixels without generator')
+      const generated = this.generator()
       if (!generated.finished) {
         window.requestAnimationFrame(iterate)
       }
