@@ -53,13 +53,14 @@ import { initializeWithRandomColorFromTrainingData } from './initializers/color'
 import { initializeInTopLeft, initializeInCenter } from './initializers/point'
 import getRainStroke from './strokes/rain'
 import getRandomWalkStroke from './strokes/randomWalk'
+import getGoldenSpiralStroke from './strokes/goldenSpiral'
 import { Stroke } from './strokes/types'
 import { PointInitializer, ColorInitializer } from './initializers/types';
 
 // const imageUrls = [a, b, c, d, e, f, g, h, i, j, k, l, m, n]
 
 const delayStepSize = 0
-const width = 3000
+const width = 100
 const height = width
 const padding = 10
 const containerWidth = width + (padding * 2)
@@ -101,7 +102,11 @@ class App extends Component {
     this.pointInitializer = initializeInCenter
     this.colorInitializer = initializeWithRandomColorFromTrainingData(trainingData)
     const markovPaint = await trainMarkovPaint(trainingData, noOp, sortPixels, bias)
-    this.stroke = getRandomWalkStroke(markovPaint, rate)
+    const center = {
+      x: Math.round(width / 2),
+      y: Math.round(height / 2)
+    }
+    this.stroke = getGoldenSpiralStroke(markovPaint, rate, center)
 
     this.setState({ trained: true })
   }

@@ -1,6 +1,6 @@
 import PixelMatrix, { Pixel, Point } from '../PixelMatrix'
 import Deque from 'double-ended-queue'
-import isColored from './isColored'
+import isColored from '../util/isColored'
 import { Paint } from '../paints/types'
 
 export default (paint: Paint, rate: number) => (markovPixels: PixelMatrix, points: Deque<Point>) => {

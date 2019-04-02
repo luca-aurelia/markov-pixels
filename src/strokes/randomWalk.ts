@@ -1,7 +1,7 @@
 import PixelMatrix, { Point } from '../PixelMatrix'
 import Deque from 'double-ended-queue'
 import arrayShuffle from 'array-shuffle'
-import isColored from './isColored'
+import isColored from '../util/isColored'
 import { Paint } from '../paints/types'
 
 export default (paint: Paint, expansionRate: number) => (markovPixels: PixelMatrix, points: Deque<Point>) => {
