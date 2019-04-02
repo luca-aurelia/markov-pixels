@@ -1,19 +1,10 @@
 import PixelMatrix, { Pixel, Point } from '../PixelMatrix'
 import HiMarkov, { StateTransition, StateSorter, SerializedTransitionsByFromState } from '../HiMarkov'
+import pixelCodec from '../pixelCodec'
 
 export type getInferenceParameter = (pixel: Pixel, point: Point) => number
 
 const pixelSorterNoOp = (a: Pixel, b: Pixel): -1 | 0 | 1 => 0
-
-const pixelCodec = {
-  encode(pixel: Pixel) {
-    return pixel.red + ',' + pixel.green + ',' + pixel.blue + ',' + pixel.alpha
-  },
-  decode(encodedPixel: string): Pixel {
-    const [red, green, blue, alpha] = encodedPixel.split(',').map(s => parseInt(s, 10))
-    return { red, green, blue, alpha }
-  }
-}
 
 const twoFiveSixSquared = 256 * 256
 const numberCodec = {

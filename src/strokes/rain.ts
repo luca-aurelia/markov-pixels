@@ -3,7 +3,7 @@ import Deque from 'double-ended-queue'
 import isColored from './isColored'
 import { Paint } from '../paints/types'
 
-export default (paint: Paint) => (markovPixels: PixelMatrix, points: Deque<Point>) => {
+export default (paint: Paint, rate: number) => (markovPixels: PixelMatrix, points: Deque<Point>) => {
   const getNewPoint = (point: Point) => {
     // Move down this column one pixel
     let neighbor = { x: point.x, y: point.y + 1 }
@@ -21,16 +21,24 @@ export default (paint: Paint) => (markovPixels: PixelMatrix, points: Deque<Point
     return neighbor
   }
 
-  const newPoints = new Deque<Point>(points.length)
-  while (!points.isEmpty()) {
-    const point = points.pop()!
-    const newPoint = getNewPoint(point)
+  const newPoints = new Deque<Point>(rate)
 
-    if (!newPoint) continue
+  for (let pointIndex = 0; pointIndex < points.length; pointIndex++) {
+    let previous: Point | undefined = points.pop()!
+    if (!previous) break
 
-    paint(markovPixels, point, newPoint)
-    newPoints.push(newPoint)
+    for (let expansionIndex = 0; expansionIndex < rate; expansionIndex++) {
+      const pointToPaint = getNewPoint(previous!)
+      if (pointToPaint) {
+        paint(markovPixels, previous!, pointToPaint)
+      }
+      previous = pointToPaint
+    }
+    if (previous) {
+      newPoints.push(previous)
+    }
   }
+
 
   return newPoints
 }
